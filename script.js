@@ -41,11 +41,24 @@ const species = [
     { name: "Cèdre", taxonKey: 2685742 },
     { name: "Pin", taxonKey: 2684241 },
 
-
 ]
+
+// Create inverse dict since we use taxonKey as key
+var taxonToName = {}
+species.forEach(speciesItem => {
+    taxonToName[speciesItem.taxonKey] = speciesItem.name
+});
+
+const PLANTNET_DATASET_KEY = "7a3679ef-5582-4aaa-81f0-8c2545cafc81"
 
 // Sort by name
 species.sort((a, b) => a.name.localeCompare(b.name));
+
+// Species selected by user for quizz
+var selectedSpecies = null
+
+// Current species taxon key
+var taxonKey = ""
 
 // Populate species selection buttons dynamically
 $(document).ready(function() {
@@ -64,10 +77,9 @@ $(document).ready(function() {
     });
 
     $(".header-logo").click(function(event) {
-       // Reload page
+       // Reload page on header click
         location.reload();
     });
-
 
     var allOn = false;
 
@@ -78,51 +90,23 @@ $(document).ready(function() {
             $(this).addClass(allOn ? "selected" : "unselected");
         });
     });
+
+    $("#reveal").click(function(event) {
+        alert("Answer: " + taxonToName[taxonKey]);
+    });
 });
 
-// Global variable
-var taxonKey = ""
 
-function reloadImages() {
-    // Reload only images
-    // Add a random offset between 0 and 200
-    const offset = Math.floor(Math.random() * 200);
-
+function reloadImages(){
     // GBIF API URL for fetching images based on the selected taxon key
-    const apiUrl = `https://api.gbif.org/v1/occurrence/search?taxonKey=${taxonKey}&mediaType=StillImage&basisOfRecord=HUMAN_OBSERVATION&continent=Europe&month=4,9&limit=6&offset=${offset}&occurrenceRemarks=leaf%20OR%20flower`;
+    const apiUrl = `https://api.gbif.org/v1/occurrence/search?taxonKey=${taxonKey}&mediaType=StillImage&basisOfRecord=HUMAN_OBSERVATION&datasetKey=${PLANTNET_DATASET_KEY}&continent=Europe&month=4,10&limit=500`;
 
     // Make an AJAX request to fetch images
     $.ajax({
         url: apiUrl,
         method: 'GET',
         success: function(data) {
-            // Clear previous images
-            const $imagesContainer = $('#images-container').empty();
-
-            $('#images-container img').removeClass("greyish");
-
-            // Display the images
-            data.results.forEach(result => {
-                if (result.media && result.media.length > 0) {
-                    const img = $('<img>').attr('src', result.media[0].identifier).attr('alt', 'Tree Image');
-                    img.css({
-                        width: '250px',
-                        height: '250px',
-                        objectFit: 'cover',
-                        borderRadius: '8px',
-                        margin: '10px',
-                        boxShadow: '0 2px 6px rgba(0, 0, 0, 0.2)'
-                    });
-
-                    // Click event to open the modal with the clicked image
-                    img.on('click', function() {
-                        openModal(result.media[0].identifier);
-                    });
-
-                    $imagesContainer.append(img);
-                }
-            });
-
+            displayData(data)
         },
         error: function(error) {
             console.error("Error fetching images:", error);
@@ -131,10 +115,90 @@ function reloadImages() {
     });
 }
 
-function fetchImages() {
+async function displayData(data){
+    // Displays and handles the data from the API
+    
+    // Clear previous images and answers
+    const $imagesContainer = $('#images-container').empty();
+    $('#images-container img').removeClass("greyish");
+    const $quizContainer = $('#quizz-container').empty();
+    $('#quizz-result').text("");
 
+    // Shuffle the observations
+    var results = data.results;
+    results.sort(() => Math.random() - 0.5);
+
+    var barkFound = false;
+    var nb_total = 0;
+
+    // Display the images
+    data.results.forEach(result => {
+
+        // Hacky but should be very fast
+        if (nb_total == 6){
+            // Stop the loop
+            return;
+        }
+
+        // Find how many images and of which parts in observation
+        // Extensions is an array
+        var extensions = result.extensions["http://rs.tdwg.org/ac/terms/Multimedia"]
+        var subjectParts = extensions.map(function(extension) {
+            return extension["http://rs.tdwg.org/ac/terms/tag"];
+        });
+
+        // Ideally we get 4 leaves and 1 bark, else random fruit flower ?
+        // Only keep the index of leaves (or bark if already 5 leaves?)
+
+        // To allow multiple chances
+        var partFound = false
+
+        if (!barkFound){
+            // Try bark
+            var index = subjectParts.indexOf("bark");
+            if (index != -1){
+                partFound = true;
+                barkFound = true;
+            } else {
+                // Continue next iteration of forEach
+                return;
+            }
+        } 
+
+        // If no bark, go for leaf
+        if (!partFound){
+            var index = subjectParts.indexOf("leaf");
+            if (index == -1){
+                // Continue next iteration of forEach
+                return;
+            }
+        };
+        
+        nb_total += 1;
+
+        const img = $('<img>').attr('src', result.media[index].identifier).attr('alt', 'Tree Image');
+        img.css({
+            width: '250px',
+            height: '250px',
+            objectFit: 'cover',
+            borderRadius: '8px',
+            margin: '10px',
+            boxShadow: '0 2px 6px rgba(0, 0, 0, 0.2)'
+        });
+
+        // Click event to open the modal with the clicked image
+        img.on('click', function() {
+            openModal(result.media[index].identifier);
+        });
+
+        $imagesContainer.prepend(img);
+    });
+
+}
+
+function fetchImages() {
     // Get selected species taxon keys from selected buttons
-    const selectedSpecies = $('.species-button.selected').map(function() {
+    selectedSpecies = $('.species-button.selected').map(function() {
         return $(this).attr('data-taxon');
     }).get();
 
@@ -143,15 +207,11 @@ function fetchImages() {
         return;
     }
 
-    // Add a random offset between 0 and 200
-    const offset = Math.floor(Math.random() * 200);
-    console.log(offset);
-
     // Randomly pick one of the selected species
     taxonKey = selectedSpecies[Math.floor(Math.random() * selectedSpecies.length)];
 
     // GBIF API URL for fetching images based on the selected taxon key
-    const apiUrl = `https://api.gbif.org/v1/occurrence/search?taxonKey=${taxonKey}&mediaType=StillImage&basisOfRecord=HUMAN_OBSERVATION&continent=Europe&month=4,9&limit=6&offset=${offset}&occurrenceRemarks=leaf%20OR%20flower`;
+    const apiUrl = `https://api.gbif.org/v1/occurrence/search?taxonKey=${taxonKey}&mediaType=StillImage&basisOfRecord=HUMAN_OBSERVATION&datasetKey=${PLANTNET_DATASET_KEY}&continent=Europe&month=4,10&limit=200`;
 
     // Make current images grayscale while new ones load
     $('#images-container img').addClass('greyish');
@@ -165,35 +225,8 @@ function fetchImages() {
         url: apiUrl,
         method: 'GET',
         success: function(data) {
-            // Clear previous images
-            const $imagesContainer = $('#images-container').empty();
-            const $quizContainer = $('#quizz-container').empty();
-            $('#quizz-result').text("");
-
-            $('#images-container img').removeClass("greyish");
-
-            // Display the images
-            data.results.forEach(result => {
-                if (result.media && result.media.length > 0) {
-                    const img = $('<img>').attr('src', result.media[0].identifier).attr('alt', 'Tree Image');
-                    img.css({
-                        width: '250px',
-                        height: '250px',
-                        objectFit: 'cover',
-                        borderRadius: '8px',
-                        margin: '10px',
-                        boxShadow: '0 2px 6px rgba(0, 0, 0, 0.2)'
-                    });
-
-                    // Click event to open the modal with the clicked image
-                    img.on('click', function() {
-                        openModal(result.media[0].identifier);
-                    });
-
-                    $imagesContainer.append(img);
-                }
-            });
-
+            // Display images
+            displayData(data);
 
             // Populate quiz options in #quizz-container
             selectedSpecies.forEach(speciesKey => {                
@@ -227,7 +260,6 @@ function fetchImages() {
                     });
                 $('#quizz-container').append(quizButton);
             });
-
         },
         error: function(error) {
             console.error("Error fetching images:", error);
