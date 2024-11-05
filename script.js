@@ -6,16 +6,27 @@ const species = [
 
     { name: "Chêne", taxonKey: 2878688 },
     { name: "Chêne Vert", taxonKey: 2879098 },
+    { name: "Chêne Liège", taxonKey: 2879411 },
 
+    { name: "Saule Pleureur", taxonKey: 5372639 },
+    { name: "Prunier", taxonKey: 7931731 },
+    { name: "Micocoulier", taxonKey: 2984492 },
     { name: "Liquidambar", taxonKey: 3152823 },
     { name: "Aulne Glutineux", taxonKey: 2876213 },
     { name: "Bouleau", taxonKey: 2875008 },
-
+    { name: "Peuplier", taxonKey: 3040183 },
+    { name: "Frêne", taxonKey: 3172323 },
+    { name: "Tilleuil", taxonKey: 3152041 },
+    { name: "Cornouiller Sanguin", taxonKey: 3082234 },
+    { name: "Cotoneaster", taxonKey: 3025563 },
     { name: "Arbre de Judée", taxonKey: 5353590 },
     { name: "Tulipier", taxonKey: 3152860 },
     { name: "Magnolia Grandiflora", taxonKey: 9605163 },
     { name: "Laurier Sauce", taxonKey: 3034015 },
     { name: "Noisetier", taxonKey: 2875967 },
+    { name: "Arbousier", taxonKey: 2882796 },
+    { name: "Olivier", taxonKey: 3172244 },
+    { name: "Savonnier", taxonKey: 3190053 },
 
     { name: "Érable Sycomore", taxonKey: 3189870 },
     { name: "Érable Champetre", taxonKey: 3189863 },
@@ -23,21 +34,11 @@ const species = [
     { name: "Érable Negundo", taxonKey: 3189866 },
     { name: "Platane", taxonKey: 3152811 },
 
-
     { name: "Cyprès Chauve", taxonKey: 2684191 },
-    { name: "Peuplier", taxonKey: 3040183 },
-    { name: "Tilleuil", taxonKey: 3152041 },
-    { name: "Cornouiller Sanguin", taxonKey: 3082234 },
-    { name: "Cotoneaster", taxonKey: 3025563 },
-
     { name: "Cèdre", taxonKey: 2685742 },
     { name: "Pin", taxonKey: 2684241 },
 
-    
 
-    
-
-    // TODO
 ]
 
 // Sort by name
@@ -50,7 +51,7 @@ $(document).ready(function() {
         const button = $('<button>')
             .addClass('species-button')
             .text(speciesItem.name)
-            .addClass(["Charme", "Hêtre"].includes(speciesItem.name) ? "selected" : "unselected")
+            .addClass(["Charme", "Hêtre", "Orme"].includes(speciesItem.name) ? "selected" : "unselected")
             .attr('data-taxon', speciesItem.taxonKey)
             .on('click', function() {
                 $(this).toggleClass('selected');
@@ -76,6 +77,56 @@ $(document).ready(function() {
     });
 });
 
+// Global variable
+var taxonKey = ""
+
+function reloadImages() {
+    // Reload only images
+    // Add a random offset between 0 and 1000
+    const offset = Math.floor(Math.random() * 1000);
+
+    // GBIF API URL for fetching images based on the selected taxon key
+    const apiUrl = `https://api.gbif.org/v1/occurrence/search?taxonKey=${taxonKey}&mediaType=StillImage&basisOfRecord=HUMAN_OBSERVATION&continent=Europe&month=4,9&limit=6&offset=${offset}&occurrenceRemarks=leaf%20OR%20flower`;
+
+    // Make an AJAX request to fetch images
+    $.ajax({
+        url: apiUrl,
+        method: 'GET',
+        success: function(data) {
+            // Clear previous images
+            const $imagesContainer = $('#images-container').empty();
+
+            $('#images-container img').removeClass("greyish");
+
+            // Display the images
+            data.results.forEach(result => {
+                if (result.media && result.media.length > 0) {
+                    const img = $('<img>').attr('src', result.media[0].identifier).attr('alt', 'Tree Image');
+                    img.css({
+                        width: '250px',
+                        height: '250px',
+                        objectFit: 'cover',
+                        borderRadius: '8px',
+                        margin: '10px',
+                        boxShadow: '0 2px 6px rgba(0, 0, 0, 0.2)'
+                    });
+
+                    // Click event to open the modal with the clicked image
+                    img.on('click', function() {
+                        openModal(result.media[0].identifier);
+                    });
+
+                    $imagesContainer.append(img);
+                }
+            });
+
+        },
+        error: function(error) {
+            console.error("Error fetching images:", error);
+            alert("Failed to fetch images. Please try again.");
+        }
+    });
+}
 
 function fetchImages() {
 
@@ -89,22 +140,21 @@ function fetchImages() {
         return;
     }
 
-    // Make current images grayscale while new ones load
-    $('#images-container img').addClass('greyish');
-
-
-    // Hide section
-    $("#speciesSelection").hide()
-    $("#mainQuizz").show()
-
     // Add a random offset between 0 and 1000
     const offset = Math.floor(Math.random() * 1000);
 
     // Randomly pick one of the selected species
-    const taxonKey = selectedSpecies[Math.floor(Math.random() * selectedSpecies.length)];
+    taxonKey = selectedSpecies[Math.floor(Math.random() * selectedSpecies.length)];
 
     // GBIF API URL for fetching images based on the selected taxon key
     const apiUrl = `https://api.gbif.org/v1/occurrence/search?taxonKey=${taxonKey}&mediaType=StillImage&basisOfRecord=HUMAN_OBSERVATION&continent=Europe&month=4,9&limit=6&offset=${offset}&occurrenceRemarks=leaf%20OR%20flower`;
+
+    // Make current images grayscale while new ones load
+    $('#images-container img').addClass('greyish');
+
+    // Hide section
+    $("#speciesSelection").hide()
+    $("#mainQuizz").show()
 
     // Make an AJAX request to fetch images
     $.ajax({
