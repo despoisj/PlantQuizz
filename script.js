@@ -122,8 +122,6 @@ async function displayData(data){
     // Clear previous images and answers
     const $imagesContainer = $('#images-container').empty();
     $('#images-container img').removeClass("greyish");
-    const $quizContainer = $('#quizz-container').empty();
-    $('#quizz-result').text("");
 
     // Shuffle the observations
     var results = data.results;
@@ -228,6 +226,10 @@ function fetchImages() {
         success: function(data) {
             // Display images
             displayData(data);
+
+            // Clear previous quiz options
+            const $quizContainer = $('#quizz-container').empty();
+            $('#quizz-result').text("");
 
             // Populate quiz options in #quizz-container
             selectedSpecies.forEach(speciesKey => {                
