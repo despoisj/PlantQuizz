@@ -1,0 +1,239 @@
+/* Header styling */
+.site-header {
+    top:0;
+    z-index: 100;
+    position: fixed;
+    width: 100%;
+    padding: 15px;
+    background-color: #4CAF50; /* Soft green background */
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.header-logo {
+    font-family: 'Poppins', Arial, sans-serif; /* Friendly, modern font */
+    font-size: 1.8rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+
+    cursor: pointer;
+}
+
+.header-logo i {
+    font-size: 1.6rem;
+    margin-right: 10px;
+    color: #fff;
+}
+
+.header-logo span {
+    color: #fff;
+    font-weight: 700;
+}
+
+
+/* Set the main font */
+body {
+    font-family: 'Poppins', Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    background-color: #e6f2e6; /* Light green background */
+    background-image: url('leaf.png'); /* Leaf pattern overlay */
+    background-size: 200px 200px;
+    background-repeat: repeat;
+    color: #333;
+}
+
+h1 {
+    color: #333;
+    font-weight: 600; /* Slightly bolder for emphasis */
+}
+
+.container {
+    margin-top: 130px;
+    margin-bottom: 50px;
+    text-align: center;
+    max-width: 1100px;
+    width: 80%;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    font-weight: 400; /* Normal weight for readability */
+}
+
+.species-selection {
+    margin: 20px 0;
+}
+
+.species-selection label {
+    display: inline-block;
+    margin: 5px;
+    font-size: 1rem;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: #fff;
+    background-color: #007BFF;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-weight: 500; /* Medium weight for better button visibility */
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+#images-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+#images-container img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin: 10px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    overflow: auto;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 8px;
+}
+
+.close {
+    position: absolute;
+    top: 20px;
+    right: 40px;
+    color: #ffffff;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: #bbb;
+    text-decoration: none;
+}
+
+.species-button {
+    padding: 10px 20px;
+    margin: 5px;
+    font-size: 1rem;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.greyish{
+    filter: opacity(60%);
+}
+
+img {
+    transition: 0.2s ease;
+}
+
+.species-button.selected {
+    background-color: #4dc969; /* Green color for selected */
+}
+
+.species-button.unselected {
+    background-color: #CCC;
+}
+
+.species-button.selected:hover {
+    background-color: #28a745; /* Green color for selected */
+}
+
+.species-button.unselected:hover {
+    background-color: #AAA;
+}
+
+#quizz-result {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #333;
+    margin-top: 10px;
+}
+
+.quizz-button {
+    padding: 18px 23px;
+    margin: 5px;
+    font-size: 1.2rem;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-weight: 500;
+}
+
+.quizz-button:hover {
+    background-color: #0056b3;
+}
+
+#quizz-container {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+
+
+/* Flash animations for correct and wrong answers */
+@keyframes flash-green {
+    0% { background-color: #fff; }
+    50% { background-color: #d4edda; } /* Light green flash */
+    100% { background-color: #fff; }
+}
+
+@keyframes flash-red {
+    0% { background-color: #fff; }
+    50% { background-color: #f8d7da; } /* Light red flash */
+    100% { background-color: #fff; }
+}
+
+.flash-correct {
+    animation: flash-green 0.5s ease-in-out;
+}
+
+.flash-wrong {
+    animation: flash-red 0.5s ease-in-out;
+}
+
+
+
