@@ -82,8 +82,8 @@ var taxonKey = ""
 
 function reloadImages() {
     // Reload only images
-    // Add a random offset between 0 and 1000
-    const offset = Math.floor(Math.random() * 1000);
+    // Add a random offset between 0 and 200
+    const offset = Math.floor(Math.random() * 200);
 
     // GBIF API URL for fetching images based on the selected taxon key
     const apiUrl = `https://api.gbif.org/v1/occurrence/search?taxonKey=${taxonKey}&mediaType=StillImage&basisOfRecord=HUMAN_OBSERVATION&continent=Europe&month=4,9&limit=6&offset=${offset}&occurrenceRemarks=leaf%20OR%20flower`;
@@ -140,8 +140,9 @@ function fetchImages() {
         return;
     }
 
-    // Add a random offset between 0 and 1000
-    const offset = Math.floor(Math.random() * 1000);
+    // Add a random offset between 0 and 200
+    const offset = Math.floor(Math.random() * 200);
+    console.log(offset);
 
     // Randomly pick one of the selected species
     taxonKey = selectedSpecies[Math.floor(Math.random() * selectedSpecies.length)];
