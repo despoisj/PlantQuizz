@@ -212,6 +212,9 @@ function fetchImages() {
 
                             // Remove the flash class after animation ends
                             setTimeout(() => {
+                                // Scroll to the top of page smoothly
+                                window.scrollTo({ top: 100, behavior: 'smooth' });
+
                                 fetchImages(); // Skip to next one
                             }, 100);
                         } else {
