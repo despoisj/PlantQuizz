@@ -50,6 +50,7 @@ species.forEach(speciesItem => {
 });
 
 const PLANTNET_DATASET_KEY = "7a3679ef-5582-4aaa-81f0-8c2545cafc81"
+const PLANTNET_CROWD_DATASET_KEY = "14d5676a-2c54-4f94-9023-1e8dcd822aa0"
 
 // Sort by name
 species.sort((a, b) => a.name.localeCompare(b.name));
@@ -99,7 +100,7 @@ $(document).ready(function() {
 
 function reloadImages(){
     // GBIF API URL for fetching images based on the selected taxon key
-    const apiUrl = `https://api.gbif.org/v1/occurrence/search?taxonKey=${taxonKey}&mediaType=StillImage&basisOfRecord=HUMAN_OBSERVATION&datasetKey=${PLANTNET_DATASET_KEY}&continent=Europe&month=4,10&limit=500`;
+    const apiUrl = `https://api.gbif.org/v1/occurrence/search?taxonKey=${taxonKey}&mediaType=StillImage&basisOfRecord=HUMAN_OBSERVATION&datasetKey=${PLANTNET_DATASET_KEY}&datasetKey=${PLANTNET_CROWD_DATASET_KEY}&month=4,10&limit=500`;
 
     // Make an AJAX request to fetch images
     $.ajax({
@@ -117,7 +118,7 @@ function reloadImages(){
 
 async function displayData(data){
     // Displays and handles the data from the API
-    
+
     // Clear previous images and answers
     const $imagesContainer = $('#images-container').empty();
     $('#images-container img').removeClass("greyish");
@@ -211,7 +212,7 @@ function fetchImages() {
     taxonKey = selectedSpecies[Math.floor(Math.random() * selectedSpecies.length)];
 
     // GBIF API URL for fetching images based on the selected taxon key
-    const apiUrl = `https://api.gbif.org/v1/occurrence/search?taxonKey=${taxonKey}&mediaType=StillImage&basisOfRecord=HUMAN_OBSERVATION&datasetKey=${PLANTNET_DATASET_KEY}&continent=Europe&month=4,10&limit=200`;
+    const apiUrl = `https://api.gbif.org/v1/occurrence/search?taxonKey=${taxonKey}&mediaType=StillImage&basisOfRecord=HUMAN_OBSERVATION&datasetKey=${PLANTNET_DATASET_KEY}&datasetKey=${PLANTNET_CROWD_DATASET_KEY}&month=4,10&limit=200`;
 
     // Make current images grayscale while new ones load
     $('#images-container img').addClass('greyish');
