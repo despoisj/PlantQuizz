@@ -8,6 +8,8 @@ const species = [
     { name: "Chêne Vert", taxonKey: 2879098 },
     { name: "Chêne Liège", taxonKey: 2879411 },
 
+    { name: "Aubépine", taxonKey: 9220780 },
+    { name: "Marronnier", taxonKey: 3189815 },
     { name: "Saule Pleureur", taxonKey: 5372639 },
     { name: "Prunier", taxonKey: 7931731 },
     { name: "Micocoulier", taxonKey: 2984492 },
@@ -16,6 +18,7 @@ const species = [
     { name: "Bouleau", taxonKey: 2875008 },
     { name: "Peuplier", taxonKey: 3040183 },
     { name: "Frêne", taxonKey: 3172323 },
+    { name: "Néflier du Japon", taxonKey: 3024146 },
     { name: "Tilleuil", taxonKey: 3152041 },
     { name: "Cornouiller Sanguin", taxonKey: 3082234 },
     { name: "Cotoneaster", taxonKey: 3025563 },
