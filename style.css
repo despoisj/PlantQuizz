@@ -81,9 +81,9 @@ h1 {
 
 button {
     padding: 10px 20px;
-    font-size: 1rem;
+    font-size: 1.2rem !important;
     color: #fff;
-    background-color: #007BFF;
+    background-color: #086600;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -92,7 +92,7 @@ button {
 }
 
 button:hover {
-    background-color: #0056b3;
+    background-color: #188710;
 }
 
 #images-container {
@@ -171,17 +171,23 @@ img {
     background-color: #4dc969; /* Green color for selected */
 }
 
-.species-button.unselected {
-    background-color: #CCC;
-}
 
 .species-button.selected:hover {
     background-color: #28a745; /* Green color for selected */
 }
 
-.species-button.unselected:hover {
-    background-color: #AAA;
+
+.species-button.unselected {
+    background-color: #EEE;
+    color: #36994c;
+    opacity: 0.7;
 }
+
+
+.species-button.unselected:hover {
+    background-color: #DDD;
+}
+
 
 #quizz-result {
     font-size: 1.2rem;
@@ -194,7 +200,7 @@ img {
     padding: 18px 23px;
     margin: 5px;
     font-size: 1.2rem;
-    background-color: #007BFF;
+    background-color: #086600;
     color: #fff;
     border: none;
     border-radius: 5px;
