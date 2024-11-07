@@ -1,79 +1,272 @@
-// Define array of name and taxon key to populate
-const species = [
-    { name: "Charme", taxonKey: 2875770 },
-    { name: "Hêtre", taxonKey: 2874875 },
-    { name: "Orme", taxonKey: 2984510 },
+// This will enable to change language in the future if needed
+const SPECIES_CHARME = { name: "Charme", taxonKey: 2875770 };
+const SPECIES_HETRE = { name: "Hêtre", taxonKey: 2874875 };
+const SPECIES_ORME = { name: "Orme", taxonKey: 2984510 };
+const SPECIES_AUBEPINE = { name: "Aubépine", taxonKey: 9220780 };
+const SPECIES_MARRONNIER = { name: "Marronnier", taxonKey: 3189815 };
+const SPECIES_SAULE_PLEUREUR = { name: "Saule Pleureur", taxonKey: 5372639 };
+const SPECIES_PRUNIER = { name: "Prunier", taxonKey: 7931731 };
+const SPECIES_MICOCOULIER = { name: "Micocoulier", taxonKey: 2984492 };
+const SPECIES_LIQUIDAMBAR = { name: "Liquidambar", taxonKey: 3152823 };
+const SPECIES_AULNE_GLUTINEUX = { name: "Aulne Glutineux", taxonKey: 2876213 };
+const SPECIES_BOULEAU = { name: "Bouleau", taxonKey: 2875008 };
+const SPECIES_PEUPLIER = { name: "Peuplier", taxonKey: 3040183 };
+const SPECIES_NEFLIER_DU_JAPON = { name: "Néflier du Japon", taxonKey: 3024146 };
+const SPECIES_COTONEASTER = { name: "Cotoneaster", taxonKey: 3025563 };
+const SPECIES_ARBRE_DE_JUDEE = { name: "Arbre de Judée", taxonKey: 5353590 };
+const SPECIES_TULIPIER = { name: "Tulipier", taxonKey: 3152860 };
+const SPECIES_MAGNOLIA_GRANDIFLORA = { name: "Magnolia Grandiflora", taxonKey: 9605163 };
+const SPECIES_LAURIER_SAUCE = { name: "Laurier Sauce", taxonKey: 3034015 };
+const SPECIES_NOISETIER = { name: "Noisetier", taxonKey: 2875967 };
+const SPECIES_ARBOUSIER = { name: "Arbousier", taxonKey: 2882796 };
+const SPECIES_OLIVIER = { name: "Olivier", taxonKey: 3172244 };
+const SPECIES_SAVONNIER = { name: "Savonnier", taxonKey: 3190053 };
+const SPECIES_PLATANE = { name: "Platane", taxonKey: 3152811 };
+const SPECIES_CYPRES_CHAUVE = { name: "Cyprès Chauve", taxonKey: 2684191 };
+const SPECIES_CEDRE = { name: "Cèdre", taxonKey: 2685742 };
+const SPECIES_PIN = { name: "Pin", taxonKey: 2684241 };
 
-    { name: "Chêne", taxonKey: 2878688 },
-    { name: "Chêne Vert", taxonKey: 2879098 },
-    { name: "Chêne Liège", taxonKey: 2879411 },
+// Érable family
+const SPECIES_ERABLE_SYCOMORE = { name: "Érable Sycomore", taxonKey: 3189870 };
+const SPECIES_ERABLE_CHAMPETRE = { name: "Érable Champêtre", taxonKey: 3189863 };
+const SPECIES_ERABLE_ARGENTE = { name: "Érable Argenté", taxonKey: 3189837 };
+const SPECIES_ERABLE_NEGUNDO = { name: "Érable Negundo", taxonKey: 3189866 };
 
-    { name: "Aubépine", taxonKey: 9220780 },
-    { name: "Marronnier", taxonKey: 3189815 },
-    { name: "Saule Pleureur", taxonKey: 5372639 },
-    { name: "Prunier", taxonKey: 7931731 },
-    { name: "Micocoulier", taxonKey: 2984492 },
-    { name: "Liquidambar", taxonKey: 3152823 },
-    { name: "Aulne Glutineux", taxonKey: 2876213 },
-    { name: "Bouleau", taxonKey: 2875008 },
-    { name: "Peuplier", taxonKey: 3040183 },
-    { name: "Frêne", taxonKey: 3172323 },
-    { name: "Néflier du Japon", taxonKey: 3024146 },
-    { name: "Tilleuil", taxonKey: 3152041 },
-    { name: "Cornouiller Sanguin", taxonKey: 3082234 },
-    { name: "Cotoneaster", taxonKey: 3025563 },
-    { name: "Arbre de Judée", taxonKey: 5353590 },
-    { name: "Tulipier", taxonKey: 3152860 },
-    { name: "Magnolia Grandiflora", taxonKey: 9605163 },
-    { name: "Laurier Sauce", taxonKey: 3034015 },
-    { name: "Noisetier", taxonKey: 2875967 },
-    { name: "Arbousier", taxonKey: 2882796 },
-    { name: "Olivier", taxonKey: 3172244 },
-    { name: "Savonnier", taxonKey: 3190053 },
+// Chêne family
+const SPECIES_CHENE_PEDONCULE = { name: "Chêne Pédonculé", taxonKey: 2878688 };
+const SPECIES_CHENE_SESSILE = { name: "Chêne Rouvre/Sessile", taxonKey: 7069116 };
+const SPECIES_CHENE_PUBESCENT = { name: "Chêne Pubescent", taxonKey: 2881283 };
+const SPECIES_CHENE_VERT = { name: "Chêne Vert", taxonKey: 2879098 };
+const SPECIES_CHENE_LIEGE = { name: "Chêne Liège", taxonKey: 2879411 };
 
-    { name: "Érable Sycomore", taxonKey: 3189870 },
-    { name: "Érable Champêtre", taxonKey: 3189863 },
-    { name: "Érable Argenté", taxonKey: 3189837 },
-    { name: "Érable Negundo", taxonKey: 3189866 },
-    { name: "Platane", taxonKey: 3152811 },
+// Tilleul family (grandes feuilles; petites feuilles, commun et argenté)
+const SPECIES_TILLEUL_GRANDES_FEUILLES = { name: "Tilleul à Grandes Feuilles", taxonKey: 3152048 };
+const SPECIES_TILLEUL_PETITES_FEUILLES = { name: "Tilleul à Petites Feuilles", taxonKey: 3152047 };
+const SPECIES_TILLEUL_COMMUN = { name: "Tilleul Commun", taxonKey: 3152046 };
+const SPECIES_TILLEUL_ARGENTE = { name: "Tilleul Argenté", taxonKey: 4259350 };
 
-    { name: "Cyprès Chauve", taxonKey: 2684191 },
-    { name: "Cèdre", taxonKey: 2685742 },
-    { name: "Pin", taxonKey: 2684241 },
+// Frêne family
+const SPECIES_FRENE_COMMUN = { name: "Frêne Commun", taxonKey: 3172358 };
+const SPECIES_FRENE_FEUILLES_ETROITES = { name: "Frêne à Feuilles Étroites", taxonKey: 7325877 };
+const SPECIES_FRENE_FLEURS = { name: "Frêne à Fleurs", taxonKey: 3172347 };
 
+// Cornouillers family
+const SPECIES_CORNOUILLER_SANGUIN = { name: "Cornouiller Sanguin", taxonKey: 3082234 };
+const SPECIES_CORNOUILLER_MALE = { name: "Cornouiller Mâle", taxonKey: 3082263 };
+
+
+const FAMILY_ERABLES = {
+    familyName: "Érables",
+    main: SPECIES_ERABLE_SYCOMORE,
+    mainName: "Érable",
+    species: [
+        SPECIES_ERABLE_SYCOMORE,
+        SPECIES_ERABLE_CHAMPETRE,
+        SPECIES_ERABLE_ARGENTE,
+        SPECIES_ERABLE_NEGUNDO
+    ],
+    associates: [
+        SPECIES_LIQUIDAMBAR,
+        SPECIES_PLATANE,
+    ]
+};
+
+const FAMILY_CHENES = {
+    familyName: "Chênes",
+    main: SPECIES_CHENE_PEDONCULE,
+    mainName: "Chêne",
+    species: [
+        SPECIES_CHENE_PEDONCULE,
+        SPECIES_CHENE_SESSILE,
+        SPECIES_CHENE_PUBESCENT,
+    ],
+    associates: [
+        SPECIES_CHENE_VERT,
+        SPECIES_CHENE_LIEGE,
+    ]
+};
+
+const FAMILY_TILLEULS = {
+    familyName: "Tilleuls",
+    main: SPECIES_TILLEUL_GRANDES_FEUILLES,
+    mainName: "Tilleul",
+    species: [
+        SPECIES_TILLEUL_GRANDES_FEUILLES,
+        SPECIES_TILLEUL_PETITES_FEUILLES,
+        SPECIES_TILLEUL_COMMUN,
+        SPECIES_TILLEUL_ARGENTE,
+    ],
+    associates: [
+    ]
+};
+
+const FAMILY_FRENES = {
+    familyName: "Frênes",
+    main: SPECIES_FRENE_COMMUN,
+    mainName: "Frêne",
+    species: [
+        SPECIES_FRENE_COMMUN,
+        SPECIES_FRENE_FEUILLES_ETROITES,
+        SPECIES_FRENE_FLEURS,
+    ],
+    associates: [
+    ]
+};
+
+const FAMILY_CORNOUILLERS = {
+    familyName: "Cornouillers",
+    main: SPECIES_CORNOUILLER_SANGUIN,
+    mainName: "Cornouiller",
+    species: [
+        SPECIES_CORNOUILLER_SANGUIN,
+        SPECIES_CORNOUILLER_MALE,
+    ],
+    associates: []
+};
+
+const COLLECTION_ORME_CHARME = {
+    name: "Orme/Charme",
+    species: [
+        SPECIES_CHARME,
+        SPECIES_ORME,
+    ],
+};
+
+// Array containing all species for easy iteration
+const baseSpecies = [
+    SPECIES_CHARME,
+    SPECIES_HETRE,
+    SPECIES_ORME,
+    SPECIES_CHENE_VERT,
+    SPECIES_CHENE_LIEGE,
+    SPECIES_AUBEPINE,
+    SPECIES_MARRONNIER,
+    SPECIES_SAULE_PLEUREUR,
+    SPECIES_PRUNIER,
+    SPECIES_MICOCOULIER,
+    SPECIES_LIQUIDAMBAR,
+    SPECIES_AULNE_GLUTINEUX,
+    SPECIES_BOULEAU,
+    SPECIES_PEUPLIER,
+    SPECIES_NEFLIER_DU_JAPON,
+    SPECIES_COTONEASTER,
+    SPECIES_ARBRE_DE_JUDEE,
+    SPECIES_TULIPIER,
+    SPECIES_MAGNOLIA_GRANDIFLORA,
+    SPECIES_LAURIER_SAUCE,
+    SPECIES_NOISETIER,
+    SPECIES_ARBOUSIER,
+    SPECIES_OLIVIER,
+    SPECIES_SAVONNIER,
+    SPECIES_PLATANE,
+    SPECIES_CYPRES_CHAUVE,
+    SPECIES_CEDRE,
+    SPECIES_PIN,
+
+    FAMILY_ERABLES,
+    FAMILY_CHENES,
+    FAMILY_TILLEULS,
+    FAMILY_FRENES,
+    FAMILY_CORNOUILLERS,
+];
+
+const collections = [
+    COLLECTION_ORME_CHARME,
 ]
-
-// Create inverse dict since we use taxonKey as key
-var taxonToName = {}
-species.forEach(speciesItem => {
-    taxonToName[speciesItem.taxonKey] = speciesItem.name
-});
 
 const PLANTNET_DATASET_KEY = "7a3679ef-5582-4aaa-81f0-8c2545cafc81"
 const PLANTNET_CROWD_DATASET_KEY = "14d5676a-2c54-4f94-9023-1e8dcd822aa0"
 
-// Sort by name
-species.sort((a, b) => a.name.localeCompare(b.name));
-
-// Species selected by user for quizz
-var selectedSpecies = null
-
-// Current species taxon key
-var taxonKey = ""
+// Expand families
+var simpleMode = true
+var taxonToName = {} // Dict for mapping
+var selectedSpecies = null // Species selected by user for quizz
+var taxonKey = "" // Current species taxon key
 
 // Populate species selection buttons dynamically
 $(document).ready(function() {
-    const $speciesSelection = $('.species-selection');
+    setup(simpleMode);
+
+    $('#expertMode').on('change', function() {
+        if ($(this).is(':checked')) {
+            simpleMode = false;
+        } else {
+            simpleMode = true;
+        }
+        setup(simpleMode);
+    });
+});
+
+function setup(simple){
+    species = expandFamilies(baseSpecies, simple)
+
+    // Sort by name
+    species.sort((a, b) => a.name.localeCompare(b.name));
+
+    // Create inverse dict since we use taxonKey as key
+    var taxonToName = {}
     species.forEach(speciesItem => {
-        const button = $('<button>')
-            .addClass('species-button')
-            .text(speciesItem.name)
-            .addClass(["Charme", "Hêtre", "Orme"].includes(speciesItem.name) ? "selected" : "unselected")
-            .attr('data-taxon', speciesItem.taxonKey)
-            .on('click', function() {
-                $(this).toggleClass('selected');
-                $(this).toggleClass('unselected');
+        taxonToName[speciesItem.taxonKey] = speciesItem.name
+    });
+
+    selectedSpecies = null // Species selected by user for quizz
+    taxonKey = "" // Current species taxon key
+
+    populateSelection(simple);
+}
+
+function expandFamilies(species, simple){
+    // In simple mode, expand to take main one,
+    // otherwise take all of them
+    var expandedSpecies = []
+
+    species.forEach(speciesItem => {
+        // If it's not a family
+        if ("taxonKey" in speciesItem){
+            expandedSpecies.push(speciesItem)
+            return
+        }
+
+        // Family, If simple mode, take the main, else take all of them
+        if (simple) {
+            // Find main
+            var mainSpecies = speciesItem.main
+            mainSpecies.name = speciesItem.mainName // To simplify and not put complex names for newbies
+            expandedSpecies.push(mainSpecies)
+        } else {
+            speciesItem.species.forEach(subSpecies => {
+                expandedSpecies.push(subSpecies)
             });
+        }
+    })
+
+    return expandedSpecies;
+}
+
+
+function populateSelection(simple){
+    // Populates selection with all species available
+    // For complex there's a family with many sub species
+    const $speciesSelection = $('.species-selection');
+
+    // Clear in case of mode change
+    $speciesSelection.empty();
+    $("#metaButtons").empty();
+    $("#metaButtons").html('<button class="metaSelection" id="selectAll">Tout Sélectionner</button>')
+
+    species.forEach(speciesItem => {
+
+        // Single species: create button
+        const button = $('<button>')
+        .addClass('species-button')
+        .text(speciesItem.name)
+        .addClass(["Charme", "Hêtre", "Orme"].includes(speciesItem.name) ? "selected" : "unselected")
+        .attr('data-taxon', speciesItem.taxonKey)
+        .attr('name', speciesItem.name)
+        .on('click', function() {
+            $(this).toggleClass('selected');
+            $(this).toggleClass('unselected');
+        });
         $speciesSelection.append(button);
     });
 
@@ -87,10 +280,60 @@ $(document).ready(function() {
         });
     });
 
+    // If complex mode, add family buttons
+    if (!simple){
+        baseSpecies.forEach(speciesItem => {
+            if ("taxonKey" in speciesItem){
+                return
+            }
+
+            const button = $('<button>')
+            .addClass('metaSelection')
+            .text(speciesItem.familyName) // TODO
+            .addClass("unselected")
+            .on('click', function() {
+                // Select all sub species
+                speciesItem.species.forEach(subSpecies => {
+                    const button = $(`.species-button[data-taxon="${subSpecies.taxonKey}"]`)
+                    button.toggleClass('selected');
+                    button.toggleClass('unselected');
+                });
+                // Select associates
+                speciesItem.associates.forEach(subSpecies => {
+                    const button = $(`.species-button[name="${subSpecies.name}"]`)
+                    button.toggleClass('selected');
+                    button.toggleClass('unselected');
+                });
+            });
+            $("#metaButtons").append(button);
+        });
+
+        // Add buttons for other collections
+        collections.forEach(collection => {
+        
+            const button = $('<button>')
+            .addClass('metaSelection')
+            .text(collection.name) // TODO
+            .addClass("unselected")
+            .on('click', function() {
+                // Select all species in collection
+                collection.species.forEach(currSpecies => {
+                    const button = $(`.species-button[name="${currSpecies.name}"]`)
+                    button.toggleClass('selected');
+                    button.toggleClass('unselected');
+                });
+            });
+            $("#metaButtons").append(button);
+        });
+    }
+
     $("#reveal").click(function(event) {
         alert("Answer: " + taxonToName[taxonKey]);
     });
-});
+}
+
+
+
 
 function reloadImages(){
     // GBIF API URL for fetching images based on the selected taxon key

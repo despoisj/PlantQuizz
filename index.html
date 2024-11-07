@@ -22,8 +22,7 @@
 
       <nav class="nav-links">
         <a href="index.html" class="active">Quiz Général</a>
-        <a href="#">Quiz Détaillé</a>
-        <a href="#">La France</a>
+        <a href="species.html">Quiz Détaillé</a>
         <a href="about.html">En savoir plus</a>
     </nav>
     
@@ -35,25 +34,38 @@
 <body>
     <div class="container">
         <div id="speciesSelection">
-            <h1>Select Tree Species</h1>
-            <div class="species-selection">
-                <button style="margin-right:20px" id="selectAll">Toggle All</button>
+            <h1>Sélectionnez les Essences</h1>
+            <div class="toggle-container">
+                <span class="toggle-label">Mode expert</span>
+                <label class="toggle">
+                    <input type="checkbox" id="expertMode">
+                    <span class="toggle-slider"></span>
+                </label>
+            </div></p>
+
+            <div id="metaButtons">
+                <button class="metaSelection" id="selectAll">Tout Sélectionner</button>
+
+                <!-- Families -->
             </div>
-            <button style="margin-top:20px; margin-bottom: 20px;" onclick="fetchImages()">Start Quizz</button>
+
+            <div class="species-selection">    
+            </div>
+            <button style="margin-top:20px; margin-bottom: 20px;" onclick="fetchImages()">Démarrer</button>
         </div>
 
         <div id="mainQuizz" style="display:none">
-            <h2>What tree is this?</h2>
+            <h2>Quelle est cette espèce?</h2>
             <div id="images-container"></div>
 
 
-            <button onclick="reloadImages()">More Images</button>
+            <button class="smallbtn" style="margin-top:5px" onclick="reloadImages()">Plus d'images</button>
 
             <!-- <h2>Quiz</h2> -->
             <div id="quizz-container"></div>
             <p id="quizz-result"></p>
 
-            <button id="reveal">Answer</button>
+            <button class="smallbtn" id="reveal">Voir la réponse</button>
         </div>
     </div>
 
