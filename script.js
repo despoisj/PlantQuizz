@@ -178,7 +178,7 @@ const PLANTNET_DATASET_KEY = "7a3679ef-5582-4aaa-81f0-8c2545cafc81"
 const PLANTNET_CROWD_DATASET_KEY = "14d5676a-2c54-4f94-9023-1e8dcd822aa0"
 
 // Expand families
-var simpleMode = true
+var simpleMode = false
 var taxonToName = {} // Dict for mapping
 var selectedSpecies = null // Species selected by user for quizz
 var taxonKey = "" // Current species taxon key
@@ -229,10 +229,8 @@ function expandFamilies(species, simple){
 
         // Family, If simple mode, take the main, else take all of them
         if (simple) {
-            // Find main
-            var mainSpecies = speciesItem.main
-            mainSpecies.name = speciesItem.mainName // To simplify and not put complex names for newbies
-            expandedSpecies.push(mainSpecies)
+            // Find main and give it a simpler name
+            expandedSpecies.push({name: speciesItem.mainName, taxonKey: speciesItem.main.taxonKey})
         } else {
             speciesItem.species.forEach(subSpecies => {
                 expandedSpecies.push(subSpecies)
