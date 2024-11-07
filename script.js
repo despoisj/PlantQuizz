@@ -1,74 +1,73 @@
-// This will enable to change language in the future if needed
-const SPECIES_CHARME = { name: "Charme", taxonKey: 2875770 };
-const SPECIES_HETRE = { name: "Hêtre", taxonKey: 2874875 };
-const SPECIES_AUBEPINE = { name: "Aubépine", taxonKey: 9220780 };
-const SPECIES_MARRONNIER = { name: "Marronnier", taxonKey: 3189815 };
-const SPECIES_SAULE_PLEUREUR = { name: "Saule Pleureur", taxonKey: 5372639 };
-const SPECIES_PRUNIER = { name: "Prunier", taxonKey: 7931731 };
-const SPECIES_MICOCOULIER = { name: "Micocoulier", taxonKey: 2984492 };
-const SPECIES_LIQUIDAMBAR = { name: "Liquidambar", taxonKey: 3152823 };
-const SPECIES_AULNE_GLUTINEUX = { name: "Aulne Glutineux", taxonKey: 2876213 };
-const SPECIES_BOULEAU = { name: "Bouleau", taxonKey: 2875008 };
-const SPECIES_PEUPLIER = { name: "Peuplier", taxonKey: 3040183 };
-const SPECIES_NEFLIER_DU_JAPON = { name: "Néflier du Japon", taxonKey: 3024146 };
-const SPECIES_COTONEASTER = { name: "Cotoneaster", taxonKey: 3025563 };
-const SPECIES_ARBRE_DE_JUDEE = { name: "Arbre de Judée", taxonKey: 5353590 };
-const SPECIES_TULIPIER = { name: "Tulipier", taxonKey: 3152860 };
-const SPECIES_MAGNOLIA_GRANDIFLORA = { name: "Magnolia Grandiflora", taxonKey: 9605163 };
-const SPECIES_NOISETIER = { name: "Noisetier", taxonKey: 2875967 };
-const SPECIES_ARBOUSIER = { name: "Arbousier", taxonKey: 2882796 };
-const SPECIES_OLIVIER = { name: "Olivier", taxonKey: 3172244 };
-const SPECIES_SAVONNIER = { name: "Savonnier", taxonKey: 3190053 };
-const SPECIES_PLATANE = { name: "Platane", taxonKey: 3152811 };
-const SPECIES_CYPRES_CHAUVE = { name: "Cyprès Chauve", taxonKey: 2684191 };
-const SPECIES_CEDRE = { name: "Cèdre", taxonKey: 2685742 };
-const SPECIES_PIN = { name: "Pin", taxonKey: 2684241 };
+// Individual species
+const SPECIES_CHARME = { name: "Charme", latin: "Carpinus betulus", taxonKey: 2875770 };
+const SPECIES_HETRE = { name: "Hêtre", latin: "Fagus sylvatica", taxonKey: 2874875 };
+const SPECIES_AUBEPINE = { name: "Aubépine", latin: "Crataegus monogyna", taxonKey: 9220780 };
+const SPECIES_MARRONNIER = { name: "Marronnier", latin: "Aesculus hippocastanum", taxonKey: 3189815 };
+const SPECIES_SAULE_PLEUREUR = { name: "Saule Pleureur", latin: "Salix babylonica", taxonKey: 5372639 };
+const SPECIES_PRUNIER = { name: "Prunier", latin: "Prunus domestica", taxonKey: 7931731 };
+const SPECIES_MICOCOULIER = { name: "Micocoulier", latin: "Celtis australis", taxonKey: 2984492 };
+const SPECIES_LIQUIDAMBAR = { name: "Liquidambar", latin: "Liquidambar styraciflua", taxonKey: 3152823 };
+const SPECIES_AULNE_GLUTINEUX = { name: "Aulne Glutineux", latin: "Alnus glutinosa", taxonKey: 2876213 };
+const SPECIES_BOULEAU = { name: "Bouleau", latin: "Betula pendula", taxonKey: 2875008 };
+const SPECIES_PEUPLIER = { name: "Peuplier", latin: "Populus nigra", taxonKey: 3040183 };
+const SPECIES_NEFLIER_DU_JAPON = { name: "Néflier du Japon", latin: "Eriobotrya japonica", taxonKey: 3024146 };
+const SPECIES_COTONEASTER = { name: "Cotoneaster", latin: "Cotoneaster horizontalis", taxonKey: 3025563 };
+const SPECIES_ARBRE_DE_JUDEE = { name: "Arbre de Judée", latin: "Cercis siliquastrum", taxonKey: 5353590 };
+const SPECIES_TULIPIER = { name: "Tulipier", latin: "Liriodendron tulipifera", taxonKey: 3152860 };
+const SPECIES_MAGNOLIA_GRANDIFLORA = { name: "Magnolia Grandiflora", latin: "Magnolia grandiflora", taxonKey: 9605163 };
+const SPECIES_NOISETIER = { name: "Noisetier", latin: "Corylus avellana", taxonKey: 2875967 };
+const SPECIES_ARBOUSIER = { name: "Arbousier", latin: "Arbutus unedo", taxonKey: 2882796 };
+const SPECIES_OLIVIER = { name: "Olivier", latin: "Olea europaea", taxonKey: 3172244 };
+const SPECIES_SAVONNIER = { name: "Savonnier", latin: "Koelreuteria paniculata", taxonKey: 3190053 };
+const SPECIES_PLATANE = { name: "Platane", latin: "Platanus × acerifolia", taxonKey: 3152811 };
+const SPECIES_CYPRES_CHAUVE = { name: "Cyprès Chauve", latin: "Taxodium distichum", taxonKey: 2684191 };
+const SPECIES_CEDRE = { name: "Cèdre", latin: "Cedrus", taxonKey: 2685742 };
+const SPECIES_PIN = { name: "Pin", latin: "Pinus", taxonKey: 2684241 };
 
 // Érable family
-const SPECIES_ERABLE_SYCOMORE = { name: "Érable Sycomore", taxonKey: 3189870 };
-const SPECIES_ERABLE_CHAMPETRE = { name: "Érable Champêtre", taxonKey: 3189863 };
-const SPECIES_ERABLE_ARGENTE = { name: "Érable Argenté", taxonKey: 3189837 };
-const SPECIES_ERABLE_NEGUNDO = { name: "Érable Negundo", taxonKey: 3189866 };
-const SPECIES_ERABLE_PLANE = { name: "Érable Plane", taxonKey: 3189846 };
-const SPECIES_ERABLE_OBIER = { name: "Érable à Feuilles d'Obier", taxonKey: 7100278 };
-const SPECIES_ERABLE_MONTPELLIER = { name: "Érable de Montpellier", taxonKey: 7262958 };
+const SPECIES_ERABLE_SYCOMORE = { name: "Érable Sycomore", latin: "Acer pseudoplatanus", taxonKey: 3189870 };
+const SPECIES_ERABLE_CHAMPETRE = { name: "Érable Champêtre", latin: "Acer campestre", taxonKey: 3189863 };
+const SPECIES_ERABLE_ARGENTE = { name: "Érable Argenté", latin: "Acer saccharinum", taxonKey: 3189837 };
+const SPECIES_ERABLE_NEGUNDO = { name: "Érable Negundo", latin: "Acer negundo", taxonKey: 3189866 };
+const SPECIES_ERABLE_PLANE = { name: "Érable Plane", latin: "Acer platanoides", taxonKey: 3189846 };
+const SPECIES_ERABLE_OBIER = { name: "Érable à Feuilles d'Obier", latin: "Acer opalus", taxonKey: 7100278 };
+const SPECIES_ERABLE_MONTPELLIER = { name: "Érable de Montpellier", latin: "Acer monspessulanum", taxonKey: 7262958 };
 
 // Chêne family
-const SPECIES_CHENE_PEDONCULE = { name: "Chêne Pédonculé", taxonKey: 2878688 };
-const SPECIES_CHENE_SESSILE = { name: "Chêne Rouvre/Sessile", taxonKey: 7069116 };
-const SPECIES_CHENE_PUBESCENT = { name: "Chêne Pubescent", taxonKey: 2881283 };
-const SPECIES_CHENE_VERT = { name: "Chêne Vert", taxonKey: 2879098 };
-const SPECIES_CHENE_LIEGE = { name: "Chêne Liège", taxonKey: 2879411 };
-const SPECIES_CHENE_ROUGE = { name: "Chêne Rouge d'Amérique", taxonKey: 2880539 };
+const SPECIES_CHENE_PEDONCULE = { name: "Chêne Pédonculé", latin: "Quercus robur", taxonKey: 2878688 };
+const SPECIES_CHENE_SESSILE = { name: "Chêne Rouvre/Sessile", latin: "Quercus petraea", taxonKey: 7069116 };
+const SPECIES_CHENE_PUBESCENT = { name: "Chêne Pubescent", latin: "Quercus pubescens", taxonKey: 2881283 };
+const SPECIES_CHENE_VERT = { name: "Chêne Vert", latin: "Quercus ilex", taxonKey: 2879098 };
+const SPECIES_CHENE_LIEGE = { name: "Chêne Liège", latin: "Quercus suber", taxonKey: 2879411 };
+const SPECIES_CHENE_ROUGE = { name: "Chêne Rouge d'Amérique", latin: "Quercus rubra", taxonKey: 2880539 };
 
-// Tilleul family (grandes feuilles; petites feuilles, commun et argenté)
-const SPECIES_TILLEUL_GRANDES_FEUILLES = { name: "Tilleul à Grandes Feuilles", taxonKey: 3152048 };
-const SPECIES_TILLEUL_PETITES_FEUILLES = { name: "Tilleul à Petites Feuilles", taxonKey: 3152047 };
-const SPECIES_TILLEUL_COMMUN = { name: "Tilleul Commun", taxonKey: 3152046 };
-const SPECIES_TILLEUL_ARGENTE = { name: "Tilleul Argenté", taxonKey: 4259350 };
+// Tilleul family
+const SPECIES_TILLEUL_GRANDES_FEUILLES = { name: "Tilleul à Grandes Feuilles", latin: "Tilia platyphyllos", taxonKey: 3152048 };
+const SPECIES_TILLEUL_PETITES_FEUILLES = { name: "Tilleul à Petites Feuilles", latin: "Tilia cordata", taxonKey: 3152047 };
+const SPECIES_TILLEUL_COMMUN = { name: "Tilleul Commun", latin: "Tilia × europaea", taxonKey: 3152046 };
+const SPECIES_TILLEUL_ARGENTE = { name: "Tilleul Argenté", latin: "Tilia tomentosa", taxonKey: 4259350 };
 
 // Frêne family
-const SPECIES_FRENE_COMMUN = { name: "Frêne Commun", taxonKey: 3172358 };
-const SPECIES_FRENE_FEUILLES_ETROITES = { name: "Frêne à Feuilles Étroites", taxonKey: 7325877 };
-const SPECIES_FRENE_FLEURS = { name: "Frêne à Fleurs", taxonKey: 3172347 };
+const SPECIES_FRENE_COMMUN = { name: "Frêne Commun", latin: "Fraxinus excelsior", taxonKey: 3172358 };
+const SPECIES_FRENE_FEUILLES_ETROITES = { name: "Frêne à Feuilles Étroites", latin: "Fraxinus angustifolia", taxonKey: 7325877 };
+const SPECIES_FRENE_FLEURS = { name: "Frêne à Fleurs", latin: "Fraxinus ornus", taxonKey: 3172347 };
 
 // Cornouillers family
-const SPECIES_CORNOUILLER_SANGUIN = { name: "Cornouiller Sanguin", taxonKey: 3082234 };
-const SPECIES_CORNOUILLER_MALE = { name: "Cornouiller Mâle", taxonKey: 3082263 };
+const SPECIES_CORNOUILLER_SANGUIN = { name: "Cornouiller Sanguin", latin: "Cornus sanguinea", taxonKey: 3082234 };
+const SPECIES_CORNOUILLER_MALE = { name: "Cornouiller Mâle", latin: "Cornus mas", taxonKey: 3082263 };
 
 // Lauriers family
-const SPECIES_LAURIER_SAUCE = { name: "Laurier Sauce", taxonKey: 3034015 };
-const SPECIES_LAURIER_TIN = { name: "Laurier Tin", taxonKey: 2888585 };
-const SPECIES_LAURIER_ROSE = { name: "Laurier Rose", taxonKey: 3169756 };
-const SPECIES_LAURIER_CERISE = { name: "Laurier Cerise", taxonKey: 3021496 };
-const SPECIES_LAURIER_PORTUGAL = { name: "Laurier du Portugal", taxonKey: 3020871 };
+const SPECIES_LAURIER_SAUCE = { name: "Laurier Sauce", latin: "Laurus nobilis", taxonKey: 3034015 };
+const SPECIES_LAURIER_TIN = { name: "Laurier Tin", latin: "Viburnum tinus", taxonKey: 2888585 };
+const SPECIES_LAURIER_ROSE = { name: "Laurier Rose", latin: "Nerium oleander", taxonKey: 3169756 };
+const SPECIES_LAURIER_CERISE = { name: "Laurier Cerise", latin: "Prunus laurocerasus", taxonKey: 3021496 };
+const SPECIES_LAURIER_PORTUGAL = { name: "Laurier du Portugal", latin: "Prunus lusitanica", taxonKey: 3020871 };
 
 // Orme family
-const SPECIES_ORME_CHAMPETRE = { name: "Orme Champêtre", taxonKey: 2984510 };
-const SPECIES_ORME_MONTAGNE = { name: "Orme de Montagne", taxonKey: 5361866 };
-const SPECIES_ORME_LISSE = { name: "Orme Lisse", taxonKey: 7303616 };
-const SPECIES_ORME_HOLLANDE = { name: "Orme de Hollande", taxonKey: 7141604 };
-
+const SPECIES_ORME_CHAMPETRE = { name: "Orme Champêtre", latin: "Ulmus minor", taxonKey: 2984510 };
+const SPECIES_ORME_MONTAGNE = { name: "Orme de Montagne", latin: "Ulmus glabra", taxonKey: 5361866 };
+const SPECIES_ORME_LISSE = { name: "Orme Lisse", latin: "Ulmus laevis", taxonKey: 7303616 };
+const SPECIES_ORME_HOLLANDE = { name: "Orme de Hollande", latin: "Ulmus × hollandica", taxonKey: 7141604 };
 
 const FAMILY_ERABLES = {
     familyName: "Érables",
@@ -301,17 +300,33 @@ function populateSelection(simple){
 
     species.forEach(speciesItem => {
 
-        // Single species: create button
+        // Single species: create button with name and latin name
         const button = $('<button>')
-        .addClass('species-button')
-        .text(speciesItem.name)
-        .addClass((simple && ["Charme", "Hêtre", "Orme"].includes(speciesItem.name)) ? "selected" : "unselected")
-        .attr('data-taxon', speciesItem.taxonKey)
-        .attr('name', speciesItem.name)
-        .on('click', function() {
-            $(this).toggleClass('selected');
-            $(this).toggleClass('unselected');
-        });
+            .addClass('species-button')
+            .addClass((simple && ["Charme", "Hêtre", "Orme"].includes(speciesItem.name)) ? "selected" : "unselected")
+            .attr('data-taxon', speciesItem.taxonKey)
+            .attr('name', speciesItem.name)
+            .on('click', function() {
+                $(this).toggleClass('selected');
+                $(this).toggleClass('unselected');
+            });
+
+        // Add main name in a span
+        const nameSpan = $('<span>')
+            .addClass('species-name')
+            .text(speciesItem.name);
+
+
+        // Add latin name in a span
+        const latinSpan = $('<span>')
+            .addClass('latin-name')
+            .text(speciesItem.latin);
+
+        // Append both spans to the button
+        button.append(nameSpan);
+        if (!simple) {
+            button.append(latinSpan)
+        }
         $speciesSelection.append(button);
     });
 
