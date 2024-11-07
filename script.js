@@ -1,7 +1,6 @@
 // This will enable to change language in the future if needed
 const SPECIES_CHARME = { name: "Charme", taxonKey: 2875770 };
 const SPECIES_HETRE = { name: "Hêtre", taxonKey: 2874875 };
-const SPECIES_ORME = { name: "Orme", taxonKey: 2984510 };
 const SPECIES_AUBEPINE = { name: "Aubépine", taxonKey: 9220780 };
 const SPECIES_MARRONNIER = { name: "Marronnier", taxonKey: 3189815 };
 const SPECIES_SAULE_PLEUREUR = { name: "Saule Pleureur", taxonKey: 5372639 };
@@ -16,7 +15,6 @@ const SPECIES_COTONEASTER = { name: "Cotoneaster", taxonKey: 3025563 };
 const SPECIES_ARBRE_DE_JUDEE = { name: "Arbre de Judée", taxonKey: 5353590 };
 const SPECIES_TULIPIER = { name: "Tulipier", taxonKey: 3152860 };
 const SPECIES_MAGNOLIA_GRANDIFLORA = { name: "Magnolia Grandiflora", taxonKey: 9605163 };
-const SPECIES_LAURIER_SAUCE = { name: "Laurier Sauce", taxonKey: 3034015 };
 const SPECIES_NOISETIER = { name: "Noisetier", taxonKey: 2875967 };
 const SPECIES_ARBOUSIER = { name: "Arbousier", taxonKey: 2882796 };
 const SPECIES_OLIVIER = { name: "Olivier", taxonKey: 3172244 };
@@ -31,6 +29,9 @@ const SPECIES_ERABLE_SYCOMORE = { name: "Érable Sycomore", taxonKey: 3189870 };
 const SPECIES_ERABLE_CHAMPETRE = { name: "Érable Champêtre", taxonKey: 3189863 };
 const SPECIES_ERABLE_ARGENTE = { name: "Érable Argenté", taxonKey: 3189837 };
 const SPECIES_ERABLE_NEGUNDO = { name: "Érable Negundo", taxonKey: 3189866 };
+const SPECIES_ERABLE_PLANE = { name: "Érable Plane", taxonKey: 3189846 };
+const SPECIES_ERABLE_OBIER = { name: "Érable à Feuilles d'Obier", taxonKey: 7100278 };
+const SPECIES_ERABLE_MONTPELLIER = { name: "Érable de Montpellier", taxonKey: 7262958 };
 
 // Chêne family
 const SPECIES_CHENE_PEDONCULE = { name: "Chêne Pédonculé", taxonKey: 2878688 };
@@ -38,6 +39,7 @@ const SPECIES_CHENE_SESSILE = { name: "Chêne Rouvre/Sessile", taxonKey: 7069116
 const SPECIES_CHENE_PUBESCENT = { name: "Chêne Pubescent", taxonKey: 2881283 };
 const SPECIES_CHENE_VERT = { name: "Chêne Vert", taxonKey: 2879098 };
 const SPECIES_CHENE_LIEGE = { name: "Chêne Liège", taxonKey: 2879411 };
+const SPECIES_CHENE_ROUGE = { name: "Chêne Rouge d'Amérique", taxonKey: 2880539 };
 
 // Tilleul family (grandes feuilles; petites feuilles, commun et argenté)
 const SPECIES_TILLEUL_GRANDES_FEUILLES = { name: "Tilleul à Grandes Feuilles", taxonKey: 3152048 };
@@ -54,6 +56,19 @@ const SPECIES_FRENE_FLEURS = { name: "Frêne à Fleurs", taxonKey: 3172347 };
 const SPECIES_CORNOUILLER_SANGUIN = { name: "Cornouiller Sanguin", taxonKey: 3082234 };
 const SPECIES_CORNOUILLER_MALE = { name: "Cornouiller Mâle", taxonKey: 3082263 };
 
+// Lauriers family
+const SPECIES_LAURIER_SAUCE = { name: "Laurier Sauce", taxonKey: 3034015 };
+const SPECIES_LAURIER_TIN = { name: "Laurier Tin", taxonKey: 2888585 };
+const SPECIES_LAURIER_ROSE = { name: "Laurier Rose", taxonKey: 3169756 };
+const SPECIES_LAURIER_CERISE = { name: "Laurier Cerise", taxonKey: 3021496 };
+const SPECIES_LAURIER_PORTUGAL = { name: "Laurier du Portugal", taxonKey: 3020871 };
+
+// Orme family
+const SPECIES_ORME_CHAMPETRE = { name: "Orme Champêtre", taxonKey: 2984510 };
+const SPECIES_ORME_MONTAGNE = { name: "Orme de Montagne", taxonKey: 5361866 };
+const SPECIES_ORME_LISSE = { name: "Orme Lisse", taxonKey: 7303616 };
+const SPECIES_ORME_HOLLANDE = { name: "Orme de Hollande", taxonKey: 7141604 };
+
 
 const FAMILY_ERABLES = {
     familyName: "Érables",
@@ -62,8 +77,11 @@ const FAMILY_ERABLES = {
     species: [
         SPECIES_ERABLE_SYCOMORE,
         SPECIES_ERABLE_CHAMPETRE,
+        SPECIES_ERABLE_PLANE,
         SPECIES_ERABLE_ARGENTE,
-        SPECIES_ERABLE_NEGUNDO
+        SPECIES_ERABLE_NEGUNDO,
+        SPECIES_ERABLE_OBIER,
+        SPECIES_ERABLE_MONTPELLIER,
     ],
     associates: [
         SPECIES_LIQUIDAMBAR,
@@ -79,6 +97,7 @@ const FAMILY_CHENES = {
         SPECIES_CHENE_PEDONCULE,
         SPECIES_CHENE_SESSILE,
         SPECIES_CHENE_PUBESCENT,
+        SPECIES_CHENE_ROUGE,
     ],
     associates: [
         SPECIES_CHENE_VERT,
@@ -124,19 +143,46 @@ const FAMILY_CORNOUILLERS = {
     associates: []
 };
 
+const FAMILY_LAURIERS = {
+    familyName: "Lauriers",
+    main: SPECIES_LAURIER_SAUCE,
+    mainName: "Laurier",
+    species: [
+        SPECIES_LAURIER_SAUCE,
+        SPECIES_LAURIER_TIN,
+        SPECIES_LAURIER_ROSE,
+        SPECIES_LAURIER_CERISE,
+        SPECIES_LAURIER_PORTUGAL,
+    ],
+    associates: []
+};
+
+// Orme family
+const FAMILY_ORMES = {
+    familyName: "Ormes",
+    main: SPECIES_ORME_CHAMPETRE,
+    mainName: "Orme",
+    species: [
+        SPECIES_ORME_CHAMPETRE,
+        SPECIES_ORME_MONTAGNE,
+        SPECIES_ORME_LISSE,
+        SPECIES_ORME_HOLLANDE,
+    ],
+    associates: []
+};
+
+
 const COLLECTION_ORME_CHARME = {
     name: "Orme/Charme",
     species: [
         SPECIES_CHARME,
-        SPECIES_ORME,
+        SPECIES_ORME_CHAMPETRE,
     ],
 };
 
-// Array containing all species for easy iteration
 const baseSpecies = [
     SPECIES_CHARME,
     SPECIES_HETRE,
-    SPECIES_ORME,
     SPECIES_CHENE_VERT,
     SPECIES_CHENE_LIEGE,
     SPECIES_AUBEPINE,
@@ -153,7 +199,6 @@ const baseSpecies = [
     SPECIES_ARBRE_DE_JUDEE,
     SPECIES_TULIPIER,
     SPECIES_MAGNOLIA_GRANDIFLORA,
-    SPECIES_LAURIER_SAUCE,
     SPECIES_NOISETIER,
     SPECIES_ARBOUSIER,
     SPECIES_OLIVIER,
@@ -168,6 +213,8 @@ const baseSpecies = [
     FAMILY_TILLEULS,
     FAMILY_FRENES,
     FAMILY_CORNOUILLERS,
+    FAMILY_LAURIERS,
+    FAMILY_ORMES,
 ];
 
 const collections = [
@@ -178,7 +225,7 @@ const PLANTNET_DATASET_KEY = "7a3679ef-5582-4aaa-81f0-8c2545cafc81"
 const PLANTNET_CROWD_DATASET_KEY = "14d5676a-2c54-4f94-9023-1e8dcd822aa0"
 
 // Expand families
-var simpleMode = false
+var simpleMode = true
 var taxonToName = {} // Dict for mapping
 var selectedSpecies = null // Species selected by user for quizz
 var taxonKey = "" // Current species taxon key
@@ -189,7 +236,7 @@ $(document).ready(function() {
 
     $('#expertMode').on('change', function() {
         if ($(this).is(':checked')) {
-            simpleMode = false;
+            simpleMode = false;            
         } else {
             simpleMode = true;
         }
@@ -258,7 +305,7 @@ function populateSelection(simple){
         const button = $('<button>')
         .addClass('species-button')
         .text(speciesItem.name)
-        .addClass(["Charme", "Hêtre", "Orme"].includes(speciesItem.name) ? "selected" : "unselected")
+        .addClass((simple && ["Charme", "Hêtre", "Orme"].includes(speciesItem.name)) ? "selected" : "unselected")
         .attr('data-taxon', speciesItem.taxonKey)
         .attr('name', speciesItem.name)
         .on('click', function() {

@@ -341,6 +341,7 @@ img {
     gap: 8px;  
     margin: -14px 0 34px 0;
     justify-content: center;
+    cursor: pointer;
 }
 
 .toggle-label {
