@@ -32,7 +32,7 @@ const species = [
     { name: "Savonnier", taxonKey: 3190053 },
 
     { name: "Érable Sycomore", taxonKey: 3189870 },
-    { name: "Érable Champetre", taxonKey: 3189863 },
+    { name: "Érable Champêtre", taxonKey: 3189863 },
     { name: "Érable Argenté", taxonKey: 3189837 },
     { name: "Érable Negundo", taxonKey: 3189866 },
     { name: "Platane", taxonKey: 3152811 },
@@ -77,11 +77,6 @@ $(document).ready(function() {
         $speciesSelection.append(button);
     });
 
-    $(".header-logo").click(function(event) {
-       // Reload page on header click
-        location.reload();
-    });
-
     var allOn = false;
 
     $("#selectAll").click(function(event) {
@@ -96,7 +91,6 @@ $(document).ready(function() {
         alert("Answer: " + taxonToName[taxonKey]);
     });
 });
-
 
 function reloadImages(){
     // GBIF API URL for fetching images based on the selected taxon key
