@@ -69,6 +69,14 @@ const SPECIES_ORME_MONTAGNE = { name: "Orme de Montagne", latin: "Ulmus glabra",
 const SPECIES_ORME_LISSE = { name: "Orme Lisse", latin: "Ulmus laevis", taxonKey: 7303616 };
 const SPECIES_ORME_HOLLANDE = { name: "Orme de Hollande", latin: "Ulmus × hollandica", taxonKey: 7141604 };
 
+// Peuplier family, tremble, noir, blanc, grisard, du canada
+const SPECIES_PEUPLIER_TREMBLE = { name: "Peuplier Tremble", latin: "Populus tremula", taxonKey: 3040183 };
+const SPECIES_PEUPLIER_NOIR = { name: "Peuplier Noir", latin: "Populus nigra", taxonKey: 3040227}
+const SPECIES_PEUPLIER_BLANC = { name: "Peuplier Blanc", latin: "Populus alba", taxonKey: 3040233}
+const SPECIES_PEUPLIER_GRISARD = { name: "Peuplier Grisard", latin: "Populus x canescens", taxonKey: 3040185}
+const SPECIES_PEUPLIER_CANADA = { name: "Peuplier du Canada", latin: "Populus x canadensis", taxonKey: 8190077}
+
+
 const FAMILY_ERABLES = {
     familyName: "Érables",
     main: SPECIES_ERABLE_SYCOMORE,
@@ -170,12 +178,35 @@ const FAMILY_ORMES = {
     associates: []
 };
 
+// Peuplier family
+const FAMILY_PEUPLIERS = {
+    familyName: "Peupliers",
+    main: SPECIES_PEUPLIER_TREMBLE,
+    mainName: "Peuplier",
+    species: [
+        SPECIES_PEUPLIER_TREMBLE,
+        SPECIES_PEUPLIER_NOIR,
+        SPECIES_PEUPLIER_BLANC,
+        SPECIES_PEUPLIER_GRISARD,
+        SPECIES_PEUPLIER_CANADA,
+    ],
+    associates: []
+};
+
 
 const COLLECTION_ORME_CHARME = {
     name: "Orme/Charme",
     species: [
         SPECIES_CHARME,
         SPECIES_ORME_CHAMPETRE,
+    ],
+};
+
+const COLLECTION_ERABLE_AUBEPINE = {
+    name: "Erable Champêtre/Aubépine",
+    species: [
+        SPECIES_ERABLE_CHAMPETRE,
+        SPECIES_AUBEPINE,
     ],
 };
 
@@ -192,7 +223,6 @@ const baseSpecies = [
     SPECIES_LIQUIDAMBAR,
     SPECIES_AULNE_GLUTINEUX,
     SPECIES_BOULEAU,
-    SPECIES_PEUPLIER,
     SPECIES_NEFLIER_DU_JAPON,
     SPECIES_COTONEASTER,
     SPECIES_ARBRE_DE_JUDEE,
@@ -214,10 +244,12 @@ const baseSpecies = [
     FAMILY_CORNOUILLERS,
     FAMILY_LAURIERS,
     FAMILY_ORMES,
+    FAMILY_PEUPLIERS,
 ];
 
 const collections = [
     COLLECTION_ORME_CHARME,
+    COLLECTION_ERABLE_AUBEPINE,
 ]
 
 const PLANTNET_DATASET_KEY = "7a3679ef-5582-4aaa-81f0-8c2545cafc81"
