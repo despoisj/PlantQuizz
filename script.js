@@ -78,7 +78,7 @@ const SPECIES_PEUPLIER_CANADA = { name: "Peuplier du Canada", latin: "Populus x 
 
 
 const FAMILY_ERABLES = {
-    familyName: "Érables",
+    familyName: "Érables*",
     main: SPECIES_ERABLE_SYCOMORE,
     mainName: "Érable",
     species: [
@@ -291,6 +291,12 @@ function setup(simple){
     taxonKey = "" // Current species taxon key
 
     populateSelection(simple);
+
+    if (!simple){
+        $("#star").show()
+    } else {
+        $("#star").hide()
+    }
 }
 
 function expandFamilies(species, simple){

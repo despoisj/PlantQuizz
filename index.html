@@ -12,26 +12,25 @@
     <link rel="stylesheet" href="style.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
+<body>   
+    <!-- Header Section -->
+    <header class="site-header">
+        <div class="header-logo">
+            <i class="fas fa-seedling"></i>
+            <span>PlantQuizz</span>
+        </div>
 
-<!-- Header Section -->
-<header class="site-header">
-    <div class="header-logo">
-        <i class="fas fa-seedling"></i> <!-- Leaf icon -->
-        <span>PlantQuizz</span>
-    </div>
+          <nav class="nav-links">
+            <a href="index.html" class="active">Quiz</a>
+            <a href="about.html">En savoir plus</a>
+            <a target="_blank" href="http://linkedin.com/in/juliendespois/">Contact</a>
+        </nav>
+        
+        <button class="mobile-menu-btn">
+            <i class="fas fa-bars"></i>
+        </button>
+    </header>
 
-      <nav class="nav-links">
-        <a href="index.html" class="active">Quiz</a>
-        <a href="about.html">En savoir plus</a>
-        <a target="_blank" href="http://linkedin.com/in/juliendespois/">Contact</a>
-    </nav>
-    
-    <button class="mobile-menu-btn">
-        <i class="fas fa-bars"></i>
-    </button>
-</header>
-
-<body>
     <div class="container">
         <div id="speciesSelection">
             <h1>Choississez des Essences</h1>
@@ -41,13 +40,14 @@
                     <input type="checkbox" id="expertMode">
                     <span class="toggle-slider"></span>
                 </label>
-            </div></p>
+            </div>
 
             <div id="metaButtons">
                 <button class="metaSelection" id="selectAll">Tout Sélectionner</button>
 
                 <!-- Families -->
             </div>
+            <p id="star">* et arbres similaires</p>
 
             <div class="species-selection">    
             </div>

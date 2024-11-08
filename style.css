@@ -279,6 +279,12 @@ button:hover {
     filter: opacity(60%);
 }
 
+#star {
+    display: none;
+    font-size: 14px;
+    color: #777;
+}
+
 img {
     transition: 0.2s ease;
 }
