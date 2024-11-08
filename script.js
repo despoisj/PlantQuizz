@@ -430,7 +430,7 @@ function populateSelection(simple){
     }
 
     $("#reveal").click(function(event) {
-        alert("Answer: " + taxonToName[taxonKey]);
+        alert("Réponse: " + taxonToName[taxonKey]);
     });
 }
 
