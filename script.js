@@ -614,6 +614,7 @@ function fetchImages() {
         },
         error: function(error) {
             console.error("Error fetching images:", error);
+            console.error("Error taxonKey:", taxonKey)
             alert("Failed to fetch images. Please try again.");
         }
     });
