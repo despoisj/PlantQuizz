@@ -35,7 +35,7 @@ const SPECIES_ERABLE_MONTPELLIER = { name: "Érable de Montpellier", latin: "Ace
 
 // Chêne family
 const SPECIES_CHENE_PEDONCULE = { name: "Chêne Pédonculé", latin: "Quercus robur", taxonKey: 2878688 };
-const SPECIES_CHENE_SESSILE = { name: "Chêne Rouvre/Sessile", latin: "Quercus petraea", taxonKey: 7069116 };
+const SPECIES_CHENE_SESSILE = { name: "Chêne Rouvre/Sessile", latin: "Quercus petraea", taxonKey: 2880130 };
 const SPECIES_CHENE_PUBESCENT = { name: "Chêne Pubescent", latin: "Quercus pubescens", taxonKey: 2881283 };
 const SPECIES_CHENE_VERT = { name: "Chêne Vert", latin: "Quercus ilex", taxonKey: 2879098 };
 const SPECIES_CHENE_LIEGE = { name: "Chêne Liège", latin: "Quercus suber", taxonKey: 2879411 };
@@ -250,7 +250,7 @@ function setup(simple){
     species.sort((a, b) => a.name.localeCompare(b.name));
 
     // Create inverse dict since we use taxonKey as key
-    var taxonToName = {}
+    taxonToName = {}
     species.forEach(speciesItem => {
         taxonToName[speciesItem.taxonKey] = speciesItem.name
     });
