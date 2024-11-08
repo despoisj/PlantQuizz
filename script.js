@@ -261,6 +261,10 @@ var taxonToName = {} // Dict for mapping
 var selectedSpecies = null // Species selected by user for quizz
 var taxonKey = "" // Current species taxon key
 
+// For the modal
+var currentImageIndex = 0;
+var currentImages = [];
+
 // Populate species selection buttons dynamically
 $(document).ready(function() {
     setup(simpleMode);
@@ -458,6 +462,8 @@ async function displayData(data){
     const $imagesContainer = $('#images-container').empty();
     $('#images-container img').removeClass("greyish");
 
+    currentImages = [];
+
     // Shuffle the observations
     var results = data.results;
     results.sort(() => Math.random() - 0.5);
@@ -510,18 +516,25 @@ async function displayData(data){
         
         nb_total += 1;
 
-        const img = $('<img>').attr('src', result.media[index].identifier).attr('alt', 'Tree Image');
-        img.css({
-            width: '250px',
-            height: '250px',
-            objectFit: 'cover',
-            borderRadius: '8px',
-            margin: '10px',
-            boxShadow: '0 2px 6px rgba(0, 0, 0, 0.2)'
-        });
+        // Store the image URL in our array for modal
+        currentImages.push(result.media[index].identifier);
+
+        const img = $('<img>')
+            .attr('src', result.media[index].identifier)
+            .attr('alt', 'Tree Image')
+            .attr('data-index', currentImages.length - 1)  // Store the index
+            .css({
+                width: '250px',
+                height: '250px',
+                objectFit: 'cover',
+                borderRadius: '8px',
+                margin: '10px',
+                boxShadow: '0 2px 6px rgba(0, 0, 0, 0.2)'
+            });
 
         // Click event to open the modal with the clicked image
         img.on('click', function() {
+            currentImageIndex = $(this).data('index');
             openModal(result.media[index].identifier);
         });
 
@@ -606,21 +619,39 @@ function fetchImages() {
     });
 }
 
-// Function to open the modal and display the selected image
 function openModal(imageSrc) {
     $('#modal-image').attr('src', imageSrc);
-    $('#image-modal').css('display', 'flex'); // Show the modal
+    $('#image-modal').css('display', 'flex');
+    
+    $(document).on('keydown.modal', handleModalKeypress);
+    $('#image-modal').on('click.modal', function(event) {
+        if (!$(event.target).is('#modal-image')) {
+            closeModal();
+        }
+    });
 }
 
-// Function to close the modal
 function closeModal() {
     $('#image-modal').css('display', 'none');
+    $(document).off('keydown.modal');
+    $('#image-modal').off('click.modal');
 }
 
-// Close the modal if clicked outside the image
-$('#image-modal').on('click', function(event) {
-    // Check if the click was outside the image content
-    if (!$(event.target).is('#modal-image')) {
-        closeModal();
+function handleModalKeypress(e) {
+    // Navitage fullscreen images
+    switch(e.key) {
+        case 'ArrowRight':
+            e.preventDefault();
+            currentImageIndex = (currentImageIndex - 1 + currentImages.length) % currentImages.length;
+            $('#modal-image').attr('src', currentImages[currentImageIndex]);
+            break;
+        case 'ArrowLeft':
+            e.preventDefault();
+            currentImageIndex = (currentImageIndex + 1) % currentImages.length;
+            $('#modal-image').attr('src', currentImages[currentImageIndex]);
+            break;
+        case 'Escape':
+            closeModal();
+            break;
     }
-});
+}
