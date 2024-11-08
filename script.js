@@ -203,7 +203,7 @@ const COLLECTION_ORME_CHARME = {
 };
 
 const COLLECTION_ERABLE_AUBEPINE = {
-    name: "Erable Champêtre/Aubépine",
+    name: "Érable Champêtre/Aubépine",
     species: [
         SPECIES_ERABLE_CHAMPETRE,
         SPECIES_AUBEPINE,
