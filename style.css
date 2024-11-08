@@ -271,7 +271,7 @@ button:hover {
 .latin-name {
     font-size: 0.75rem;
     font-style: italic;
-    opacity: 0.7;
+    opacity: 0.9;
     margin-top: 2px;
 }
 
@@ -303,8 +303,8 @@ img {
 
 .species-button.unselected {
     background-color: #EEE;
-    color: #36994c;
-    opacity: 0.7;
+    color: #329947;
+    opacity: 0.75;
 }
 
 
