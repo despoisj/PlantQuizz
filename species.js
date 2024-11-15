@@ -261,10 +261,12 @@ const baseSpecies = [
     SPECIES_OLIVIER,
     SPECIES_SAVONNIER,
     SPECIES_PLATANE,
-    SPECIES_CYPRES_CHAUVE,
-    SPECIES_CEDRE,
-    SPECIES_PIN,
     SPECIES_FIGUIER,
+
+    // TODO RESINEUX
+    // SPECIES_CYPRES_CHAUVE,
+    // SPECIES_CEDRE,
+    // SPECIES_PIN,
 
     FAMILY_ERABLES,
     FAMILY_CHENES,
@@ -274,7 +276,6 @@ const baseSpecies = [
     FAMILY_LAURIERS,
     FAMILY_ORMES,
     FAMILY_PEUPLIERS,
-    FAMILY_SORBIERS, 
 ];
 
 // Species a bit less common
@@ -287,6 +288,8 @@ const harderSpecies = [
     SPECIES_ARBRE_DE_JUDEE,
     SPECIES_MICOCOULIER,
     SPECIES_NEFLIER_DU_JAPON,
+
+    FAMILY_SORBIERS, 
 ]
 
 const allSpecies = baseSpecies.concat(harderSpecies);

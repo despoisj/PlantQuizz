@@ -138,7 +138,7 @@ function populateSelection(simple){
 
             const button = $('<button>')
             .addClass('metaSelection')
-            .text(speciesItem.familyName) // TODO
+            .text(speciesItem.familyName)
             .addClass("unselected")
             .on('click', function() {
                 // Select all sub species
@@ -162,7 +162,7 @@ function populateSelection(simple){
         
             const button = $('<button>')
             .addClass('metaSelection')
-            .text(collection.name) // TODO
+            .text(collection.name)
             .addClass("unselected")
             .on('click', function() {
                 // Select all species in collection
