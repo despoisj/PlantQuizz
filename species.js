@@ -95,6 +95,10 @@ const SPECIES_ALISIER_MOUGEOT = { name: "Alisier de Mougeot", latin: "Hedlundia 
 const SPECIES_SORBIER_NAIN = { name: "Sorbier Nain", latin: "Chamaemespilus alpina", taxonKey: 3025093 };
 const SPECIES_ALISIER_FONTAINEBLEAU = { name: "Alisier de Fontainebleau", latin: "Sorbus domestica", taxonKey: 9306058 };
 
+// Noyer
+const SPECIES_NOYER = { name: "Noyer", latin: "Juglans regia", taxonKey: 3054368 };
+const SPECIES_NOYER_AMERIQUE = { name: "Noyer d'Amérique", latin: "Juglans nigra", taxonKey: 3054357 };
+
 // Fusains
 const SPECIES_FUSAIN = { name: "Fusain", latin: "Euonymus europaeus", taxonKey: 3169131 };
 const SPECIES_FUSAIN_LARGE = { name: "Fusain à Larges Feuilles", latin: "Euonymus latifolius", taxonKey: 7433196 };
@@ -261,6 +265,21 @@ const FAMILY_FUSAINS = {
     associates: []
 };
 
+// Noyers
+const FAMILY_NOYERS = {
+    familyName: "Noyers",
+    main: SPECIES_NOYER,
+    mainName: "Noyer",
+    species: [
+        SPECIES_NOYER,
+        SPECIES_NOYER_AMERIQUE,
+    ],
+    associates: []
+};
+
+
+// ==================== MISC COLLECTIONS ====================
+
 
 const COLLECTION_ORME_CHARME = {
     name: "Orme/Charme",
@@ -313,6 +332,7 @@ const baseSpecies = [
     FAMILY_PEUPLIERS,
     FAMILY_FUSAINS,
     FAMILY_BOULEAUX, 
+    FAMILY_NOYERS, 
 ];
 
 // Species a bit less common

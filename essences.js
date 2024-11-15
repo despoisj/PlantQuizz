@@ -23,6 +23,9 @@ function populateSpecies() {
     
     // Then add families
     const families = allSpecies.filter(species => !('taxonKey' in species));
+
+    // Sort families by name
+    families.sort((a, b) => a.familyName.localeCompare(b.familyName));
     
     families.forEach(family => {
         html += `
