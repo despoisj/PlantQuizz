@@ -40,13 +40,6 @@ const SPECIES_ERABLE_MONTPELLIER = { name: "Érable de Montpellier", latin: "Ace
 
 // Chêne family
 const SPECIES_CHENE_PEDONCULE = { name: "Chêne Pédonculé", latin: "Quercus robur", taxonKey: 2878688 };
-// const SPECIES_CHENE_PEDONCULE = { 
-//     name: "Chêne Pédonculé", 
-//     latin: "Quercus robur", 
-//     taxonKey: 2878688,
-//     alt_names: ["Chêne commun", "Chêne blanc", "Chêne femelle"],
-//     wiki: "https://fr.wikipedia.org/wiki/Chêne_pédonculé"
-// };
 const SPECIES_CHENE_SESSILE = { name: "Chêne Rouvre/Sessile", latin: "Quercus petraea", taxonKey: 2880130 };
 const SPECIES_CHENE_PUBESCENT = { name: "Chêne Pubescent", latin: "Quercus pubescens", taxonKey: 2881283 };
 const SPECIES_CHENE_VERT = { name: "Chêne Vert", latin: "Quercus ilex", taxonKey: 2879098 };
@@ -259,26 +252,18 @@ const baseSpecies = [
     SPECIES_CHATAIGNIER,
     SPECIES_SAULE_PLEUREUR,
     SPECIES_PRUNIER,
-    SPECIES_MICOCOULIER,
-    SPECIES_LIQUIDAMBAR,
     SPECIES_AULNE_GLUTINEUX,
     SPECIES_BOULEAU,
-    SPECIES_NEFLIER_DU_JAPON,
     SPECIES_COTONEASTER,
-    SPECIES_ARBRE_DE_JUDEE,
     SPECIES_TULIPIER,
     SPECIES_MAGNOLIA_GRANDIFLORA,
     SPECIES_NOISETIER,
-    SPECIES_ARBOUSIER,
     SPECIES_OLIVIER,
     SPECIES_SAVONNIER,
     SPECIES_PLATANE,
     SPECIES_CYPRES_CHAUVE,
     SPECIES_CEDRE,
     SPECIES_PIN,
-    SPECIES_GINKOBILOBA,
-    SPECIES_CATALPA,
-    SPECIES_LILAS_PERSE,
     SPECIES_FIGUIER,
 
     FAMILY_ERABLES,
@@ -291,6 +276,20 @@ const baseSpecies = [
     FAMILY_PEUPLIERS,
     FAMILY_SORBIERS, 
 ];
+
+// Species a bit less common
+const harderSpecies = [
+    SPECIES_GINKOBILOBA,
+    SPECIES_CATALPA,
+    SPECIES_LIQUIDAMBAR,
+    SPECIES_LILAS_PERSE,
+    SPECIES_ARBOUSIER,
+    SPECIES_ARBRE_DE_JUDEE,
+    SPECIES_MICOCOULIER,
+    SPECIES_NEFLIER_DU_JAPON,
+]
+
+const allSpecies = baseSpecies.concat(harderSpecies);
 
 const collections = [
     COLLECTION_ORME_CHARME,

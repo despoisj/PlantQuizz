@@ -23,7 +23,11 @@ $(document).ready(function() {
 });
 
 function setup(simple){
-    species = expandFamilies(baseSpecies, simple)
+    if (simple){
+        species = expandFamilies(baseSpecies, true)
+    } else {
+        species = expandFamilies(allSpecies, false)
+    }
 
     // Sort by name
     species.sort((a, b) => a.name.localeCompare(b.name));
@@ -127,7 +131,7 @@ function populateSelection(simple){
 
     // If complex mode, add family buttons
     if (!simple){
-        baseSpecies.forEach(speciesItem => {
+        allSpecies.forEach(speciesItem => {
             if ("taxonKey" in speciesItem){
                 return
             }

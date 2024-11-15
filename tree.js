@@ -46,13 +46,13 @@ $(document).ready(function() {
 
 function findTreeById(taxonKey) {
     // Search in individual species
-    let tree = baseSpecies.find(species => 
+    let tree = allSpecies.find(species => 
         species.taxonKey && species.taxonKey.toString() === taxonKey
     );
 
     // If not found, search in families
     if (!tree) {
-        baseSpecies.forEach(item => {
+        allSpecies.forEach(item => {
             if (item.species) {
                 const familyTree = item.species.find(
                     species => species.taxonKey.toString() === taxonKey

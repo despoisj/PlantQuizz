@@ -5,9 +5,10 @@ $(document).ready(function() {
 function populateSpecies() {
     const $speciesFamilies = $('#species-families');
     
-    // First add individual species
-    const individualSpecies = baseSpecies.filter(species => 'taxonKey' in species);
-    
+    const individualSpecies = allSpecies.filter(species => 'taxonKey' in species);
+    // Sort by name
+    individualSpecies.sort((a, b) => a.name.localeCompare(b.name));
+
     let html = `
         <div class="species-category">
             <h2>Espèces Individuelles</h2>
@@ -21,7 +22,7 @@ function populateSpecies() {
     html += '</div></div>';
     
     // Then add families
-    const families = baseSpecies.filter(species => !('taxonKey' in species));
+    const families = allSpecies.filter(species => !('taxonKey' in species));
     
     families.forEach(family => {
         html += `
