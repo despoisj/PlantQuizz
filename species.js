@@ -90,6 +90,10 @@ const SPECIES_ALISIER_MOUGEOT = { name: "Alisier de Mougeot", latin: "Hedlundia 
 const SPECIES_SORBIER_NAIN = { name: "Sorbier Nain", latin: "Chamaemespilus alpina", taxonKey: 3025093 };
 const SPECIES_ALISIER_FONTAINEBLEAU = { name: "Alisier de Fontainebleau", latin: "Sorbus domestica", taxonKey: 9306058 };
 
+// Fusains
+const SPECIES_FUSAIN = { name: "Fusain", latin: "Euonymus europaeus", taxonKey: 3169131 };
+const SPECIES_FUSAIN_LARGE = { name: "Fusain à Larges Feuilles", latin: "Euonymus latifolius", taxonKey: 7433196 };
+const SPECIES_FUSAIN_CHINE = { name: "Fusain de Chine", latin: "Euonymus fortunei", taxonKey: 3169137 };
 
 const FAMILY_ERABLES = {
     familyName: "Érables*",
@@ -225,6 +229,19 @@ const FAMILY_SORBIERS = {
     associates: []
 };
 
+// Fusaings family
+const FAMILY_FUSAINS = {
+    familyName: "Fusains",
+    main: SPECIES_FUSAIN,
+    mainName: "Fusain",
+    species: [
+        SPECIES_FUSAIN,
+        SPECIES_FUSAIN_LARGE,
+        SPECIES_FUSAIN_CHINE,
+    ],
+    associates: []
+};
+
 
 const COLLECTION_ORME_CHARME = {
     name: "Orme/Charme",
@@ -276,6 +293,7 @@ const baseSpecies = [
     FAMILY_LAURIERS,
     FAMILY_ORMES,
     FAMILY_PEUPLIERS,
+    FAMILY_FUSAINS,
 ];
 
 // Species a bit less common
