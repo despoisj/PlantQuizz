@@ -9,7 +9,6 @@ const SPECIES_PRUNIER = { name: "Prunier", latin: "Prunus domestica", taxonKey: 
 const SPECIES_MICOCOULIER = { name: "Micocoulier", latin: "Celtis australis", taxonKey: 2984492 };
 const SPECIES_LIQUIDAMBAR = { name: "Liquidambar", latin: "Liquidambar styraciflua", taxonKey: 3152823 };
 const SPECIES_AULNE_GLUTINEUX = { name: "Aulne Glutineux", latin: "Alnus glutinosa", taxonKey: 2876213 };
-const SPECIES_BOULEAU = { name: "Bouleau", latin: "Betula pendula", taxonKey: 2875008 };
 const SPECIES_PEUPLIER = { name: "Peuplier", latin: "Populus nigra", taxonKey: 3040183 };
 const SPECIES_NEFLIER_DU_JAPON = { name: "Néflier du Japon", latin: "Eriobotrya japonica", taxonKey: 3024146 };
 const SPECIES_COTONEASTER = { name: "Cotoneaster", latin: "Cotoneaster horizontalis", taxonKey: 3025563 };
@@ -52,34 +51,40 @@ const SPECIES_TILLEUL_PETITES_FEUILLES = { name: "Tilleul à Petites Feuilles", 
 const SPECIES_TILLEUL_COMMUN = { name: "Tilleul Commun", latin: "Tilia × europaea", taxonKey: 3152046 };
 const SPECIES_TILLEUL_ARGENTE = { name: "Tilleul Argenté", latin: "Tilia tomentosa", taxonKey: 4259350 };
 
-// Frêne family
+// Frêne
 const SPECIES_FRENE_COMMUN = { name: "Frêne Commun", latin: "Fraxinus excelsior", taxonKey: 3172358 };
 const SPECIES_FRENE_FEUILLES_ETROITES = { name: "Frêne à Feuilles Étroites", latin: "Fraxinus angustifolia", taxonKey: 7325877 };
 const SPECIES_FRENE_FLEURS = { name: "Frêne à Fleurs", latin: "Fraxinus ornus", taxonKey: 3172347 };
 
-// Cornouillers family
+// Bouleaux
+const SPECIES_BOULEAU = { name: "Bouleau Blanc", latin: "Betula pendula", taxonKey: 2875008 };
+const SPECIES_BOULEAU_PUBESCENT = { name: "Bouleau Pubescent", latin: "Betula pubescens", taxonKey: 9118014 };
+const SPECIES_BOULEAU_NAIN = { name: "Bouleau Nain", latin: "Betula nana", taxonKey: 5332004 };
+const SPECIES_BOULEAU_DORE = { name: "Bouleau Doré", latin: "Betula × aurata", taxonKey: 5331763 };
+
+// Cornouillers
 const SPECIES_CORNOUILLER_SANGUIN = { name: "Cornouiller Sanguin", latin: "Cornus sanguinea", taxonKey: 3082234 };
 const SPECIES_CORNOUILLER_MALE = { name: "Cornouiller Mâle", latin: "Cornus mas", taxonKey: 3082263 };
 
-// Lauriers family
+// Lauriers
 const SPECIES_LAURIER_SAUCE = { name: "Laurier Sauce", latin: "Laurus nobilis", taxonKey: 3034015 };
 const SPECIES_LAURIER_TIN = { name: "Laurier Tin", latin: "Viburnum tinus", taxonKey: 2888585 };
 const SPECIES_LAURIER_ROSE = { name: "Laurier Rose", latin: "Nerium oleander", taxonKey: 3169756 };
 const SPECIES_LAURIER_CERISE = { name: "Laurier Cerise", latin: "Prunus laurocerasus", taxonKey: 3021496 };
 const SPECIES_LAURIER_PORTUGAL = { name: "Laurier du Portugal", latin: "Prunus lusitanica", taxonKey: 3020871 };
 
-// Orme family
+// Ormes
 const SPECIES_ORME_CHAMPETRE = { name: "Orme Champêtre", latin: "Ulmus minor", taxonKey: 2984510 };
 const SPECIES_ORME_MONTAGNE = { name: "Orme de Montagne", latin: "Ulmus glabra", taxonKey: 5361866 };
 const SPECIES_ORME_LISSE = { name: "Orme Lisse", latin: "Ulmus laevis", taxonKey: 7303616 };
 const SPECIES_ORME_HOLLANDE = { name: "Orme de Hollande", latin: "Ulmus × hollandica", taxonKey: 7141604 };
 
-// Peuplier family, tremble, noir, blanc, grisard, du canada
+// Peuplier
 const SPECIES_PEUPLIER_TREMBLE = { name: "Peuplier Tremble", latin: "Populus tremula", taxonKey: 3040183 };
 const SPECIES_PEUPLIER_NOIR = { name: "Peuplier Noir", latin: "Populus nigra", taxonKey: 3040227}
 const SPECIES_PEUPLIER_BLANC = { name: "Peuplier Blanc", latin: "Populus alba", taxonKey: 3040233}
-const SPECIES_PEUPLIER_GRISARD = { name: "Peuplier Grisard", latin: "Populus x canescens", taxonKey: 3040185}
-const SPECIES_PEUPLIER_CANADA = { name: "Peuplier du Canada", latin: "Populus x canadensis", taxonKey: 8190077}
+const SPECIES_PEUPLIER_GRISARD = { name: "Peuplier Grisard", latin: "Populus × canescens", taxonKey: 3040185}
+const SPECIES_PEUPLIER_CANADA = { name: "Peuplier du Canada", latin: "Populus × canadensis", taxonKey: 8190077}
 
 // Sorbiers
 const SPECIES_SORBIER_OISELEURS = { name: "Sorbier des Oiseleurs", latin: "Sorbus aucuparia", taxonKey: 3012167 };
@@ -212,6 +217,20 @@ const FAMILY_PEUPLIERS = {
     associates: []
 };
 
+// Bouleaux
+const FAMILY_BOULEAUX = {
+    familyName: "Bouleaux",
+    main: SPECIES_BOULEAU,
+    mainName: "Bouleau",
+    species: [
+        SPECIES_BOULEAU,
+        SPECIES_BOULEAU_PUBESCENT,
+        SPECIES_BOULEAU_NAIN,
+        SPECIES_BOULEAU_DORE,
+    ],
+    associates: []
+};
+
 // Sorbier family
 const FAMILY_SORBIERS = {
     familyName: "Sorbiers",
@@ -229,7 +248,7 @@ const FAMILY_SORBIERS = {
     associates: []
 };
 
-// Fusaings family
+// Fusains family
 const FAMILY_FUSAINS = {
     familyName: "Fusains",
     main: SPECIES_FUSAIN,
@@ -270,7 +289,6 @@ const baseSpecies = [
     SPECIES_SAULE_PLEUREUR,
     SPECIES_PRUNIER,
     SPECIES_AULNE_GLUTINEUX,
-    SPECIES_BOULEAU,
     SPECIES_COTONEASTER,
     SPECIES_TULIPIER,
     SPECIES_MAGNOLIA_GRANDIFLORA,
@@ -294,6 +312,7 @@ const baseSpecies = [
     FAMILY_ORMES,
     FAMILY_PEUPLIERS,
     FAMILY_FUSAINS,
+    FAMILY_BOULEAUX, 
 ];
 
 // Species a bit less common
