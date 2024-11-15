@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Essence - PlantQuizz</title>
+    <link rel="icon" type="image/x-icon" href="favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="species.js"></script>
+</head>
+<body>
+    <header class="site-header">
+        <div class="header-logo">
+            <i class="fas fa-seedling"></i>
+            <span>PlantQuizz</span>
+        </div>
+        <nav class="nav-links">
+            <a href="index.html">Quiz</a>
+            <a href="essences.html">Essences</a>
+            <a href="about.html">À propos</a>
+            <a href="http://linkedin.com/in/juliendespois/" target="_blank">Contact</a>
+        </nav>
+        <button class="mobile-menu-btn">
+            <i class="fas fa-bars"></i>
+        </button>
+    </header>
+
+    <div class="container">
+        <div class="tree-header">
+            <div class="back-button" onclick="window.location.href='essences.html'">
+                <i class="fas fa-arrow-left"></i>
+                <span>Retour</span>
+            </div>
+            <h1 id="treeName"></h1>
+            <p class="latin-name" id="latinName"></p>
+            <div id="altNames" class="alt-names"></div>
+        </div>
+        
+        <div id="images-container"></div>
+    </div>
+
+    <!-- Modal for displaying the full-size image -->
+    <div id="image-modal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="modal-image">
+    </div>
+
+    <script src="base.js"></script>
+    <script src="constants.js"></script>
+    <script src="tree.js"></script>
+</body>
+</html>
