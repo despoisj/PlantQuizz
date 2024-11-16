@@ -109,8 +109,8 @@ const FAMILY_ERABLES = {
     main: SPECIES_ERABLE_SYCOMORE,
     mainName: "Érable",
     species: [
-        SPECIES_ERABLE_SYCOMORE,
         SPECIES_ERABLE_CHAMPETRE,
+        SPECIES_ERABLE_SYCOMORE,
         SPECIES_ERABLE_PLANE,
         SPECIES_ERABLE_ARGENTE,
         SPECIES_ERABLE_NEGUNDO,
@@ -130,13 +130,14 @@ const FAMILY_CHENES = {
     mainName: "Chêne",
     species: [
         SPECIES_CHENE_PEDONCULE,
-        SPECIES_CHENE_SESSILE,
         SPECIES_CHENE_PUBESCENT,
-        SPECIES_CHENE_ROUGE,
-    ],
-    associates: [
+        SPECIES_CHENE_SESSILE,
         SPECIES_CHENE_VERT,
         SPECIES_CHENE_LIEGE,
+        SPECIES_CHENE_ROUGE,
+
+    ],
+    associates: [
     ]
 };
 
@@ -297,11 +298,11 @@ const COLLECTION_ERABLE_AUBEPINE = {
     ],
 };
 
+// ==================== SPECIES LIST ====================
+
 const baseSpecies = [
     SPECIES_CHARME,
     SPECIES_HETRE,
-    SPECIES_CHENE_VERT,
-    SPECIES_CHENE_LIEGE,
     SPECIES_AUBEPINE,
     SPECIES_MARRONNIER,
     SPECIES_CHATAIGNIER,
