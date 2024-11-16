@@ -2,7 +2,10 @@
 var currentImageIndex = 0;
 var currentImages = [];
 
-$(document).ready(function() {
+$(document).ready(async function() {
+
+    await loadSpecies();
+
     const urlParams = new URLSearchParams(window.location.search);
     const treeId = urlParams.get('id');
     
@@ -13,17 +16,18 @@ $(document).ready(function() {
 
     // Find the tree in our data
     const tree = findTreeById(treeId);
+    console.log(tree, treeId, allSpecies)
     if (!tree) {
         window.location.href = 'essences.html';
         return;
     }
 
     // Update page title
-    document.title = `${tree.name} - PlantQuizz`;
+    document.title = `${tree.frenchName} - PlantQuizz`;
 
     // Populate tree information
-    $('#treeName').text(tree.name);
-    $('#latinName').text(tree.latin);
+    $('#treeName').text(tree.frenchName);
+    $('#latinName').text(tree.name);
     
     // Add alternate names if they exist
     if (tree.alt_names && tree.alt_names.length > 0) {

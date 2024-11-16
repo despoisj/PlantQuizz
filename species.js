@@ -1,108 +1,259 @@
+// TODO NEW MODEL
+// SPECIES IS ONLY LATIN NAME (attention x )
+// ONCE LISTS ARE DEFINED, ENRICH WITH INFO FROM JSON
+// AND TRADUCTIONS
+// For each species (that has only a name)
+// Make an object with french name, latin name, taxonKey, nbOccurences, etc.
+// Then we only use that, this will allow easy translation if wanted.
+
+
 // Individual species
-const SPECIES_CHARME = { name: "Charme", latin: "Carpinus betulus", taxonKey: 2875770 };
-const SPECIES_HETRE = { name: "Hêtre", latin: "Fagus sylvatica", taxonKey: 2874875 };
-const SPECIES_AUBEPINE = { name: "Aubépine", latin: "Crataegus monogyna", taxonKey: 9220780 };
-const SPECIES_MARRONNIER = { name: "Marronnier", latin: "Aesculus hippocastanum", taxonKey: 3189815 };
-const SPECIES_CHATAIGNIER = { name: "Châtaignier", latin: "Castanea sativa", taxonKey: 5333294 };
-const SPECIES_SAULE_PLEUREUR = { name: "Saule Pleureur", latin: "Salix babylonica", taxonKey: 5372639 };
-const SPECIES_PRUNIER = { name: "Prunier", latin: "Prunus domestica", taxonKey: 7931731 };
-const SPECIES_MICOCOULIER = { name: "Micocoulier", latin: "Celtis australis", taxonKey: 2984492 };
-const SPECIES_LIQUIDAMBAR = { name: "Liquidambar", latin: "Liquidambar styraciflua", taxonKey: 3152823 };
-const SPECIES_AULNE_GLUTINEUX = { name: "Aulne Glutineux", latin: "Alnus glutinosa", taxonKey: 2876213 };
-const SPECIES_PEUPLIER = { name: "Peuplier", latin: "Populus nigra", taxonKey: 3040183 };
-const SPECIES_NEFLIER_DU_JAPON = { name: "Néflier du Japon", latin: "Eriobotrya japonica", taxonKey: 3024146 };
-const SPECIES_COTONEASTER = { name: "Cotoneaster", latin: "Cotoneaster horizontalis", taxonKey: 3025563 };
-const SPECIES_ARBRE_DE_JUDEE = { name: "Arbre de Judée", latin: "Cercis siliquastrum", taxonKey: 5353590 };
-const SPECIES_TULIPIER = { name: "Tulipier", latin: "Liriodendron tulipifera", taxonKey: 3152860 };
-const SPECIES_MAGNOLIA_GRANDIFLORA = { name: "Magnolia", latin: "Magnolia grandiflora", taxonKey: 9605163 };
-const SPECIES_NOISETIER = { name: "Noisetier", latin: "Corylus avellana", taxonKey: 2875967 };
-const SPECIES_ARBOUSIER = { name: "Arbousier", latin: "Arbutus unedo", taxonKey: 2882796 };
-const SPECIES_OLIVIER = { name: "Olivier", latin: "Olea europaea", taxonKey: 3172244 };
-const SPECIES_SAVONNIER = { name: "Savonnier", latin: "Koelreuteria paniculata", taxonKey: 3190053 };
-const SPECIES_PLATANE = { name: "Platane", latin: "Platanus × acerifolia", taxonKey: 3152811 };
-const SPECIES_CYPRES_CHAUVE = { name: "Cyprès Chauve", latin: "Taxodium distichum", taxonKey: 2684191 };
-const SPECIES_CEDRE = { name: "Cèdre", latin: "Cedrus", taxonKey: 2685742 };
-const SPECIES_PIN = { name: "Pin", latin: "Pinus", taxonKey: 2684241 };
-const SPECIES_GINKOBILOBA = { name: "Ginkgo", latin: "Ginkgo biloba", taxonKey: 2687885 };
-const SPECIES_CATALPA = { name: "Catalpa", latin: "Catalpa bignonioides", taxonKey: 3172615 };
-const SPECIES_LILAS_PERSE = { name: "Lilas de Perse", latin: "Melia azedarach", taxonKey: 5914287 };
-const SPECIES_FIGUIER = { name: "Figuier", latin: "Ficus carica", taxonKey: 5361909 };
+const SPECIES_CHARME = "Carpinus betulus";
+const SPECIES_HETRE = "Fagus sylvatica";
+const SPECIES_AUBEPINE = "Crataegus monogyna";
+const SPECIES_MARRONNIER = "Aesculus hippocastanum";
+const SPECIES_CHATAIGNIER = "Castanea sativa";
+const SPECIES_SAULE_PLEUREUR = "Salix babylonica";
+const SPECIES_PRUNIER = "Prunus domestica";
+const SPECIES_MICOCOULIER = "Celtis australis";
+const SPECIES_LIQUIDAMBAR = "Liquidambar styraciflua";
+const SPECIES_AULNE_GLUTINEUX = "Alnus glutinosa";
+const SPECIES_PEUPLIER = "Populus nigra";
+const SPECIES_NEFLIER_DU_JAPON = "Eriobotrya japonica";
+const SPECIES_COTONEASTER = "Cotoneaster horizontalis";
+const SPECIES_ARBRE_DE_JUDEE = "Cercis siliquastrum";
+const SPECIES_TULIPIER = "Liriodendron tulipifera";
+const SPECIES_MAGNOLIA_GRANDIFLORA = "Magnolia grandiflora";
+const SPECIES_NOISETIER = "Corylus avellana";
+const SPECIES_ARBOUSIER = "Arbutus unedo";
+const SPECIES_OLIVIER = "Olea europaea";
+const SPECIES_SAVONNIER = "Koelreuteria paniculata";
+const SPECIES_PLATANE = "Platanus × acerifolia";
+const SPECIES_CYPRES_CHAUVE = "Taxodium distichum";
+const SPECIES_CEDRE = "Cedrus";
+const SPECIES_PIN = "Pinus";
+const SPECIES_GINKOBILOBA = "Ginkgo biloba";
+const SPECIES_CATALPA = "Catalpa bignonioides";
+const SPECIES_LILAS_PERSE = "Melia azedarach";
+const SPECIES_FIGUIER = "Ficus carica";
 
 // Érable family
-const SPECIES_ERABLE_SYCOMORE = { name: "Érable Sycomore", latin: "Acer pseudoplatanus", taxonKey: 3189870 };
-const SPECIES_ERABLE_CHAMPETRE = { name: "Érable Champêtre", latin: "Acer campestre", taxonKey: 3189863 };
-const SPECIES_ERABLE_ARGENTE = { name: "Érable Argenté", latin: "Acer saccharinum", taxonKey: 3189837 };
-const SPECIES_ERABLE_NEGUNDO = { name: "Érable Negundo", latin: "Acer negundo", taxonKey: 3189866 };
-const SPECIES_ERABLE_PLANE = { name: "Érable Plane", latin: "Acer platanoides", taxonKey: 3189846 };
-const SPECIES_ERABLE_OBIER = { name: "Érable à Feuilles d'Obier", latin: "Acer opalus", taxonKey: 7100278 };
-const SPECIES_ERABLE_MONTPELLIER = { name: "Érable de Montpellier", latin: "Acer monspessulanum", taxonKey: 7262958 };
+const SPECIES_ERABLE_SYCOMORE = "Acer pseudoplatanus";
+const SPECIES_ERABLE_CHAMPETRE = "Acer campestre";
+const SPECIES_ERABLE_ARGENTE = "Acer saccharinum";
+const SPECIES_ERABLE_NEGUNDO = "Acer negundo";
+const SPECIES_ERABLE_PLANE = "Acer platanoides";
+const SPECIES_ERABLE_OBIER = "Acer opalus";
+const SPECIES_ERABLE_MONTPELLIER = "Acer monspessulanum";
 
 // Chêne family
-const SPECIES_CHENE_PEDONCULE = { name: "Chêne Pédonculé", latin: "Quercus robur", taxonKey: 2878688 };
-const SPECIES_CHENE_SESSILE = { name: "Chêne Rouvre/Sessile", latin: "Quercus petraea", taxonKey: 2880130 };
-const SPECIES_CHENE_PUBESCENT = { name: "Chêne Pubescent", latin: "Quercus pubescens", taxonKey: 2881283 };
-const SPECIES_CHENE_VERT = { name: "Chêne Vert", latin: "Quercus ilex", taxonKey: 2879098 };
-const SPECIES_CHENE_LIEGE = { name: "Chêne Liège", latin: "Quercus suber", taxonKey: 2879411 };
-const SPECIES_CHENE_ROUGE = { name: "Chêne Rouge d'Amérique", latin: "Quercus rubra", taxonKey: 2880539 };
+const SPECIES_CHENE_PEDONCULE = "Quercus robur";
+const SPECIES_CHENE_SESSILE = "Quercus petraea";
+const SPECIES_CHENE_PUBESCENT = "Quercus pubescens";
+const SPECIES_CHENE_VERT = "Quercus ilex";
+const SPECIES_CHENE_LIEGE = "Quercus suber";
+const SPECIES_CHENE_ROUGE = "Quercus rubra";
 
 // Tilleul family
-const SPECIES_TILLEUL_GRANDES_FEUILLES = { name: "Tilleul à Grandes Feuilles", latin: "Tilia platyphyllos", taxonKey: 3152048 };
-const SPECIES_TILLEUL_PETITES_FEUILLES = { name: "Tilleul à Petites Feuilles", latin: "Tilia cordata", taxonKey: 3152047 };
-const SPECIES_TILLEUL_COMMUN = { name: "Tilleul Commun", latin: "Tilia × europaea", taxonKey: 3152046 };
-const SPECIES_TILLEUL_ARGENTE = { name: "Tilleul Argenté", latin: "Tilia tomentosa", taxonKey: 4259350 };
+const SPECIES_TILLEUL_GRANDES_FEUILLES = "Tilia platyphyllos";
+const SPECIES_TILLEUL_PETITES_FEUILLES = "Tilia cordata";
+const SPECIES_TILLEUL_COMMUN = "Tilia × europaea";
+const SPECIES_TILLEUL_ARGENTE = "Tilia tomentosa";
 
 // Frêne
-const SPECIES_FRENE_COMMUN = { name: "Frêne Commun", latin: "Fraxinus excelsior", taxonKey: 3172358 };
-const SPECIES_FRENE_FEUILLES_ETROITES = { name: "Frêne à Feuilles Étroites", latin: "Fraxinus angustifolia", taxonKey: 7325877 };
-const SPECIES_FRENE_FLEURS = { name: "Frêne à Fleurs", latin: "Fraxinus ornus", taxonKey: 3172347 };
+const SPECIES_FRENE_COMMUN = "Fraxinus excelsior";
+const SPECIES_FRENE_FEUILLES_ETROITES = "Fraxinus angustifolia";
+const SPECIES_FRENE_FLEURS = "Fraxinus ornus";
 
 // Bouleaux
-const SPECIES_BOULEAU = { name: "Bouleau Blanc", latin: "Betula pendula", taxonKey: 2875008 };
-const SPECIES_BOULEAU_PUBESCENT = { name: "Bouleau Pubescent", latin: "Betula pubescens", taxonKey: 9118014 };
-const SPECIES_BOULEAU_NAIN = { name: "Bouleau Nain", latin: "Betula nana", taxonKey: 5332004 };
-const SPECIES_BOULEAU_DORE = { name: "Bouleau Doré", latin: "Betula × aurata", taxonKey: 5331763 };
+const SPECIES_BOULEAU = "Betula pendula";
+const SPECIES_BOULEAU_PUBESCENT = "Betula pubescens";
+const SPECIES_BOULEAU_NAIN = "Betula nana";
+const SPECIES_BOULEAU_DORE = "Betula × aurata";
 
 // Cornouillers
-const SPECIES_CORNOUILLER_SANGUIN = { name: "Cornouiller Sanguin", latin: "Cornus sanguinea", taxonKey: 3082234 };
-const SPECIES_CORNOUILLER_MALE = { name: "Cornouiller Mâle", latin: "Cornus mas", taxonKey: 3082263 };
+const SPECIES_CORNOUILLER_SANGUIN = "Cornus sanguinea";
+const SPECIES_CORNOUILLER_MALE = "Cornus mas";
 
 // Lauriers
-const SPECIES_LAURIER_TIN = { name: "Laurier Tin", latin: "Viburnum tinus", taxonKey: 2888585 };
-const SPECIES_LAURIER_CERISE = { name: "Laurier Cerise", latin: "Prunus laurocerasus", taxonKey: 3021496 };
-const SPECIES_LAURIER_SAUCE = { name: "Laurier Sauce", latin: "Laurus nobilis", taxonKey: 3034015 };
-const SPECIES_LAURIER_ROSE = { name: "Laurier Rose", latin: "Nerium oleander", taxonKey: 3169756 };
-const SPECIES_LAURIER_PORTUGAL = { name: "Laurier du Portugal", latin: "Prunus lusitanica", taxonKey: 3020871 };
+const SPECIES_LAURIER_TIN = "Viburnum tinus";
+const SPECIES_LAURIER_CERISE = "Prunus laurocerasus";
+const SPECIES_LAURIER_SAUCE = "Laurus nobilis";
+const SPECIES_LAURIER_ROSE = "Nerium oleander";
+const SPECIES_LAURIER_PORTUGAL = "Prunus lusitanica";
 
 // Ormes
-const SPECIES_ORME_CHAMPETRE = { name: "Orme Champêtre", latin: "Ulmus minor", taxonKey: 2984510 };
-const SPECIES_ORME_MONTAGNE = { name: "Orme de Montagne", latin: "Ulmus glabra", taxonKey: 5361866 };
-const SPECIES_ORME_LISSE = { name: "Orme Lisse", latin: "Ulmus laevis", taxonKey: 7303616 };
-const SPECIES_ORME_HOLLANDE = { name: "Orme de Hollande", latin: "Ulmus × hollandica", taxonKey: 7141604 };
+const SPECIES_ORME_CHAMPETRE = "Ulmus minor";
+const SPECIES_ORME_MONTAGNE = "Ulmus glabra";
+const SPECIES_ORME_LISSE = "Ulmus laevis";
+const SPECIES_ORME_HOLLANDE = "Ulmus × hollandica";
 
 // Peuplier
-const SPECIES_PEUPLIER_TREMBLE = { name: "Peuplier Tremble", latin: "Populus tremula", taxonKey: 3040183 };
-const SPECIES_PEUPLIER_NOIR = { name: "Peuplier Noir", latin: "Populus nigra", taxonKey: 3040227}
-const SPECIES_PEUPLIER_BLANC = { name: "Peuplier Blanc", latin: "Populus alba", taxonKey: 3040233}
-const SPECIES_PEUPLIER_GRISARD = { name: "Peuplier Grisard", latin: "Populus × canescens", taxonKey: 3040185}
-const SPECIES_PEUPLIER_CANADA = { name: "Peuplier du Canada", latin: "Populus × canadensis", taxonKey: 8190077}
+const SPECIES_PEUPLIER_TREMBLE = "Populus tremula";
+const SPECIES_PEUPLIER_NOIR = "Populus nigra";
+const SPECIES_PEUPLIER_BLANC = "Populus alba";
+const SPECIES_PEUPLIER_GRISARD = "Populus × canescens";
+const SPECIES_PEUPLIER_CANADA = "Populus × canadensis";
 
 // Sorbiers
-const SPECIES_SORBIER_OISELEURS = { name: "Sorbier des Oiseleurs", latin: "Sorbus aucuparia", taxonKey: 3012167 };
-const SPECIES_ALISIER_BLANC = { name: "Alisier Blanc", latin: "Aria edulis", taxonKey: 8411755 };
-const SPECIES_ALISIER_TORMINAL = { name: "Alisier Torminal", latin: "Torminalis glaberrima", taxonKey: 1277891 }; // Looks like maple TODO BROKEN
-const SPECIES_ALISIER_MOUGEOT = { name: "Alisier de Mougeot", latin: "Hedlundia mougeotii", taxonKey: 9312105 };
-const SPECIES_SORBIER_NAIN = { name: "Sorbier Nain", latin: "Chamaemespilus alpina", taxonKey: 3025093 };
-const SPECIES_SORBIER_DOMESTIQUE = { name: "Cormier", latin: "Sorbus domestica", taxonKey: 3013215 };
-const SPECIES_ALISIER_FONTAINEBLEAU = { name: "Alisier de Fontainebleau", latin: "Sorbus domestica", taxonKey: 9306058 };
+const SPECIES_SORBIER_OISELEURS = "Sorbus aucuparia";
+const SPECIES_ALISIER_BLANC = "Aria edulis";
+const SPECIES_ALISIER_TORMINAL = "Torminalis glaberrima";
+const SPECIES_ALISIER_MOUGEOT = "Hedlundia mougeotii";
+const SPECIES_SORBIER_NAIN = "Chamaemespilus alpina";
+const SPECIES_SORBIER_DOMESTIQUE = "Sorbus domestica";
+const SPECIES_ALISIER_FONTAINEBLEAU = "Sorbus latifolia";
 
 // Noyer
-const SPECIES_NOYER = { name: "Noyer", latin: "Juglans regia", taxonKey: 3054368 };
-const SPECIES_NOYER_AMERIQUE = { name: "Noyer d'Amérique", latin: "Juglans nigra", taxonKey: 3054357 };
+const SPECIES_NOYER = "Juglans regia";
+const SPECIES_NOYER_AMERIQUE = "Juglans nigra";
 
 // Fusains
-const SPECIES_FUSAIN = { name: "Fusain", latin: "Euonymus europaeus", taxonKey: 3169131 };
-const SPECIES_FUSAIN_LARGE = { name: "Fusain à Larges Feuilles", latin: "Euonymus latifolius", taxonKey: 7433196 };
-const SPECIES_FUSAIN_CHINE = { name: "Fusain de Chine", latin: "Euonymus fortunei", taxonKey: 3169137 };
+const SPECIES_FUSAIN = "Euonymus europaeus";
+const SPECIES_FUSAIN_LARGE = "Euonymus latifolius";
+const SPECIES_FUSAIN_CHINE = "Euonymus fortunei";
+
+
+// =================== TRANSLATIONS ================
+// Note: this is necessary because they aren't provided 
+// in the gbif dataset (which is consolidated into the .json file)
+
+const latinToFrench = {
+    [SPECIES_CHARME]: "Charme",
+    [SPECIES_HETRE]: "Hêtre",
+    [SPECIES_AUBEPINE]: "Aubépine",
+    [SPECIES_MARRONNIER]: "Marronnier",
+    [SPECIES_CHATAIGNIER]: "Châtaignier",
+    [SPECIES_SAULE_PLEUREUR]: "Saule Pleureur",
+    [SPECIES_PRUNIER]: "Prunier",
+    [SPECIES_MICOCOULIER]: "Micocoulier",
+    [SPECIES_LIQUIDAMBAR]: "Liquidambar",
+    [SPECIES_AULNE_GLUTINEUX]: "Aulne Glutineux",
+    [SPECIES_PEUPLIER]: "Peuplier",
+    [SPECIES_NEFLIER_DU_JAPON]: "Néflier du Japon",
+    [SPECIES_COTONEASTER]: "Cotoneaster",
+    [SPECIES_ARBRE_DE_JUDEE]: "Arbre de Judée",
+    [SPECIES_TULIPIER]: "Tulipier",
+    [SPECIES_MAGNOLIA_GRANDIFLORA]: "Magnolia",
+    [SPECIES_NOISETIER]: "Noisetier",
+    [SPECIES_ARBOUSIER]: "Arbousier",
+    [SPECIES_OLIVIER]: "Olivier",
+    [SPECIES_SAVONNIER]: "Savonnier",
+    [SPECIES_PLATANE]: "Platane",
+    [SPECIES_CYPRES_CHAUVE]: "Cyprès Chauve",
+    [SPECIES_CEDRE]: "Cèdre",
+    [SPECIES_PIN]: "Pin",
+    [SPECIES_GINKOBILOBA]: "Ginkgo",
+    [SPECIES_CATALPA]: "Catalpa",
+    [SPECIES_LILAS_PERSE]: "Lilas de Perse",
+    [SPECIES_FIGUIER]: "Figuier",
+
+    // Érables
+    [SPECIES_ERABLE_SYCOMORE]: "Érable Sycomore",
+    [SPECIES_ERABLE_CHAMPETRE]: "Érable Champêtre",
+    [SPECIES_ERABLE_ARGENTE]: "Érable Argenté",
+    [SPECIES_ERABLE_NEGUNDO]: "Érable Negundo",
+    [SPECIES_ERABLE_PLANE]: "Érable Plane",
+    [SPECIES_ERABLE_OBIER]: "Érable à Feuilles d'Obier",
+    [SPECIES_ERABLE_MONTPELLIER]: "Érable de Montpellier",
+
+    // Chênes
+    [SPECIES_CHENE_PEDONCULE]: "Chêne Pédonculé",
+    [SPECIES_CHENE_SESSILE]: "Chêne Rouvre/Sessile",
+    [SPECIES_CHENE_PUBESCENT]: "Chêne Pubescent",
+    [SPECIES_CHENE_VERT]: "Chêne Vert",
+    [SPECIES_CHENE_LIEGE]: "Chêne Liège",
+    [SPECIES_CHENE_ROUGE]: "Chêne Rouge d'Amérique",
+
+    // Tilleuls
+    [SPECIES_TILLEUL_GRANDES_FEUILLES]: "Tilleul à Grandes Feuilles",
+    [SPECIES_TILLEUL_PETITES_FEUILLES]: "Tilleul à Petites Feuilles",
+    [SPECIES_TILLEUL_COMMUN]: "Tilleul Commun",
+    [SPECIES_TILLEUL_ARGENTE]: "Tilleul Argenté",
+
+    // Frênes
+    [SPECIES_FRENE_COMMUN]: "Frêne Commun",
+    [SPECIES_FRENE_FEUILLES_ETROITES]: "Frêne à Feuilles Étroites",
+    [SPECIES_FRENE_FLEURS]: "Frêne à Fleurs",
+
+    // Bouleaux
+    [SPECIES_BOULEAU]: "Bouleau Blanc",
+    [SPECIES_BOULEAU_PUBESCENT]: "Bouleau Pubescent",
+    [SPECIES_BOULEAU_NAIN]: "Bouleau Nain",
+    [SPECIES_BOULEAU_DORE]: "Bouleau Doré",
+
+    // Cornouillers
+    [SPECIES_CORNOUILLER_SANGUIN]: "Cornouiller Sanguin",
+    [SPECIES_CORNOUILLER_MALE]: "Cornouiller Mâle",
+
+    // Lauriers
+    [SPECIES_LAURIER_TIN]: "Laurier Tin",
+    [SPECIES_LAURIER_CERISE]: "Laurier Cerise",
+    [SPECIES_LAURIER_SAUCE]: "Laurier Sauce",
+    [SPECIES_LAURIER_ROSE]: "Laurier Rose",
+    [SPECIES_LAURIER_PORTUGAL]: "Laurier du Portugal",
+
+    // Ormes
+    [SPECIES_ORME_CHAMPETRE]: "Orme Champêtre",
+    [SPECIES_ORME_MONTAGNE]: "Orme de Montagne",
+    [SPECIES_ORME_LISSE]: "Orme Lisse",
+    [SPECIES_ORME_HOLLANDE]: "Orme de Hollande",
+
+    // Peupliers
+    [SPECIES_PEUPLIER_TREMBLE]: "Peuplier Tremble",
+    [SPECIES_PEUPLIER_NOIR]: "Peuplier Noir",
+    [SPECIES_PEUPLIER_BLANC]: "Peuplier Blanc",
+    [SPECIES_PEUPLIER_GRISARD]: "Peuplier Grisard",
+    [SPECIES_PEUPLIER_CANADA]: "Peuplier du Canada",
+
+    // Sorbiers
+    [SPECIES_SORBIER_OISELEURS]: "Sorbier des Oiseleurs",
+    [SPECIES_ALISIER_BLANC]: "Alisier Blanc",
+    [SPECIES_ALISIER_TORMINAL]: "Alisier Torminal",
+    [SPECIES_ALISIER_MOUGEOT]: "Alisier de Mougeot",
+    [SPECIES_SORBIER_NAIN]: "Sorbier Nain",
+    [SPECIES_SORBIER_DOMESTIQUE]: "Cormier",
+    [SPECIES_ALISIER_FONTAINEBLEAU]: "Alisier de Fontainebleau",
+
+    // Noyers
+    [SPECIES_NOYER]: "Noyer",
+    [SPECIES_NOYER_AMERIQUE]: "Noyer d'Amérique",
+
+    // Fusains
+    [SPECIES_FUSAIN]: "Fusain",
+    [SPECIES_FUSAIN_LARGE]: "Fusain à Larges Feuilles",
+    [SPECIES_FUSAIN_CHINE]: "Fusain de Chine",
+};
+
+
+// ================== ADDITIONAL METADATA ==================
+
+
+// Additional taxon keys for missing or rare but notable species
+const missingTaxonKeys = {
+    [SPECIES_SAULE_PLEUREUR]: 5372639,
+    [SPECIES_LIQUIDAMBAR]: 3152823,
+    [SPECIES_GINKOBILOBA]: 2687885,
+    [SPECIES_MAGNOLIA_GRANDIFLORA]: 9605163,
+    [SPECIES_SAVONNIER]: 3190053,
+    [SPECIES_PLATANE]: 3152811,
+    [SPECIES_CEDRE]: 2685742,
+    [SPECIES_PIN]: 2684241,
+    [SPECIES_NEFLIER_DU_JAPON]: 3024146,
+    [SPECIES_ERABLE_ARGENTE]: 3189837,
+    [SPECIES_ERABLE_OBIER]: 7100278,
+    [SPECIES_TILLEUL_ARGENTE]: 4259350,
+    [SPECIES_BOULEAU_NAIN]: 5332004,
+    [SPECIES_BOULEAU_DORE]: 5331763,
+    [SPECIES_ORME_HOLLANDE]: 7141604,
+    [SPECIES_SORBIER_DOMESTIQUE]: 3013215,
+    [SPECIES_ALISIER_FONTAINEBLEAU]: 9306058,
+    [SPECIES_FUSAIN_CHINE]: 3169137,
+
+}
+
+
+// ================== FAMILIES ==================
 
 const FAMILY_ERABLES = {
     familyName: "Érables*",
@@ -300,7 +451,7 @@ const COLLECTION_ERABLE_AUBEPINE = {
 
 // ==================== SPECIES LIST ====================
 
-const baseSpecies = [
+const baseSpeciesNames = [
     SPECIES_CHARME,
     SPECIES_HETRE,
     SPECIES_AUBEPINE,
@@ -337,7 +488,7 @@ const baseSpecies = [
 ];
 
 // Species a bit less common
-const harderSpecies = [
+const harderSpeciesNames = [
     SPECIES_GINKOBILOBA,
     SPECIES_CATALPA,
     SPECIES_LIQUIDAMBAR,
@@ -350,9 +501,115 @@ const harderSpecies = [
     FAMILY_SORBIERS, 
 ]
 
-const allSpecies = baseSpecies.concat(harderSpecies);
+const allSpeciesNames = baseSpeciesNames.concat(harderSpeciesNames);
 
-const collections = [
+function enrichSpecies(species, jsonData) {
+    // This processes the list of all available species names
+    // and enriches them with all available metadata
+
+    const enriched = species.map(speciesName => {
+
+        // If it's a rare species, use custom taxonKey and percentage
+        if (speciesName in missingTaxonKeys) {
+            return {
+                name: speciesName,
+                frenchName: latinToFrench[speciesName],
+                taxonKey: missingTaxonKeys[speciesName],
+                numberOfOccurrences: 1,
+                percentage: 0.1,
+            }
+        }
+
+        // Otherwise, fetch translation, and taxonKey, numberOfOccurences and percentage from jsonData
+        const data = jsonData.find(d => d.species === speciesName.replace(" x ", " ").replace(" × ", " "));
+
+        return {
+            name: speciesName,
+            frenchName: latinToFrench[speciesName],
+            taxonKey: data.taxonKey,
+            numberOfOccurrences: data.numberOfOccurrences,
+            percentage: data.intraSpeciesPercentage,
+        }
+    });
+
+    return enriched;
+}
+
+
+function recomputePercentage() {
+    // Recompute percentage for Sorbiers and Lauriers 
+    // which are a collection of species and not a real genus
+    const families = allSpecies.filter(species => !('taxonKey' in species) && (species.familyName == "Lauriers" || species.familyName == "Sorbiers"));
+    
+    // For each family
+    families.forEach(family => {
+        // Find total number of occurences in family
+        var total = 0
+        family.species.forEach(species => {
+            total += species.numberOfOccurrences
+        });
+
+        // Recompute percentage for each species
+        family.species.forEach(species => {
+            // Find in json where species.latin matches "species"
+            species.percentage = species.numberOfOccurrences / total * 100
+        });
+    });
+}
+
+
+// Function to process a species list, handling both individual species and families
+function processSpeciesList(speciesList, enrichedSpecies) {
+    return speciesList.flatMap(item => {
+        // Check if the item is a family dict, in which case
+        // we replace "main" and all "species"
+        if (item.constructor == Object) {
+            // Process each species in the family, plus the main one
+            item.main = enrichedSpecies.find(s => s.name === item.main);
+            item.species = item.species.map(s => enrichedSpecies.find(e => e.name === s));
+            item.associates = item.associates.map(s => enrichedSpecies.find(e => e.name === s));
+            return item;
+        } else {
+            // Process individual species
+            const enriched = enrichedSpecies.find(s => s.name === item);
+            return enriched;
+        }
+    });
+}
+
+// Declare variables globally
+let enrichedSpecies = [];
+let baseSpecies = [];
+let harderSpecies = [];
+let allSpecies = [];
+let collections = [
     COLLECTION_ORME_CHARME,
     COLLECTION_ERABLE_AUBEPINE,
 ]
+
+async function loadSpecies(){
+    // Enrich species with all available metadata (translation, dict, etc.)
+    await $.getJSON("france_plants_percentages.json", function(jsonData){
+
+        // First enrich everything without thinking about families
+        // Easiest (but hacky) way is to use translation dict keys
+        // This assumes they will always be all keys in the dict
+        enrichedSpecies = enrichSpecies(Object.keys(latinToFrench), jsonData);
+
+        // Enrich
+        baseSpecies = processSpeciesList(baseSpeciesNames, enrichedSpecies);
+        harderSpecies = processSpeciesList(harderSpeciesNames, enrichedSpecies);
+        allSpecies = baseSpecies.concat(harderSpecies);
+
+        collections = collections.map(collection => {
+            return {
+                name: collection.name,
+                species: collection.species.map(s => enrichedSpecies.find(e => e.name === s))
+            }
+        });
+
+        // Recompute percentages for fake families like Lauriers or Sorbiers
+        recomputePercentage();
+    });
+}
+

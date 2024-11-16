@@ -1,70 +1,19 @@
-var percentData = null
 
-function findPercentage(species) {
+$(document).ready(async function() {
 
-    // Find in json where species.latin matches "species"
-    for (let i = 0; i < percentData.length; i++) {
-        // Replace "a x b" by "a b"
-        if (percentData[i].species === species.latin.replace(" x ", " ").replace(" × ", " ")) {
-            return percentData[i].intraSpeciesPercentage
-        }
-    }
+    // Load species
+    await loadSpecies();
+    populateSpecies();
+})
 
-    // Not found
-    return false   
-}
-
-$(document).ready(function() {
-
-    $.getJSON("france_plants_percentages.json", function(data){
-        percentData = data;
-
-        // Recompute for families
-        // This is necessary for Sorbiers and Lauriers which are not a real genus
-        // but a collection of species
-        // Filter for Sorbiers and Lauriers families
-        const families = allSpecies.filter(species => !('taxonKey' in species) && (species.familyName == "Lauriers" || species.familyName == "Sorbiers"));
-        
-        // For each family
-        families.forEach(family => {
-            // Find total number of occurences in percentData
-            var total = 0
-            family.species.forEach(species => {
-                // Find in json where species.latin matches "species"
-                for (let i = 0; i < percentData.length; i++) {
-                    // Replace "a x b" by "a b"
-                    if (percentData[i].species === species.latin.replace(" x ", " ").replace(" × ", " ")) {
-                        total += percentData[i].numberOfOccurrences
-                    }
-                }
-            });
-
-            // Recompute percentage for each species
-            family.species.forEach(species => {
-                // Find in json where species.latin matches "species"
-                for (let i = 0; i < percentData.length; i++) {
-                    // Replace "a x b" by "a b"
-                    if (percentData[i].species === species.latin.replace(" x ", " ").replace(" × ", " ")) {
-                        percentData[i].intraSpeciesPercentage = percentData[i].numberOfOccurrences / total * 100
-                    }
-                }
-            });
-
-           
-        });
-
-
-        populateSpecies();
-    })
-
-});
 
 function populateSpecies() {
     const $speciesFamilies = $('#species-families');
     
     const individualSpecies = allSpecies.filter(species => 'taxonKey' in species);
+    
     // Sort by name
-    individualSpecies.sort((a, b) => a.name.localeCompare(b.name));
+    individualSpecies.sort((a, b) => a.frenchName.localeCompare(b.frenchName));
 
     let html = `
         <div class="species-category">
@@ -92,7 +41,7 @@ function populateSpecies() {
         `;
         
         family.species.forEach(species => {
-            percentage = findPercentage(species);
+            percentage = species.percentage;
             html += createSpeciesCard(species, true, percentage);
         });
         
@@ -118,7 +67,7 @@ function populateSpecies() {
 function createSpeciesCard(species, forcePercentage=false, percentage=false) {
     var percentageString = ""
     if (percentage || forcePercentage){
-        if (!percentage){
+        if (percentage < 1.0){
             percentageString = " (<1%)"
         } else {
             percentageString = " (" + Math.floor(percentage) + "%)"
@@ -134,8 +83,8 @@ function createSpeciesCard(species, forcePercentage=false, percentage=false) {
 
     return `
         <button ${opacityString} class="species-button unselected weighted" data-taxon="${species.taxonKey}">
-            <span class="species-name">${species.name}${percentageString}</span>
-            <span class="latin-name">${species.latin}</span>
+            <span class="species-name">${species.frenchName}${percentageString}</span>
+            <span class="latin-name">${species.name}</span>
         </button>
     `;
     
