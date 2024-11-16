@@ -67,10 +67,10 @@ const SPECIES_CORNOUILLER_SANGUIN = { name: "Cornouiller Sanguin", latin: "Cornu
 const SPECIES_CORNOUILLER_MALE = { name: "Cornouiller Mâle", latin: "Cornus mas", taxonKey: 3082263 };
 
 // Lauriers
-const SPECIES_LAURIER_SAUCE = { name: "Laurier Sauce", latin: "Laurus nobilis", taxonKey: 3034015 };
 const SPECIES_LAURIER_TIN = { name: "Laurier Tin", latin: "Viburnum tinus", taxonKey: 2888585 };
-const SPECIES_LAURIER_ROSE = { name: "Laurier Rose", latin: "Nerium oleander", taxonKey: 3169756 };
 const SPECIES_LAURIER_CERISE = { name: "Laurier Cerise", latin: "Prunus laurocerasus", taxonKey: 3021496 };
+const SPECIES_LAURIER_SAUCE = { name: "Laurier Sauce", latin: "Laurus nobilis", taxonKey: 3034015 };
+const SPECIES_LAURIER_ROSE = { name: "Laurier Rose", latin: "Nerium oleander", taxonKey: 3169756 };
 const SPECIES_LAURIER_PORTUGAL = { name: "Laurier du Portugal", latin: "Prunus lusitanica", taxonKey: 3020871 };
 
 // Ormes
@@ -90,9 +90,9 @@ const SPECIES_PEUPLIER_CANADA = { name: "Peuplier du Canada", latin: "Populus ×
 const SPECIES_SORBIER_OISELEURS = { name: "Sorbier des Oiseleurs", latin: "Sorbus aucuparia", taxonKey: 3012167 };
 const SPECIES_ALISIER_BLANC = { name: "Alisier Blanc", latin: "Aria edulis", taxonKey: 8411755 };
 const SPECIES_ALISIER_TORMINAL = { name: "Alisier Torminal", latin: "Torminalis glaberrima", taxonKey: 1277891 }; // Looks like maple TODO BROKEN
-const SPECIES_SORBIER_DOMESTIQUE = { name: "Cormier", latin: "Sorbus domestica", taxonKey: 3013215 };
 const SPECIES_ALISIER_MOUGEOT = { name: "Alisier de Mougeot", latin: "Hedlundia mougeotii", taxonKey: 9312105 };
 const SPECIES_SORBIER_NAIN = { name: "Sorbier Nain", latin: "Chamaemespilus alpina", taxonKey: 3025093 };
+const SPECIES_SORBIER_DOMESTIQUE = { name: "Cormier", latin: "Sorbus domestica", taxonKey: 3013215 };
 const SPECIES_ALISIER_FONTAINEBLEAU = { name: "Alisier de Fontainebleau", latin: "Sorbus domestica", taxonKey: 9306058 };
 
 // Noyer
@@ -184,10 +184,10 @@ const FAMILY_LAURIERS = {
     main: SPECIES_LAURIER_SAUCE,
     mainName: "Laurier",
     species: [
-        SPECIES_LAURIER_SAUCE,
         SPECIES_LAURIER_TIN,
-        SPECIES_LAURIER_ROSE,
         SPECIES_LAURIER_CERISE,
+        SPECIES_LAURIER_SAUCE,
+        SPECIES_LAURIER_ROSE,
         SPECIES_LAURIER_PORTUGAL,
     ],
     associates: []
@@ -245,9 +245,9 @@ const FAMILY_SORBIERS = {
         SPECIES_SORBIER_OISELEURS,
         SPECIES_ALISIER_BLANC,
         SPECIES_ALISIER_TORMINAL,
-        SPECIES_SORBIER_DOMESTIQUE,
         SPECIES_ALISIER_MOUGEOT,
         SPECIES_SORBIER_NAIN,
+        SPECIES_SORBIER_DOMESTIQUE,
         SPECIES_ALISIER_FONTAINEBLEAU,
     ],
     associates: []

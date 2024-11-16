@@ -18,6 +18,42 @@ $(document).ready(function() {
 
     $.getJSON("france_plants_percentages.json", function(data){
         percentData = data;
+
+        // Recompute for families
+        // This is necessary for Sorbiers and Lauriers which are not a real genus
+        // but a collection of species
+        // Filter for Sorbiers and Lauriers families
+        const families = allSpecies.filter(species => !('taxonKey' in species) && (species.familyName == "Lauriers" || species.familyName == "Sorbiers"));
+        
+        // For each family
+        families.forEach(family => {
+            // Find total number of occurences in percentData
+            var total = 0
+            family.species.forEach(species => {
+                // Find in json where species.latin matches "species"
+                for (let i = 0; i < percentData.length; i++) {
+                    // Replace "a x b" by "a b"
+                    if (percentData[i].species === species.latin.replace(" x ", " ").replace(" × ", " ")) {
+                        total += percentData[i].numberOfOccurrences
+                    }
+                }
+            });
+
+            // Recompute percentage for each species
+            family.species.forEach(species => {
+                // Find in json where species.latin matches "species"
+                for (let i = 0; i < percentData.length; i++) {
+                    // Replace "a x b" by "a b"
+                    if (percentData[i].species === species.latin.replace(" x ", " ").replace(" × ", " ")) {
+                        percentData[i].intraSpeciesPercentage = percentData[i].numberOfOccurrences / total * 100
+                    }
+                }
+            });
+
+           
+        });
+
+
         populateSpecies();
     })
 
@@ -56,15 +92,8 @@ function populateSpecies() {
         `;
         
         family.species.forEach(species => {
-            // Get the percentage of the family
             percentage = findPercentage(species);
-            // Avoid weird families like laurier and sorbier
-            // TODO fix with intra family proportion
-            if (family.familyName == "Lauriers" || family.familyName == "Sorbiers"){
-                html += createSpeciesCard(species);
-            } else {
-                html += createSpeciesCard(species, true, percentage);
-            }
+            html += createSpeciesCard(species, true, percentage);
         });
         
         if (family.associates && family.associates.length > 0) {
