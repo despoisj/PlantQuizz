@@ -114,7 +114,7 @@ const SPECIES_ALISIER_TORMINAL = "Torminalis glaberrima";
 const SPECIES_ALISIER_MOUGEOT = "Hedlundia mougeotii";
 const SPECIES_SORBIER_NAIN = "Chamaemespilus alpina";
 const SPECIES_SORBIER_DOMESTIQUE = "Cormus domestica"; // "Sorbus domestica";
-const SPECIES_ALISIER_FONTAINEBLEAU = "Sorbus latifolia";
+const SPECIES_ALISIER_FONTAINEBLEAU = "Karpatiosorbus latifolia"; // "Sorbus latifolia";
 
 // Noyer
 const SPECIES_NOYER = "Juglans regia";
@@ -269,7 +269,6 @@ const latinToFrench = {
 const missingTaxonKeys = {
     [SPECIES_CEDRE]: 2685742,
     [SPECIES_PIN]: 2684241,
-    [SPECIES_ALISIER_FONTAINEBLEAU]: 9306058,
 }
 
 
@@ -641,7 +640,6 @@ function recomputePercentage() {
         family.species.forEach(species => {
             total += parseInt(species.numberOfOccurrences)
         });
-        console.log(family, total)
 
         // Recompute percentage for each species
         family.species.forEach(species => {
