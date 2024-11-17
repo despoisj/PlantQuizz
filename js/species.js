@@ -604,7 +604,7 @@ const harderSpeciesNames = [
 
 const allSpeciesNames = baseSpeciesNames.concat(harderSpeciesNames);
 
-function enrichSpecies(species, jsonData) {
+function enrichSpecies(species, csvData) {
     // This processes the list of all available species names
     // and enriches them with all available metadata
 
@@ -624,9 +624,9 @@ function enrichSpecies(species, jsonData) {
             enrichedCurrent["percentage"] = 0.1;
             return enrichedCurrent;
         } else {
-            // Otherwise, fetch translation, and taxonKey, numberOfOccurences and percentage from jsonData
+            // Otherwise, fetch translation, and taxonKey, numberOfOccurences and percentage from csvData
             try {
-                const data = jsonData.find(d => d.species === speciesName.replace(" x ", " ").replace(" × ", " ").replace("æ","ae"));
+                const data = csvData.find(d => d.species === speciesName.replace(" x ", " ").replace(" × ", " ").replace("æ","ae"));
                 enrichedCurrent["taxonKey"] = data.taxonKey;
                 enrichedCurrent["numberOfOccurrences"] = data.numberOfOccurrences;
                 enrichedCurrent["percentage"] = data.intraSpeciesPercentage;
@@ -696,12 +696,14 @@ let collections = [
 
 async function loadSpecies(){
     // Enrich species with all available metadata (translation, dict, etc.)
-    await $.getJSON("france_plants_percentages.json", function(jsonData){
+    // First load the CSV file
+    await $.get('france_plants_percentages.csv', function(data) {
+        csvData = $.csv.toObjects(data, {"separator":";"})
 
         // First enrich everything without thinking about families
         // Easiest (but hacky) way is to use translation dict keys
         // This assumes they will always be all keys in the dict
-        enrichedSpecies = enrichSpecies(Object.keys(latinToFrench), jsonData);
+        enrichedSpecies = enrichSpecies(Object.keys(latinToFrench), csvData);
 
         // Enrich
         baseSpecies = processSpeciesList(baseSpeciesNames, enrichedSpecies);
@@ -717,6 +719,8 @@ async function loadSpecies(){
 
         // Recompute percentages for fake families like Lauriers or Sorbiers
         recomputePercentage();
+        
     });
+
 }
 
