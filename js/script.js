@@ -78,6 +78,9 @@ function expandFamilies(species, simple){
         }
     })
 
+    // Lazy way to take care of double entrees (e.g. pommier alone in simple + fruitiers in hard)
+    expandedSpecies = [...new Set(expandedSpecies)];
+
     return expandedSpecies;
 }
 
