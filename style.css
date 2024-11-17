@@ -127,7 +127,7 @@ body {
     min-height: 100vh;
     margin: 0;
     background-color: #e6f2e6; /* Light green background */
-    background-image: url('leaf.png'); /* Leaf pattern overlay */
+    background-image: url('img/leaf.png'); /* Leaf pattern overlay */
     background-size: 200px 200px;
     background-repeat: repeat;
     color: #333;
