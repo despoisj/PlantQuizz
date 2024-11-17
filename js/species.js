@@ -113,7 +113,7 @@ const SPECIES_ALISIER_BLANC = "Aria edulis";
 const SPECIES_ALISIER_TORMINAL = "Torminalis glaberrima";
 const SPECIES_ALISIER_MOUGEOT = "Hedlundia mougeotii";
 const SPECIES_SORBIER_NAIN = "Chamaemespilus alpina";
-const SPECIES_SORBIER_DOMESTIQUE = "Sorbus domestica";
+const SPECIES_SORBIER_DOMESTIQUE = "Cormus domestica"; // "Sorbus domestica";
 const SPECIES_ALISIER_FONTAINEBLEAU = "Sorbus latifolia";
 
 // Noyer
@@ -269,7 +269,6 @@ const latinToFrench = {
 const missingTaxonKeys = {
     [SPECIES_CEDRE]: 2685742,
     [SPECIES_PIN]: 2684241,
-    [SPECIES_SORBIER_DOMESTIQUE]: 3013215,
     [SPECIES_ALISIER_FONTAINEBLEAU]: 9306058,
 }
 
@@ -320,10 +319,10 @@ const FAMILY_ERABLES = {
         SPECIES_ERABLE_CHAMPETRE,
         SPECIES_ERABLE_SYCOMORE,
         SPECIES_ERABLE_PLANE,
+        SPECIES_ERABLE_OBIER,
         SPECIES_ERABLE_NEGUNDO,
         SPECIES_ERABLE_MONTPELLIER,
         SPECIES_ERABLE_ARGENTE,
-        SPECIES_ERABLE_OBIER,
     ],
     associates: [
         SPECIES_ALISIER_TORMINAL,
@@ -631,15 +630,18 @@ function enrichSpecies(species, csvData) {
 function recomputePercentage() {
     // Recompute percentage for Sorbiers and Lauriers 
     // which are a collection of species and not a real genus
-    const families = allSpecies.filter(species => !('taxonKey' in species) && (species.familyName == "Lauriers" || species.familyName == "Sorbiers"));
-    
+    const fakeFamilyNames = ["Lauriers", "Sorbiers"];
+    const families = allSpecies.filter(species => fakeFamilyNames.includes(species.familyName));
+
     // For each family
     families.forEach(family => {
+        console.log(family)
         // Find total number of occurences in family
         var total = 0
         family.species.forEach(species => {
-            total += species.numberOfOccurrences
+            total += parseInt(species.numberOfOccurrences)
         });
+        console.log(family, total)
 
         // Recompute percentage for each species
         family.species.forEach(species => {
