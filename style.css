@@ -569,7 +569,8 @@ img {
     font-size: 0.9rem;
 }
 
-.wiki-link {
+.gbif-link {
+    font-size: 0.85rem;
     display: inline-flex;
     align-items: center;
     padding: 8px 16px;
@@ -578,14 +579,14 @@ img {
     text-decoration: none;
     border-radius: 20px;
     transition: background-color 0.3s;
-    margin-top: 15px;
+    margin-top: 0px;
 }
 
-.wiki-link:hover {
+.gbif-link:hover {
     background-color: #e9ecef;
 }
 
-.wiki-link i {
+.gbif-link i {
     margin-right: 8px;
 }
 

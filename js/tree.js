@@ -40,11 +40,12 @@ $(document).ready(async function() {
         $('#altNames').html(altNamesHtml);
     }
 
-    // Add wiki link if it exists
-    if (tree.wiki) {
-        $('#wikiLink').attr('href', tree.wiki);
+    // Add gbif link if it exists
+    if (true) {
+        console.log(tree.taxonKey)
+        $('#gbifLink').attr('href', "https://www.gbif.org/species/" + tree.taxonKey);
     } else {
-        $('#wikiLink').hide();
+        $('#gbifLink').hide();
     }
 
     // Fetch images

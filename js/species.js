@@ -731,7 +731,6 @@ function recomputePercentage() {
 
     // For each family
     families.forEach(family => {
-        console.log(family)
         // Find total number of occurences in family
         var total = 0
         family.species.forEach(species => {
