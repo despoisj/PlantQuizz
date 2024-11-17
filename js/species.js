@@ -682,7 +682,7 @@ let collections = [
 async function loadSpecies(){
     // Enrich species with all available metadata (translation, dict, etc.)
     // First load the CSV file
-    await $.get('france_plants_percentages.csv', function(data) {
+    await $.get('data/france_plants_percentages.csv', function(data) {
         csvData = $.csv.toObjects(data, {"separator":";"})
 
         // First enrich everything without thinking about families
