@@ -190,24 +190,9 @@ function populateSelection(simple){
 }
 
 
-
-
 function reloadImages(){
     // GBIF API URL for fetching images based on the selected taxon key
-    const apiUrl = `https://api.gbif.org/v1/occurrence/search?taxonKey=${taxonKey}&mediaType=StillImage&basisOfRecord=HUMAN_OBSERVATION&datasetKey=${PLANTNET_DATASET_KEY}&datasetKey=${PLANTNET_CROWD_DATASET_KEY}&month=4,10&limit=500`;
-
-    // Make an AJAX request to fetch images
-    $.ajax({
-        url: apiUrl,
-        method: 'GET',
-        success: function(data) {
-            displayData(data)
-        },
-        error: function(error) {
-            console.error("Error fetching images:", error);
-            alert("Failed to fetch images. Please try again.");
-        }
-    });
+    fetchImagesGeneric(taxonKey, 500, true, displayData);
 }
 
 async function displayData(data){
@@ -238,9 +223,20 @@ async function displayData(data){
         // Find how many images and of which parts in observation
         // Extensions is an array
         var extensions = result.extensions["http://rs.tdwg.org/ac/terms/Multimedia"]
-        var subjectParts = extensions.map(function(extension) {
-            return extension["http://rs.tdwg.org/ac/terms/tag"];
-        });
+        var subjectParts = ""
+        if (extensions == undefined || extensions[0] == undefined || extensions[0]["http://rs.tdwg.org/ac/terms/tag"] == undefined){
+            // We don't have plantnet data, do something simpler
+            // Hack to be compliant with lower logic looking for bark then leafs
+            subjectParts = []
+            for (var i = 0; i < result.media.length; i++){
+                subjectParts.push(barkFound ? "leaf" : "bark")
+            }
+        } else {
+            // Grab subject part like plantnet
+            subjectParts = extensions.map(function(extension) {
+                return extension["http://rs.tdwg.org/ac/terms/tag"];
+            });
+        }
 
         // Ideally we get 4 leaves and 1 bark, else random fruit flower ?
         // Only keep the index of leaves (or bark if already 5 leaves?)
@@ -268,7 +264,7 @@ async function displayData(data){
                 return;
             }
         };
-        
+
         nb_total += 1;
 
         // Store the image URL in our array for modal
@@ -312,9 +308,6 @@ function fetchImages() {
     // Randomly pick one of the selected species
     taxonKey = selectedSpecies[Math.floor(Math.random() * selectedSpecies.length)];
 
-    // GBIF API URL for fetching images based on the selected taxon key
-    const apiUrl = `https://api.gbif.org/v1/occurrence/search?taxonKey=${taxonKey}&mediaType=StillImage&basisOfRecord=HUMAN_OBSERVATION&datasetKey=${PLANTNET_DATASET_KEY}&datasetKey=${PLANTNET_CROWD_DATASET_KEY}&month=4,10&limit=200`;
-
     // Make current images grayscale while new ones load
     $('#images-container img').addClass('greyish');
 
@@ -322,56 +315,50 @@ function fetchImages() {
     $("#speciesSelection").hide()
     $("#mainQuizz").show()
 
-    // Make an AJAX request to fetch images
-    $.ajax({
-        url: apiUrl,
-        method: 'GET',
-        success: function(data) {
-            // Display images
-            displayData(data);
 
-            // Clear previous quiz options
-            const $quizContainer = $('#quizz-container').empty();
-            $('#quizz-result').text("");
+    // Get images and create quizz answers
+    fetchImagesGeneric(taxonKey, 500, true, displayDataPopulateQuizz);
+}
 
-            // Populate quiz options in #quizz-container
-            selectedSpecies.forEach(speciesKey => {                
-                // Find name in species with given taxonKey
-                const speciesName = species.filter(item => "" + item.taxonKey === "" + speciesKey)[0].commonName
+function displayDataPopulateQuizz(data){
+    // Display images
+    displayData(data);
 
-                const quizButton = $('<button>')
-                    .text(speciesName)
-                    .addClass('quizz-button')
-                    .data('speciesKey', speciesKey)  // Store speciesKey as data on the button
-                    .on('click', function() {
-                         // Check if the selected speciesKey matches the taxonKey
-                        const container = $('.container');
-                        if (speciesKey === taxonKey) {
-                            container.addClass('flash-correct');
+    // Clear previous quiz options
+    const $quizContainer = $('#quizz-container').empty();
+    $('#quizz-result').text("");
 
-                            // Remove the flash class after animation ends
-                            setTimeout(() => {
-                                // Scroll to the top of page smoothly
-                                window.scrollTo({ top: 100, behavior: 'smooth' });
+    // Populate quiz options in #quizz-container
+    selectedSpecies.forEach(speciesKey => {                
+        // Find name in species with given taxonKey
+        const speciesName = species.filter(item => "" + item.taxonKey === "" + speciesKey)[0].commonName
 
-                                fetchImages(); // Skip to next one
-                            }, 100);
-                        } else {
-                            container.addClass('flash-wrong');
-                        }
-                        // Remove the flash class after animation ends
-                        setTimeout(() => {
-                            container.removeClass('flash-correct flash-wrong');
-                        }, 800);
-                    });
-                $('#quizz-container').append(quizButton);
+        const quizButton = $('<button>')
+            .text(speciesName)
+            .addClass('quizz-button')
+            .data('speciesKey', speciesKey)  // Store speciesKey as data on the button
+            .on('click', function() {
+                 // Check if the selected speciesKey matches the taxonKey
+                const container = $('.container');
+                if (speciesKey === taxonKey) {
+                    container.addClass('flash-correct');
+
+                    // Remove the flash class after animation ends
+                    setTimeout(() => {
+                        // Scroll to the top of page smoothly
+                        window.scrollTo({ top: 100, behavior: 'smooth' });
+
+                        fetchImages(); // Skip to next one
+                    }, 100);
+                } else {
+                    container.addClass('flash-wrong');
+                }
+                // Remove the flash class after animation ends
+                setTimeout(() => {
+                    container.removeClass('flash-correct flash-wrong');
+                }, 800);
             });
-        },
-        error: function(error) {
-            console.error("Error fetching images:", error);
-            console.error("Error taxonKey:", taxonKey)
-            alert("Failed to fetch images. Please try again.");
-        }
+        $('#quizz-container').append(quizButton);
     });
 }
 

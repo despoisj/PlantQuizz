@@ -1,24 +1,12 @@
-// TODO NEW MODEL
-// SPECIES IS ONLY LATIN NAME (attention x )
-// ONCE LISTS ARE DEFINED, ENRICH WITH INFO FROM JSON
-// AND TRADUCTIONS
-// For each species (that has only a name)
-// Make an object with french name, latin name, taxonKey, nbOccurences, etc.
-// Then we only use that, this will allow easy translation if wanted.
-
-
 // Individual species
 const SPECIES_CHARME = "Carpinus betulus";
 const SPECIES_HETRE = "Fagus sylvatica";
-const SPECIES_AUBEPINE = "Crataegus monogyna";
 const SPECIES_MARRONNIER = "Aesculus hippocastanum";
 const SPECIES_CHATAIGNIER = "Castanea sativa";
 const SPECIES_SAULE_PLEUREUR = "Salix babylonica";
 const SPECIES_PRUNIER = "Prunus domestica";
-const SPECIES_MICOCOULIER = "Celtis australis";
 const SPECIES_LIQUIDAMBAR = "Liquidambar styraciflua";
 const SPECIES_AULNE_GLUTINEUX = "Alnus glutinosa";
-const SPECIES_NEFLIER_DU_JAPON = "Eriobotrya japonica";
 const SPECIES_COTONEASTER = "Cotoneaster horizontalis";
 const SPECIES_ARBRE_DE_JUDEE = "Cercis siliquastrum";
 const SPECIES_TULIPIER = "Liriodendron tulipifera";
@@ -27,7 +15,6 @@ const SPECIES_NOISETIER = "Corylus avellana";
 const SPECIES_ARBOUSIER = "Arbutus unedo";
 const SPECIES_OLIVIER = "Olea europaea";
 const SPECIES_SAVONNIER = "Koelreuteria paniculata";
-const SPECIES_PLATANE = "Platanus × acerifolia";
 const SPECIES_CYPRES_CHAUVE = "Taxodium distichum";
 const SPECIES_CEDRE = "Cedrus";
 const SPECIES_PIN = "Pinus";
@@ -35,6 +22,33 @@ const SPECIES_GINKOBILOBA = "Ginkgo biloba";
 const SPECIES_CATALPA = "Catalpa bignonioides";
 const SPECIES_LILAS_PERSE = "Melia azedarach";
 const SPECIES_FIGUIER = "Ficus carica";
+
+// Misc
+const SPECIES_NEFLIER = "Mespilus germanica"; // TODO make a family with the two or just fruit trees?
+const SPECIES_NEFLIER_DU_JAPON = "Eriobotrya japonica";
+
+// Fruitiers
+const POMMIER = "Malus domestica";
+const POMMIER_SAUVAGE = "Malus sylvestris";
+
+const POIRIER = "Pyrus communis";
+const POIRIER_SAUVAGE = "Pyrus pyraster"; // TODO no plantnetdata...
+const POIRIER_EPINEUX = "Pyrus spinosa";
+const POIRIER_CORDE = "Pyrus cordata";
+
+// Aubépines
+const SPECIES_AUBEPINE = "Crataegus monogyna";
+const SPECIES_AUBEPINE_EPINEUSE = "Crataegus laevigata";
+const SPECIES_AUBEPINE_ESPAGNE = "Crataegus azarolus";
+
+// Micocouliers
+const SPECIES_MICOCOULIER = "Celtis australis";
+const SPECIES_MICOCOULIER_OCCIDENTAL = "Celtis occidentalis";
+
+// Platanes
+const SPECIES_PLATANE = "Platanus × hispanica";
+const SPECIES_PLATANE_ORIENT = "Platanus orientalis";
+const SPECIES_PLATANE_OCCIDENT = "Platanus occidentalis";
 
 // Érable family
 const SPECIES_ERABLE_SYCOMORE = "Acer pseudoplatanus";
@@ -114,36 +128,62 @@ const SPECIES_FUSAIN_CHINE = "Euonymus fortunei";
 
 // =================== TRANSLATIONS ================
 // Note: this is necessary because they aren't provided 
-// in the gbif dataset (which is consolidated into the .json file)
+// in the gbif dataset (the one consolidated into the .json file)
 
 const latinToFrench = {
     [SPECIES_CHARME]: ["Charme", "Charme Commun", "Charmille"],
     [SPECIES_HETRE]: ["Hêtre"],
-    [SPECIES_AUBEPINE]: ["Aubépine"],
     [SPECIES_MARRONNIER]: ["Marronnier",  "Marronnier d'Inde", "Marronnier d'Europe", "Marronnier Blanc", "Châtaignier de Mer", "Marronnier Faux-Châtaignier", "Châtaignier des Chevaux"],
     [SPECIES_CHATAIGNIER]: ["Châtaignier", "Arbre à Pain", "Pain des Pauvres"],
     [SPECIES_SAULE_PLEUREUR]: ["Saule Pleureur"],
     [SPECIES_PRUNIER]: ["Prunier"],
-    [SPECIES_MICOCOULIER]: ["Micocoulier"],
+    
     [SPECIES_LIQUIDAMBAR]: ["Liquidambar"],
     [SPECIES_AULNE_GLUTINEUX]: ["Aulne Glutineux", "Aulne Noir", "Aulne Poisseux", "Vergne", "Verne"],
-    [SPECIES_NEFLIER_DU_JAPON]: ["Néflier du Japon", "Bibacier", "Bibassier"],
-    [SPECIES_COTONEASTER]: ["Cotoneaster"],
+    [SPECIES_COTONEASTER]: ["Cotoneaster"], // Note: there are 5 species, but it's not really a tree, good enough for now
     [SPECIES_ARBRE_DE_JUDEE]: ["Arbre de Judée", "Gainier Silicastre"],
     [SPECIES_TULIPIER]: ["Tulipier", "Arbre aux Lis"],
     [SPECIES_MAGNOLIA_GRANDIFLORA]: ["Magnolia", "Magnolia à Grandes Fleurs", "Magnolier à Grandes Fleurs", "Laurier-Tulipier"],
-    [SPECIES_NOISETIER]: ["Noisetier"],
+    [SPECIES_NOISETIER]: ["Noisetier", "Coudriers", "Aveliniers"],
     [SPECIES_ARBOUSIER]: ["Arbousier", "Arbre à Fraises"],
     [SPECIES_OLIVIER]: ["Olivier"],
     [SPECIES_SAVONNIER]: ["Savonnier", "Savonnier de Chine", "Bois de Panama", "Arbre aux Lanternes", "Arbre à Pluie d'Or", "Mimosa d'Été", "Lampions de Chine"],
-    [SPECIES_PLATANE]: ["Platane"],
     [SPECIES_CYPRES_CHAUVE]: ["Cyprès Chauve"],
-    [SPECIES_CEDRE]: ["Cèdre"],
-    [SPECIES_PIN]: ["Pin"],
     [SPECIES_GINKOBILOBA]: ["Ginkgo", "Arbre aux Quarante Écus", "Arbre aux Abricots d'Argent"],
-    [SPECIES_CATALPA]: ["Catalpa"],
+    [SPECIES_CATALPA]: ["Catalpa", "Catalpa Commun", "Arbre aux Haricots", "Catalpa Boule"],
     [SPECIES_LILAS_PERSE]: ["Lilas de Perse", "Margousier à Feuilles de Frêne", "Mélia Faux-Neem"],
     [SPECIES_FIGUIER]: ["Figuier", "Figuier Comestible", "Figuier Commun", "Figuier de Carie", "Arbre à Cariques", "Figuier sauvage (♂)", "Caprifiguier (♂)", "Figuier de Bouc (♂)"],
+
+    // Nefliers
+    [SPECIES_NEFLIER]: ["Néflier", "Néflier d'Allemagne", "Mêlier", "Mespoulo", "Nesplier"],
+    [SPECIES_NEFLIER_DU_JAPON]: ["Néflier du Japon", "Bibacier", "Bibassier"],
+
+    // Fruitiers
+    [POMMIER_SAUVAGE]: ["Pommier Sauvage", "Boquettier", "Pommier des Bois"],
+    [POMMIER]: ["Pommier Domestique", "Pommier Commun"],
+    [POIRIER_SAUVAGE]: ["Poirier Sauvage"],
+    [POIRIER]: ["Poirier Commun"],
+    [POIRIER_EPINEUX]: ["Poirier Épineux", "Poirier à Feuilles d'Amandier"],
+    [POIRIER_CORDE]: ["Poirier à Feuilles en Cœur", "Poirasse"], //TODO
+
+
+    // Resineux
+    [SPECIES_CEDRE]: ["Cèdre"],
+    [SPECIES_PIN]: ["Pin"],
+
+    // Aubépines
+    [SPECIES_AUBEPINE]: ["Aubépine Monogyne", "Aubépine à Un Style"],
+    [SPECIES_AUBEPINE_EPINEUSE]: ["Aubépine Lisse", "Aubépine à Deux Styles", "Aubépine Épineuse"],
+    [SPECIES_AUBEPINE_ESPAGNE]: [ "Azérolier", "Azarolier", "Épine d'Espagne", "Pommette"],
+
+    // Platanes
+    [SPECIES_PLATANE]: ["Platane Commun", "Platane à Feuilles d'Érable"],
+    [SPECIES_PLATANE_ORIENT]: ["Platane d'Orient"],
+    [SPECIES_PLATANE_OCCIDENT]: ["Platane d'Amérique", "Platane Occidental", "Sycamore"],
+
+    // Micocouliers
+    [SPECIES_MICOCOULIER]: ["Micocoulier de Provence", "Micocoulier du Midi"],
+    [SPECIES_MICOCOULIER_OCCIDENTAL]: ["Micocoulier Occidental", "Micocoulier de Virginie"],
 
     // Érables
     [SPECIES_ERABLE_SYCOMORE]: ["Érable Sycomore"],
@@ -179,44 +219,44 @@ const latinToFrench = {
     [SPECIES_BOULEAU_DORE]: ["Bouleau Doré"],
 
     // Cornouillers
-    [SPECIES_CORNOUILLER_SANGUIN]: ["Cornouiller Sanguin"],
-    [SPECIES_CORNOUILLER_MALE]: ["Cornouiller Mâle"],
+    [SPECIES_CORNOUILLER_SANGUIN]: ["Cornouiller Sanguin", "Bois Puant", "Pois Punais", "Cornouiller Femelle", "Olivier de Normandie", "Puègne Blanche", "Sanguin", "Sanguine"],
+    [SPECIES_CORNOUILLER_MALE]: ["Cornouiller Mâle", "Cornier", "Fuselier"],
 
     // Lauriers
-    [SPECIES_LAURIER_TIN]: ["Laurier Tin"],
-    [SPECIES_LAURIER_CERISE]: ["Laurier Cerise"],
-    [SPECIES_LAURIER_SAUCE]: ["Laurier Sauce"],
-    [SPECIES_LAURIER_ROSE]: ["Laurier Rose"],
-    [SPECIES_LAURIER_PORTUGAL]: ["Laurier du Portugal"],
+    [SPECIES_LAURIER_TIN]: ["Laurier Tin", "Viorne Tin" ,"Laurentin"],
+    [SPECIES_LAURIER_CERISE]: ["Laurier Cerise", "Laurier de Trébizonde", "Laurier-Amande", "Laurier-Palme", "Laurelle"],
+    [SPECIES_LAURIER_SAUCE]: ["Laurier Sauce", "Laurier Noble", "Laurier Vrai", "Laurier d'Appolon"],
+    [SPECIES_LAURIER_ROSE]: ["Laurier Rose", "Oléandre", "Rosage", "Nérion", "Lauraine"],
+    [SPECIES_LAURIER_PORTUGAL]: ["Laurier du Portugal", "Prunier du Portugal"],
 
     // Ormes
-    [SPECIES_ORME_CHAMPETRE]: ["Orme Champêtre"],
-    [SPECIES_ORME_MONTAGNE]: ["Orme de Montagne"],
-    [SPECIES_ORME_LISSE]: ["Orme Lisse"],
+    [SPECIES_ORME_CHAMPETRE]: ["Orme Champêtre", "Ormeau", "Petit Orme", "Ipréau", "Orme Cilié", "Yvet"],
+    [SPECIES_ORME_MONTAGNE]: ["Orme de Montagne", "Orme Blanc", "Orme Glabre"],
+    [SPECIES_ORME_LISSE]: ["Orme Lisse", "Orme Pédonculé"],
     [SPECIES_ORME_HOLLANDE]: ["Orme de Hollande"],
 
     // Peupliers
-    [SPECIES_PEUPLIER_TREMBLE]: ["Peuplier Tremble"],
+    [SPECIES_PEUPLIER_TREMBLE]: ["Peuplier Tremble", "Tremble", "Tremble d'Europe"],
     [SPECIES_PEUPLIER_NOIR]: ["Peuplier Noir"],
-    [SPECIES_PEUPLIER_BLANC]: ["Peuplier Blanc"],
-    [SPECIES_PEUPLIER_GRISARD]: ["Peuplier Grisard"],
-    [SPECIES_PEUPLIER_CANADA]: ["Peuplier du Canada"],
+    [SPECIES_PEUPLIER_BLANC]: ["Peuplier Blanc", "Peuplier de Hollande", "Abèle", "Peuplier à Feuille d'Érable", "Peuplier Argenté", "Blanc de Hollande", "Aube", "Ypréau", "Piboule"],
+    [SPECIES_PEUPLIER_GRISARD]: ["Peuplier Grisard", "Peuplier Blanc x Tremble", "Franc-Picard"],
+    [SPECIES_PEUPLIER_CANADA]: ["Peuplier du Canada", "Peuplier Hybride Euraméricain"],
 
     // Sorbiers
-    [SPECIES_SORBIER_OISELEURS]: ["Sorbier des Oiseleurs"],
-    [SPECIES_ALISIER_BLANC]: ["Alisier Blanc"],
-    [SPECIES_ALISIER_TORMINAL]: ["Alisier Torminal"],
-    [SPECIES_ALISIER_MOUGEOT]: ["Alisier de Mougeot"],
-    [SPECIES_SORBIER_NAIN]: ["Sorbier Nain"],
-    [SPECIES_SORBIER_DOMESTIQUE]: ["Cormier"],
-    [SPECIES_ALISIER_FONTAINEBLEAU]: ["Alisier de Fontainebleau"],
+    [SPECIES_SORBIER_OISELEURS]: ["Sorbier des Oiseleurs", "Sorbier des Oiseaux"],
+    [SPECIES_ALISIER_BLANC]: ["Alisier Blanc", "Alisier de Bourgogne", "Alouchier", "Sorbier des Alpes"],
+    [SPECIES_ALISIER_TORMINAL]: ["Alisier Torminal", "Alisier des Bois", "Sorbier Torminal"],
+    [SPECIES_ALISIER_MOUGEOT]: ["Alisier de Mougeot", "Sorbier de Mougeot"],
+    [SPECIES_SORBIER_NAIN]: ["Sorbier Nain", "Sorbier Petit Néflier", "Alisier Nain"],
+    [SPECIES_SORBIER_DOMESTIQUE]: ["Cormier", "Sorbier Domestique"],
+    [SPECIES_ALISIER_FONTAINEBLEAU]: ["Alisier de Fontainebleau", "Élorsier", "Sorbier à Larges Feuilles"],
 
     // Noyers
     [SPECIES_NOYER]: ["Noyer"],
-    [SPECIES_NOYER_AMERIQUE]: ["Noyer d'Amérique"],
+    [SPECIES_NOYER_AMERIQUE]: ["Noyer d'Amérique", "Noyer Noir"],
 
     // Fusains
-    [SPECIES_FUSAIN]: ["Fusain"],
+    [SPECIES_FUSAIN]: ["Fusain","Fusain d'Europe", "Bonnet de Prêtre", "Bois à Lardoire", "Bonnet d'Évêque"],
     [SPECIES_FUSAIN_LARGE]: ["Fusain à Larges Feuilles"],
     [SPECIES_FUSAIN_CHINE]: ["Fusain de Chine"],
 };
@@ -232,7 +272,6 @@ const missingTaxonKeys = {
     [SPECIES_GINKOBILOBA]: 2687885,
     [SPECIES_MAGNOLIA_GRANDIFLORA]: 9605163,
     [SPECIES_SAVONNIER]: 3190053,
-    [SPECIES_PLATANE]: 3152811,
     [SPECIES_CEDRE]: 2685742,
     [SPECIES_PIN]: 2684241,
     [SPECIES_NEFLIER_DU_JAPON]: 3024146,
@@ -244,11 +283,49 @@ const missingTaxonKeys = {
     [SPECIES_SORBIER_DOMESTIQUE]: 3013215,
     [SPECIES_ALISIER_FONTAINEBLEAU]: 9306058,
     [SPECIES_FUSAIN_CHINE]: 3169137,
-
+    [SPECIES_MICOCOULIER_OCCIDENTAL]: 2984481,
+    [SPECIES_PLATANE_OCCIDENT]: 3152820,
+    [SPECIES_AUBEPINE_ESPAGNE]: 3013739,
 }
 
 
 // ================== FAMILIES ==================
+
+
+const FAMILY_POMMIERS = {
+    familyName: "Pommiers",
+    main: POMMIER_SAUVAGE,
+    mainName: "Pommier",
+    species: [
+        POMMIER_SAUVAGE,
+        POMMIER,
+    ],
+    associates: []
+};
+
+const FAMILY_POIRIERS = {
+    familyName: "Poiriers",
+    main: POIRIER_SAUVAGE,
+    mainName: "Poirier",
+    species: [
+        POIRIER_SAUVAGE,
+        POIRIER,
+        POIRIER_EPINEUX,
+        POIRIER_CORDE,
+    ],
+    associates: []
+};
+
+const FAMILY_MICOCOULIERS = {
+    familyName: "Micocouliers",
+    main: SPECIES_MICOCOULIER,
+    mainName: "Micocoulier",
+    species: [
+        SPECIES_MICOCOULIER,
+        SPECIES_MICOCOULIER_OCCIDENTAL,
+    ],
+    associates: []
+};
 
 const FAMILY_ERABLES = {
     familyName: "Érables*",
@@ -266,7 +343,8 @@ const FAMILY_ERABLES = {
     associates: [
         SPECIES_ALISIER_TORMINAL,
         SPECIES_LIQUIDAMBAR,
-        SPECIES_PLATANE,
+        SPECIES_PLATANE, // Only put one
+        SPECIES_PEUPLIER_BLANC,
     ]
 };
 
@@ -282,6 +360,19 @@ const FAMILY_CHENES = {
         SPECIES_CHENE_LIEGE,
         SPECIES_CHENE_ROUGE,
 
+    ],
+    associates: [
+    ]
+};
+
+const FAMILY_PLATANES = {
+    familyName: "Platanes",
+    main: SPECIES_PLATANE,
+    mainName: "Platane",
+    species: [
+        SPECIES_PLATANE,
+        SPECIES_PLATANE_ORIENT,
+        SPECIES_PLATANE_OCCIDENT,
     ],
     associates: [
     ]
@@ -368,6 +459,19 @@ const FAMILY_PEUPLIERS = {
     associates: []
 };
 
+// Aubépines
+const FAMILY_AUBEPINES = {
+    familyName: "Aubépines",
+    main: SPECIES_AUBEPINE,
+    mainName: "Aubépine",
+    species: [
+        SPECIES_AUBEPINE,
+        SPECIES_AUBEPINE_EPINEUSE,
+        SPECIES_AUBEPINE_ESPAGNE,
+    ],
+    associates: []
+};
+
 // Bouleaux
 const FAMILY_BOULEAUX = {
     familyName: "Bouleaux",
@@ -448,7 +552,6 @@ const COLLECTION_ERABLE_AUBEPINE = {
 const baseSpeciesNames = [
     SPECIES_CHARME,
     SPECIES_HETRE,
-    SPECIES_AUBEPINE,
     SPECIES_MARRONNIER,
     SPECIES_CHATAIGNIER,
     SPECIES_SAULE_PLEUREUR,
@@ -460,7 +563,6 @@ const baseSpeciesNames = [
     SPECIES_NOISETIER,
     SPECIES_OLIVIER,
     SPECIES_SAVONNIER,
-    SPECIES_PLATANE,
     SPECIES_FIGUIER,
 
     // TODO RESINEUX
@@ -468,8 +570,10 @@ const baseSpeciesNames = [
     // SPECIES_CEDRE,
     // SPECIES_PIN,
 
+    FAMILY_AUBEPINES,
     FAMILY_ERABLES,
     FAMILY_CHENES,
+    FAMILY_PLATANES,
     FAMILY_TILLEULS,
     FAMILY_FRENES,
     FAMILY_CORNOUILLERS,
@@ -479,6 +583,8 @@ const baseSpeciesNames = [
     FAMILY_FUSAINS,
     FAMILY_BOULEAUX, 
     FAMILY_NOYERS, 
+    FAMILY_POMMIERS,
+    FAMILY_POIRIERS,
 ];
 
 // Species a bit less common
@@ -489,10 +595,11 @@ const harderSpeciesNames = [
     SPECIES_LILAS_PERSE,
     SPECIES_ARBOUSIER,
     SPECIES_ARBRE_DE_JUDEE,
-    SPECIES_MICOCOULIER,
+    SPECIES_NEFLIER,
     SPECIES_NEFLIER_DU_JAPON,
 
     FAMILY_SORBIERS, 
+    FAMILY_MICOCOULIERS,
 ]
 
 const allSpeciesNames = baseSpeciesNames.concat(harderSpeciesNames);
@@ -518,12 +625,17 @@ function enrichSpecies(species, jsonData) {
             return enrichedCurrent;
         } else {
             // Otherwise, fetch translation, and taxonKey, numberOfOccurences and percentage from jsonData
-            const data = jsonData.find(d => d.species === speciesName.replace(" x ", " ").replace(" × ", " "));
-
-            enrichedCurrent["taxonKey"] = data.taxonKey;
-            enrichedCurrent["numberOfOccurrences"] = data.numberOfOccurrences;
-            enrichedCurrent["percentage"] = data.intraSpeciesPercentage;
-            return enrichedCurrent;
+            try {
+                const data = jsonData.find(d => d.species === speciesName.replace(" x ", " ").replace(" × ", " ").replace("æ","ae"));
+                enrichedCurrent["taxonKey"] = data.taxonKey;
+                enrichedCurrent["numberOfOccurrences"] = data.numberOfOccurrences;
+                enrichedCurrent["percentage"] = data.intraSpeciesPercentage;
+                return enrichedCurrent;
+            } catch (error) {
+                // See which taxon is missing, add manually
+                console.log(speciesName.replace(" x ", " ").replace(" × ", " ").replace("æ","ae"))
+                console.error(error);
+            }
         }
     });
 

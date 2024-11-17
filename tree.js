@@ -16,7 +16,6 @@ $(document).ready(async function() {
 
     // Find the tree in our data
     const tree = findTreeById(treeId);
-    console.log(tree, treeId, allSpecies)
     if (!tree) {
         window.location.href = 'essences.html';
         return;
@@ -48,8 +47,8 @@ $(document).ready(async function() {
         $('#wikiLink').hide();
     }
 
-    // Load images
-    loadTreeImages(tree.taxonKey);
+    // Fetch images
+    fetchImagesGeneric(tree.taxonKey, 50, true, displayImages);
 });
 
 function findTreeById(taxonKey) {
@@ -71,22 +70,6 @@ function findTreeById(taxonKey) {
     }
 
     return tree;
-}
-
-function loadTreeImages(taxonKey) {
-    const apiUrl = `https://api.gbif.org/v1/occurrence/search?taxonKey=${taxonKey}&mediaType=StillImage&basisOfRecord=HUMAN_OBSERVATION&datasetKey=${PLANTNET_DATASET_KEY}&datasetKey=${PLANTNET_CROWD_DATASET_KEY}&limit=50`;
-
-    $.ajax({
-        url: apiUrl,
-        method: 'GET',
-        success: function(data) {
-            displayImages(data);
-        },
-        error: function(error) {
-            console.error("Error fetching images:", error);
-            $('#images-container').html('<p>Impossible de charger les images.</p>');
-        }
-    });
 }
 
 function displayImages(data) {

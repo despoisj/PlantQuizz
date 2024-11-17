@@ -70,6 +70,9 @@ function createSpeciesCard(species, forcePercentage=false, percentage=false) {
         if (percentage < 1.0){
             percentageString = " (<1%)"
         } else {
+            if (percentage == 100) {
+                percentage = 99.9
+            }
             percentageString = " (" + Math.floor(percentage) + "%)"
         }
     }
