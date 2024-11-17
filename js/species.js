@@ -4,7 +4,6 @@ const SPECIES_HETRE = "Fagus sylvatica";
 const SPECIES_MARRONNIER = "Aesculus hippocastanum";
 const SPECIES_CHATAIGNIER = "Castanea sativa";
 const SPECIES_SAULE_PLEUREUR = "Salix babylonica";
-const SPECIES_PRUNIER = "Prunus domestica";
 const SPECIES_LIQUIDAMBAR = "Liquidambar styraciflua";
 const SPECIES_AULNE_GLUTINEUX = "Alnus glutinosa";
 const SPECIES_COTONEASTER = "Cotoneaster horizontalis";
@@ -12,7 +11,6 @@ const SPECIES_ARBRE_DE_JUDEE = "Cercis siliquastrum";
 const SPECIES_TULIPIER = "Liriodendron tulipifera";
 const SPECIES_MAGNOLIA_GRANDIFLORA = "Magnolia grandiflora";
 const SPECIES_NOISETIER = "Corylus avellana";
-const SPECIES_ARBOUSIER = "Arbutus unedo";
 const SPECIES_OLIVIER = "Olea europaea";
 const SPECIES_SAVONNIER = "Koelreuteria paniculata";
 const SPECIES_CYPRES_CHAUVE = "Taxodium distichum";
@@ -21,20 +19,41 @@ const SPECIES_PIN = "Pinus";
 const SPECIES_GINKOBILOBA = "Ginkgo biloba";
 const SPECIES_CATALPA = "Catalpa bignonioides";
 const SPECIES_LILAS_PERSE = "Melia azedarach";
-const SPECIES_FIGUIER = "Ficus carica";
-
-// Misc
-const SPECIES_NEFLIER = "Mespilus germanica"; // TODO make a family with the two or just fruit trees?
-const SPECIES_NEFLIER_DU_JAPON = "Rhaphiolepis bibas" // Also "Eriobotrya japonica";
 
 // Fruitiers
-const POMMIER = "Malus domestica";
-const POMMIER_SAUVAGE = "Malus sylvestris";
+// Note: there are a lot of common arbustes in
+// the prunus category, they're not included.
+const SPECIES_POMMIER = "Malus domestica";
+const SPECIES_POMMIER_SAUVAGE = "Malus sylvestris";
 
-const POIRIER = "Pyrus communis";
-const POIRIER_SAUVAGE = "Pyrus pyraster"; // TODO no plantnetdata...
-const POIRIER_EPINEUX = "Pyrus spinosa";
-const POIRIER_CORDE = "Pyrus cordata";
+const SPECIES_POIRIER = "Pyrus communis";
+const SPECIES_POIRIER_SAUVAGE = "Pyrus pyraster";
+const SPECIES_POIRIER_EPINEUX = "Pyrus spinosa";
+const SPECIES_POIRIER_CORDE = "Pyrus cordata";
+
+// TODO BELOW
+const SPECIES_MERISIER = "Prunus avium";
+const SPECIES_CERISIER_GRAPPES = "Prunus padus";
+const SPECIES_MYROBOLAN = "Prunus cerasifera";
+const SPECIES_PRUNIER = "Prunus domestica";
+const SPECIES_PECHER = "Prunus persica";
+const SPECIES_CERISIER_NOIR = "Prunus serotina";
+const SPECIES_ABRICOTIER = "Prunus armeniaca";
+const SPECIES_AMANDIER = "Prunus amygdalus"; // "Prunus amygdalus Batsch"
+const SPECIES_CERISIER_ACIDE = "Prunus cerasus";
+const SPECIES_MARMOTTIER = "Prunus brigantina";
+
+const SPECIES_MURIER_BLANC = "Morus alba";
+const SPECIES_MURIER_NOIR = "Morus nigra";
+const SPECIES_MURIER_ARBRE = "Morus indica";
+
+// Note: Very few Citronnier / Orangers / Mandarinier in France... TBC
+// Note: Very few Plaqueminier lotier & Kaki... TBC
+const SPECIES_GRENADIER = "Punica granatum";
+const SPECIES_FIGUIER = "Ficus carica";
+const SPECIES_ARBOUSIER = "Arbutus unedo";
+const SPECIES_NEFLIER = "Mespilus germanica"; // TODO make a family with the two or just fruit trees?
+const SPECIES_NEFLIER_DU_JAPON = "Rhaphiolepis bibas" // Also "Eriobotrya japonica";
 
 // Aubépines
 const SPECIES_AUBEPINE = "Crataegus monogyna";
@@ -136,7 +155,6 @@ const latinToFrench = {
     [SPECIES_MARRONNIER]: ["Marronnier",  "Marronnier d'Inde", "Marronnier d'Europe", "Marronnier Blanc", "Châtaignier de Mer", "Marronnier Faux-Châtaignier", "Châtaignier des Chevaux"],
     [SPECIES_CHATAIGNIER]: ["Châtaignier", "Arbre à Pain", "Pain des Pauvres"],
     [SPECIES_SAULE_PLEUREUR]: ["Saule Pleureur"],
-    [SPECIES_PRUNIER]: ["Prunier"],
     
     [SPECIES_LIQUIDAMBAR]: ["Liquidambar"],
     [SPECIES_AULNE_GLUTINEUX]: ["Aulne Glutineux", "Aulne Noir", "Aulne Poisseux", "Vergne", "Verne"],
@@ -145,27 +163,46 @@ const latinToFrench = {
     [SPECIES_TULIPIER]: ["Tulipier", "Arbre aux Lis"],
     [SPECIES_MAGNOLIA_GRANDIFLORA]: ["Magnolia", "Magnolia à Grandes Fleurs", "Magnolier à Grandes Fleurs", "Laurier-Tulipier"],
     [SPECIES_NOISETIER]: ["Noisetier", "Coudriers", "Aveliniers"],
-    [SPECIES_ARBOUSIER]: ["Arbousier", "Arbre à Fraises"],
-    [SPECIES_OLIVIER]: ["Olivier"],
     [SPECIES_SAVONNIER]: ["Savonnier", "Savonnier de Chine", "Bois de Panama", "Arbre aux Lanternes", "Arbre à Pluie d'Or", "Mimosa d'Été", "Lampions de Chine"],
     [SPECIES_CYPRES_CHAUVE]: ["Cyprès Chauve"],
     [SPECIES_GINKOBILOBA]: ["Ginkgo", "Arbre aux Quarante Écus", "Arbre aux Abricots d'Argent"],
     [SPECIES_CATALPA]: ["Catalpa", "Catalpa Commun", "Arbre aux Haricots", "Catalpa Boule"],
     [SPECIES_LILAS_PERSE]: ["Lilas de Perse", "Margousier à Feuilles de Frêne", "Mélia Faux-Neem"],
-    [SPECIES_FIGUIER]: ["Figuier", "Figuier Comestible", "Figuier Commun", "Figuier de Carie", "Arbre à Cariques", "Figuier sauvage (♂)", "Caprifiguier (♂)", "Figuier de Bouc (♂)"],
+    
+    // Fruitiers
+    [SPECIES_POMMIER_SAUVAGE]: ["Pommier Sauvage", "Boquettier", "Pommier des Bois"],
+    [SPECIES_POMMIER]: ["Pommier Domestique", "Pommier Commun"],
+    
+    [SPECIES_POIRIER_SAUVAGE]: ["Poirier Sauvage"],
+    [SPECIES_POIRIER]: ["Poirier Commun"],
+    [SPECIES_POIRIER_EPINEUX]: ["Poirier Épineux", "Poirier à Feuilles d'Amandier"],
+    [SPECIES_POIRIER_CORDE]: ["Poirier à Feuilles en Cœur", "Poirasse"],
 
-    // Nefliers
+    // Cerisiers
+    [SPECIES_MERISIER]: ["Merisier", "Cerisier des Oiseaux", "Cerisier Sauvage", "Cerisier des Bois"],
+    [SPECIES_CERISIER_GRAPPES]: ["Cerisier à Grappes", "Merisier à grappes", "Amaruvier", "Bois-Puant", "Putier", "Putiet", "Putet", "Pétafouère"],
+    [SPECIES_CERISIER_NOIR]: ["Cerisier Noir", "Cerisier d'Automne", "Cerisier Tardif"],
+    [SPECIES_CERISIER_ACIDE]: ["Cerisier Acide", "Cerisier Aigre", "Griottier"],
+
+    // Muriers
+    [SPECIES_MURIER_BLANC]: ["Mûrier Blanc", "Mûrier Commun"],
+    [SPECIES_MURIER_NOIR]: ["Mûrier Noir"],
+    [SPECIES_MURIER_ARBRE]: ["Mûrier en Arbre"],
+
+    // Other fruits
+    [SPECIES_MYROBOLAN]: ["Myrobolan", "Prunier-Cerise", "Prunier Myrobolan", "Myrobalan"],
+    [SPECIES_PRUNIER]: ["Prunier", "Prunier Cultivé"],
+    [SPECIES_PECHER]: ["Pêcher"],
+    [SPECIES_ABRICOTIER]: ["Abricotier"],
+    [SPECIES_AMANDIER]: ["Amandier"],
+    [SPECIES_MARMOTTIER]: ["Marmottier", "Prunier de Briançon", "Prunier des Alpes", "Abricotier de Briançon"],
+    
+    [SPECIES_GRENADIER]: ["Grenadier"],
+    [SPECIES_ARBOUSIER]: ["Arbousier", "Arbre à Fraises"],
+    [SPECIES_OLIVIER]: ["Olivier"],
+    [SPECIES_FIGUIER]: ["Figuier", "Figuier Comestible", "Figuier Commun", "Figuier de Carie", "Arbre à Cariques", "Figuier sauvage (♂)", "Caprifiguier (♂)", "Figuier de Bouc (♂)"],
     [SPECIES_NEFLIER]: ["Néflier", "Néflier d'Allemagne", "Mêlier", "Mespoulo", "Nesplier"],
     [SPECIES_NEFLIER_DU_JAPON]: ["Néflier du Japon", "Bibacier", "Bibassier"],
-
-    // Fruitiers
-    [POMMIER_SAUVAGE]: ["Pommier Sauvage", "Boquettier", "Pommier des Bois"],
-    [POMMIER]: ["Pommier Domestique", "Pommier Commun"],
-    [POIRIER_SAUVAGE]: ["Poirier Sauvage"],
-    [POIRIER]: ["Poirier Commun"],
-    [POIRIER_EPINEUX]: ["Poirier Épineux", "Poirier à Feuilles d'Amandier"],
-    [POIRIER_CORDE]: ["Poirier à Feuilles en Cœur", "Poirasse"], //TODO
-
 
     // Resineux
     [SPECIES_CEDRE]: ["Cèdre"],
@@ -274,27 +311,51 @@ const missingTaxonKeys = {
 
 // ================== FAMILIES ==================
 
+const FAMILY_CERISIERS = {
+    familyName: "Cerisiers",
+    main: SPECIES_MERISIER,
+    mainName: "Cerisier",
+    species: [
+        SPECIES_MERISIER,
+        SPECIES_CERISIER_GRAPPES,
+        SPECIES_CERISIER_NOIR,
+        SPECIES_CERISIER_ACIDE,
+    ],
+    associates: []
+};
+
+const FAMILY_MURIERS = {
+    familyName: "Mûriers",
+    main: SPECIES_MURIER_BLANC,
+    mainName: "Mûrier",
+    species: [
+        SPECIES_MURIER_BLANC,
+        SPECIES_MURIER_NOIR,
+        SPECIES_MURIER_ARBRE,
+    ],
+    associates: []
+};
 
 const FAMILY_POMMIERS = {
     familyName: "Pommiers",
-    main: POMMIER_SAUVAGE,
+    main: SPECIES_POMMIER_SAUVAGE,
     mainName: "Pommier",
     species: [
-        POMMIER_SAUVAGE,
-        POMMIER,
+        SPECIES_POMMIER_SAUVAGE,
+        SPECIES_POMMIER,
     ],
     associates: []
 };
 
 const FAMILY_POIRIERS = {
     familyName: "Poiriers",
-    main: POIRIER_SAUVAGE,
+    main: SPECIES_POIRIER_SAUVAGE,
     mainName: "Poirier",
     species: [
-        POIRIER_SAUVAGE,
-        POIRIER,
-        POIRIER_EPINEUX,
-        POIRIER_CORDE,
+        SPECIES_POIRIER_SAUVAGE,
+        SPECIES_POIRIER,
+        SPECIES_POIRIER_EPINEUX,
+        SPECIES_POIRIER_CORDE,
     ],
     associates: []
 };
@@ -510,6 +571,40 @@ const FAMILY_NOYERS = {
     associates: []
 };
 
+const FAMILY_FRUITS = {
+    familyName: "Arbres Fruitiers",
+    main: SPECIES_POMMIER_SAUVAGE,
+    mainName: "N/A",
+    species: [
+        SPECIES_POMMIER_SAUVAGE,
+        SPECIES_POMMIER,
+        SPECIES_POIRIER_SAUVAGE,
+        SPECIES_POIRIER,
+        SPECIES_POIRIER_EPINEUX,
+        SPECIES_POIRIER_CORDE,
+        SPECIES_MURIER_BLANC,
+        SPECIES_MURIER_NOIR,
+        SPECIES_MURIER_ARBRE,
+        SPECIES_MERISIER,
+        SPECIES_CERISIER_GRAPPES,
+        SPECIES_CERISIER_NOIR,
+        SPECIES_CERISIER_ACIDE,
+        SPECIES_MYROBOLAN,
+        SPECIES_PRUNIER,
+        SPECIES_PECHER,
+        SPECIES_ABRICOTIER,
+        SPECIES_AMANDIER,
+        SPECIES_MARMOTTIER,
+        SPECIES_GRENADIER,
+        SPECIES_FIGUIER,
+        SPECIES_OLIVIER,
+        SPECIES_ARBOUSIER,
+        SPECIES_NEFLIER,
+        SPECIES_NEFLIER_DU_JAPON,
+    ],
+    associates: []
+};
+
 
 // ==================== MISC COLLECTIONS ====================
 
@@ -538,7 +633,6 @@ const baseSpeciesNames = [
     SPECIES_MARRONNIER,
     SPECIES_CHATAIGNIER,
     SPECIES_SAULE_PLEUREUR,
-    SPECIES_PRUNIER,
     SPECIES_AULNE_GLUTINEUX,
     SPECIES_COTONEASTER,
     SPECIES_TULIPIER,
@@ -568,6 +662,8 @@ const baseSpeciesNames = [
     FAMILY_NOYERS, 
     FAMILY_POMMIERS,
     FAMILY_POIRIERS,
+    FAMILY_CERISIERS,
+    FAMILY_MURIERS,
 ];
 
 // Species a bit less common
@@ -583,6 +679,7 @@ const harderSpeciesNames = [
 
     FAMILY_SORBIERS, 
     FAMILY_MICOCOULIERS,
+    FAMILY_FRUITS,
 ]
 
 const allSpeciesNames = baseSpeciesNames.concat(harderSpeciesNames);
