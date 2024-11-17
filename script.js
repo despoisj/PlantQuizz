@@ -35,12 +35,12 @@ function setup(simple){
     }
 
     // Sort by name
-    species.sort((a, b) => a.frenchName.localeCompare(b.frenchName));
+    species.sort((a, b) => a.commonName.localeCompare(b.commonName));
 
     // Create inverse dict since we use taxonKey as key
     taxonToName = {}
     species.forEach(speciesItem => {
-        taxonToName[speciesItem.taxonKey] = speciesItem.frenchName
+        taxonToName[speciesItem.taxonKey] = speciesItem.commonName
     });
 
     selectedSpecies = null // Species selected by user for quizz
@@ -70,7 +70,7 @@ function expandFamilies(species, simple){
         // Family, If simple mode, take the main, else take all of them
         if (simple) {
             // Find main and give it a simpler name
-            expandedSpecies.push({frenchName: speciesItem.mainName, taxonKey: speciesItem.main.taxonKey})
+            expandedSpecies.push({commonName: speciesItem.mainName, taxonKey: speciesItem.main.taxonKey})
         } else {
             speciesItem.species.forEach(subSpecies => {
                 expandedSpecies.push(subSpecies)
@@ -97,9 +97,9 @@ function populateSelection(simple){
         // Single species: create button with name and latin name
         const button = $('<button>')
             .addClass('species-button')
-            .addClass((simple && ["Charme", "Hêtre", "Orme"].includes(speciesItem.frenchName)) ? "selected" : "unselected")
+            .addClass((simple && ["Charme", "Hêtre", "Orme"].includes(speciesItem.commonName)) ? "selected" : "unselected")
             .attr('data-taxon', speciesItem.taxonKey)
-            .attr('name', speciesItem.frenchName)
+            .attr('name', speciesItem.commonName)
             .on('click', function() {
                 $(this).toggleClass('selected');
                 $(this).toggleClass('unselected');
@@ -108,7 +108,7 @@ function populateSelection(simple){
         // Add main name in a span
         const nameSpan = $('<span>')
             .addClass('species-name')
-            .text(speciesItem.frenchName);
+            .text(speciesItem.commonName);
 
 
         // Add latin name in a span
@@ -154,7 +154,7 @@ function populateSelection(simple){
                 });
                 // Select associates
                 speciesItem.associates.forEach(subSpecies => {
-                    const button = $(`.species-button[name="${subSpecies.frenchName}"]`)
+                    const button = $(`.species-button[name="${subSpecies.commonName}"]`)
                     button.toggleClass('selected');
                     button.toggleClass('unselected');
                 });
@@ -172,7 +172,7 @@ function populateSelection(simple){
             .on('click', function() {
                 // Select all species in collection
                 collection.species.forEach(currSpecies => {
-                    const button = $(`.species-button[name="${currSpecies.frenchName}"]`)
+                    const button = $(`.species-button[name="${currSpecies.commonName}"]`)
                     button.toggleClass('selected');
                     button.toggleClass('unselected');
                 });
@@ -337,7 +337,7 @@ function fetchImages() {
             // Populate quiz options in #quizz-container
             selectedSpecies.forEach(speciesKey => {                
                 // Find name in species with given taxonKey
-                const speciesName = species.filter(item => "" + item.taxonKey === "" + speciesKey)[0].frenchName
+                const speciesName = species.filter(item => "" + item.taxonKey === "" + speciesKey)[0].commonName
 
                 const quizButton = $('<button>')
                     .text(speciesName)

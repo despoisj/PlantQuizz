@@ -13,7 +13,7 @@ function populateSpecies() {
     const individualSpecies = allSpecies.filter(species => 'taxonKey' in species);
     
     // Sort by name
-    individualSpecies.sort((a, b) => a.frenchName.localeCompare(b.frenchName));
+    individualSpecies.sort((a, b) => a.commonName.localeCompare(b.commonName));
 
     let html = `
         <div class="species-category">
@@ -83,7 +83,7 @@ function createSpeciesCard(species, forcePercentage=false, percentage=false) {
 
     return `
         <button ${opacityString} class="species-button unselected weighted" data-taxon="${species.taxonKey}">
-            <span class="species-name">${species.frenchName}${percentageString}</span>
+            <span class="species-name">${species.commonName}${percentageString}</span>
             <span class="latin-name">${species.name}</span>
         </button>
     `;

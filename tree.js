@@ -23,17 +23,21 @@ $(document).ready(async function() {
     }
 
     // Update page title
-    document.title = `${tree.frenchName} - PlantQuizz`;
+    document.title = `${tree.commonName} - PlantQuizz`;
 
     // Populate tree information
-    $('#treeName').text(tree.frenchName);
+    $('#treeName').text(tree.commonName);
     $('#latinName').text(tree.name);
     
     // Add alternate names if they exist
-    if (tree.alt_names && tree.alt_names.length > 0) {
-        const altNamesHtml = tree.alt_names
-            .map(name => `<span class="alt-name">${name}</span>`)
+    if (tree.otherNames && tree.otherNames.length > 0) {
+        const altNamesHtml = tree.otherNames
+            .map((name, index) => {
+                const isLast = index === tree.otherNames.length - 1;
+                return `<span class="alt-name">${name}</span>${isLast ? '' : ', '}`;
+            })
             .join('');
+
         $('#altNames').html(altNamesHtml);
     }
 

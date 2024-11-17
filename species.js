@@ -18,7 +18,6 @@ const SPECIES_PRUNIER = "Prunus domestica";
 const SPECIES_MICOCOULIER = "Celtis australis";
 const SPECIES_LIQUIDAMBAR = "Liquidambar styraciflua";
 const SPECIES_AULNE_GLUTINEUX = "Alnus glutinosa";
-const SPECIES_PEUPLIER = "Populus nigra";
 const SPECIES_NEFLIER_DU_JAPON = "Eriobotrya japonica";
 const SPECIES_COTONEASTER = "Cotoneaster horizontalis";
 const SPECIES_ARBRE_DE_JUDEE = "Cercis siliquastrum";
@@ -68,7 +67,6 @@ const SPECIES_FRENE_FLEURS = "Fraxinus ornus";
 // Bouleaux
 const SPECIES_BOULEAU = "Betula pendula";
 const SPECIES_BOULEAU_PUBESCENT = "Betula pubescens";
-const SPECIES_BOULEAU_NAIN = "Betula nana";
 const SPECIES_BOULEAU_DORE = "Betula × aurata";
 
 // Cornouillers
@@ -119,110 +117,108 @@ const SPECIES_FUSAIN_CHINE = "Euonymus fortunei";
 // in the gbif dataset (which is consolidated into the .json file)
 
 const latinToFrench = {
-    [SPECIES_CHARME]: "Charme",
-    [SPECIES_HETRE]: "Hêtre",
-    [SPECIES_AUBEPINE]: "Aubépine",
-    [SPECIES_MARRONNIER]: "Marronnier",
-    [SPECIES_CHATAIGNIER]: "Châtaignier",
-    [SPECIES_SAULE_PLEUREUR]: "Saule Pleureur",
-    [SPECIES_PRUNIER]: "Prunier",
-    [SPECIES_MICOCOULIER]: "Micocoulier",
-    [SPECIES_LIQUIDAMBAR]: "Liquidambar",
-    [SPECIES_AULNE_GLUTINEUX]: "Aulne Glutineux",
-    [SPECIES_PEUPLIER]: "Peuplier",
-    [SPECIES_NEFLIER_DU_JAPON]: "Néflier du Japon",
-    [SPECIES_COTONEASTER]: "Cotoneaster",
-    [SPECIES_ARBRE_DE_JUDEE]: "Arbre de Judée",
-    [SPECIES_TULIPIER]: "Tulipier",
-    [SPECIES_MAGNOLIA_GRANDIFLORA]: "Magnolia",
-    [SPECIES_NOISETIER]: "Noisetier",
-    [SPECIES_ARBOUSIER]: "Arbousier",
-    [SPECIES_OLIVIER]: "Olivier",
-    [SPECIES_SAVONNIER]: "Savonnier",
-    [SPECIES_PLATANE]: "Platane",
-    [SPECIES_CYPRES_CHAUVE]: "Cyprès Chauve",
-    [SPECIES_CEDRE]: "Cèdre",
-    [SPECIES_PIN]: "Pin",
-    [SPECIES_GINKOBILOBA]: "Ginkgo",
-    [SPECIES_CATALPA]: "Catalpa",
-    [SPECIES_LILAS_PERSE]: "Lilas de Perse",
-    [SPECIES_FIGUIER]: "Figuier",
+    [SPECIES_CHARME]: ["Charme", "Charme Commun", "Charmille"],
+    [SPECIES_HETRE]: ["Hêtre"],
+    [SPECIES_AUBEPINE]: ["Aubépine"],
+    [SPECIES_MARRONNIER]: ["Marronnier",  "Marronnier d'Inde", "Marronnier d'Europe", "Marronnier Blanc", "Châtaignier de Mer", "Marronnier Faux-Châtaignier", "Châtaignier des Chevaux"],
+    [SPECIES_CHATAIGNIER]: ["Châtaignier", "Arbre à Pain", "Pain des Pauvres"],
+    [SPECIES_SAULE_PLEUREUR]: ["Saule Pleureur"],
+    [SPECIES_PRUNIER]: ["Prunier"],
+    [SPECIES_MICOCOULIER]: ["Micocoulier"],
+    [SPECIES_LIQUIDAMBAR]: ["Liquidambar"],
+    [SPECIES_AULNE_GLUTINEUX]: ["Aulne Glutineux", "Aulne Noir", "Aulne Poisseux", "Vergne", "Verne"],
+    [SPECIES_NEFLIER_DU_JAPON]: ["Néflier du Japon", "Bibacier", "Bibassier"],
+    [SPECIES_COTONEASTER]: ["Cotoneaster"],
+    [SPECIES_ARBRE_DE_JUDEE]: ["Arbre de Judée", "Gainier Silicastre"],
+    [SPECIES_TULIPIER]: ["Tulipier", "Arbre aux Lis"],
+    [SPECIES_MAGNOLIA_GRANDIFLORA]: ["Magnolia", "Magnolia à Grandes Fleurs", "Magnolier à Grandes Fleurs", "Laurier-Tulipier"],
+    [SPECIES_NOISETIER]: ["Noisetier"],
+    [SPECIES_ARBOUSIER]: ["Arbousier", "Arbre à Fraises"],
+    [SPECIES_OLIVIER]: ["Olivier"],
+    [SPECIES_SAVONNIER]: ["Savonnier", "Savonnier de Chine", "Bois de Panama", "Arbre aux Lanternes", "Arbre à Pluie d'Or", "Mimosa d'Été", "Lampions de Chine"],
+    [SPECIES_PLATANE]: ["Platane"],
+    [SPECIES_CYPRES_CHAUVE]: ["Cyprès Chauve"],
+    [SPECIES_CEDRE]: ["Cèdre"],
+    [SPECIES_PIN]: ["Pin"],
+    [SPECIES_GINKOBILOBA]: ["Ginkgo", "Arbre aux Quarante Écus", "Arbre aux Abricots d'Argent"],
+    [SPECIES_CATALPA]: ["Catalpa"],
+    [SPECIES_LILAS_PERSE]: ["Lilas de Perse", "Margousier à Feuilles de Frêne", "Mélia Faux-Neem"],
+    [SPECIES_FIGUIER]: ["Figuier", "Figuier Comestible", "Figuier Commun", "Figuier de Carie", "Arbre à Cariques", "Figuier sauvage (♂)", "Caprifiguier (♂)", "Figuier de Bouc (♂)"],
 
     // Érables
-    [SPECIES_ERABLE_SYCOMORE]: "Érable Sycomore",
-    [SPECIES_ERABLE_CHAMPETRE]: "Érable Champêtre",
-    [SPECIES_ERABLE_ARGENTE]: "Érable Argenté",
-    [SPECIES_ERABLE_NEGUNDO]: "Érable Negundo",
-    [SPECIES_ERABLE_PLANE]: "Érable Plane",
-    [SPECIES_ERABLE_OBIER]: "Érable à Feuilles d'Obier",
-    [SPECIES_ERABLE_MONTPELLIER]: "Érable de Montpellier",
+    [SPECIES_ERABLE_SYCOMORE]: ["Érable Sycomore"],
+    [SPECIES_ERABLE_CHAMPETRE]: ["Érable Champêtre"],
+    [SPECIES_ERABLE_ARGENTE]: ["Érable Argenté"],
+    [SPECIES_ERABLE_NEGUNDO]: ["Érable Negundo"],
+    [SPECIES_ERABLE_PLANE]: ["Érable Plane"],
+    [SPECIES_ERABLE_OBIER]: ["Érable à Feuilles d'Obier"],
+    [SPECIES_ERABLE_MONTPELLIER]: ["Érable de Montpellier"],
 
     // Chênes
-    [SPECIES_CHENE_PEDONCULE]: "Chêne Pédonculé",
-    [SPECIES_CHENE_SESSILE]: "Chêne Rouvre/Sessile",
-    [SPECIES_CHENE_PUBESCENT]: "Chêne Pubescent",
-    [SPECIES_CHENE_VERT]: "Chêne Vert",
-    [SPECIES_CHENE_LIEGE]: "Chêne Liège",
-    [SPECIES_CHENE_ROUGE]: "Chêne Rouge d'Amérique",
+    [SPECIES_CHENE_PEDONCULE]: ["Chêne Pédonculé", "Chêne Blanc", "Chêne Femelle", "Gravelin", "Chêne à Grappe", "Châgne"],
+    [SPECIES_CHENE_SESSILE]: ["Chêne Rouvre", "Chêne Sessile", "Chêne à Trochets", "Chêne des Pierriers", "Chêne Mâle", "Chêne Noir", "Drille", "Drillar", "Durelin"],
+    [SPECIES_CHENE_PUBESCENT]: ["Chêne Pubescent", "Chêne Blanc de Provence"],
+    [SPECIES_CHENE_VERT]: ["Chêne Vert", "Yeuse", "Chêne Faux-Houx"],
+    [SPECIES_CHENE_LIEGE]: ["Chêne Liège", "Corsier", "Surier", "Suve"],
+    [SPECIES_CHENE_ROUGE]: ["Chêne Rouge d'Amérique"],
 
     // Tilleuls
-    [SPECIES_TILLEUL_GRANDES_FEUILLES]: "Tilleul à Grandes Feuilles",
-    [SPECIES_TILLEUL_PETITES_FEUILLES]: "Tilleul à Petites Feuilles",
-    [SPECIES_TILLEUL_COMMUN]: "Tilleul Commun",
-    [SPECIES_TILLEUL_ARGENTE]: "Tilleul Argenté",
+    [SPECIES_TILLEUL_GRANDES_FEUILLES]: ["Tilleul à Grandes Feuilles"],
+    [SPECIES_TILLEUL_PETITES_FEUILLES]: ["Tilleul à Petites Feuilles",  "Tilleul des Bois", "Tilleul à Feuilles en Cœur"],
+    [SPECIES_TILLEUL_COMMUN]: ["Tilleul Commun"],
+    [SPECIES_TILLEUL_ARGENTE]: ["Tilleul Argenté", "Tilleul de Hongrie"],
 
     // Frênes
-    [SPECIES_FRENE_COMMUN]: "Frêne Commun",
-    [SPECIES_FRENE_FEUILLES_ETROITES]: "Frêne à Feuilles Étroites",
-    [SPECIES_FRENE_FLEURS]: "Frêne à Fleurs",
+    [SPECIES_FRENE_COMMUN]: ["Frêne Commun", "Frêne d'Europe", "Frêne Élevé", "Frêne à Feuilles Aiguës", "Gaïac des Allemands", "Grand Frêne", "Langue d'Oiseau", "Quinquina d'Europe"],
+    [SPECIES_FRENE_FEUILLES_ETROITES]: ["Frêne à Feuilles Étroites", "Frêne du Midi", "Frêne Oxyphylle"],
+    [SPECIES_FRENE_FLEURS]: ["Frêne à Fleurs", "Orne", "Frêne à Manne", "Frêne Orne", "Orne d'Europe"],
 
     // Bouleaux
-    [SPECIES_BOULEAU]: "Bouleau Blanc",
-    [SPECIES_BOULEAU_PUBESCENT]: "Bouleau Pubescent",
-    [SPECIES_BOULEAU_NAIN]: "Bouleau Nain",
-    [SPECIES_BOULEAU_DORE]: "Bouleau Doré",
+    [SPECIES_BOULEAU]: ["Bouleau Verruqueux", "Bouleau Blanc", "Bouleau d'Europe", "Bouleau blanc d'Europe"],
+    [SPECIES_BOULEAU_PUBESCENT]: ["Bouleau Pubescent"],
+    [SPECIES_BOULEAU_DORE]: ["Bouleau Doré"],
 
     // Cornouillers
-    [SPECIES_CORNOUILLER_SANGUIN]: "Cornouiller Sanguin",
-    [SPECIES_CORNOUILLER_MALE]: "Cornouiller Mâle",
+    [SPECIES_CORNOUILLER_SANGUIN]: ["Cornouiller Sanguin"],
+    [SPECIES_CORNOUILLER_MALE]: ["Cornouiller Mâle"],
 
     // Lauriers
-    [SPECIES_LAURIER_TIN]: "Laurier Tin",
-    [SPECIES_LAURIER_CERISE]: "Laurier Cerise",
-    [SPECIES_LAURIER_SAUCE]: "Laurier Sauce",
-    [SPECIES_LAURIER_ROSE]: "Laurier Rose",
-    [SPECIES_LAURIER_PORTUGAL]: "Laurier du Portugal",
+    [SPECIES_LAURIER_TIN]: ["Laurier Tin"],
+    [SPECIES_LAURIER_CERISE]: ["Laurier Cerise"],
+    [SPECIES_LAURIER_SAUCE]: ["Laurier Sauce"],
+    [SPECIES_LAURIER_ROSE]: ["Laurier Rose"],
+    [SPECIES_LAURIER_PORTUGAL]: ["Laurier du Portugal"],
 
     // Ormes
-    [SPECIES_ORME_CHAMPETRE]: "Orme Champêtre",
-    [SPECIES_ORME_MONTAGNE]: "Orme de Montagne",
-    [SPECIES_ORME_LISSE]: "Orme Lisse",
-    [SPECIES_ORME_HOLLANDE]: "Orme de Hollande",
+    [SPECIES_ORME_CHAMPETRE]: ["Orme Champêtre"],
+    [SPECIES_ORME_MONTAGNE]: ["Orme de Montagne"],
+    [SPECIES_ORME_LISSE]: ["Orme Lisse"],
+    [SPECIES_ORME_HOLLANDE]: ["Orme de Hollande"],
 
     // Peupliers
-    [SPECIES_PEUPLIER_TREMBLE]: "Peuplier Tremble",
-    [SPECIES_PEUPLIER_NOIR]: "Peuplier Noir",
-    [SPECIES_PEUPLIER_BLANC]: "Peuplier Blanc",
-    [SPECIES_PEUPLIER_GRISARD]: "Peuplier Grisard",
-    [SPECIES_PEUPLIER_CANADA]: "Peuplier du Canada",
+    [SPECIES_PEUPLIER_TREMBLE]: ["Peuplier Tremble"],
+    [SPECIES_PEUPLIER_NOIR]: ["Peuplier Noir"],
+    [SPECIES_PEUPLIER_BLANC]: ["Peuplier Blanc"],
+    [SPECIES_PEUPLIER_GRISARD]: ["Peuplier Grisard"],
+    [SPECIES_PEUPLIER_CANADA]: ["Peuplier du Canada"],
 
     // Sorbiers
-    [SPECIES_SORBIER_OISELEURS]: "Sorbier des Oiseleurs",
-    [SPECIES_ALISIER_BLANC]: "Alisier Blanc",
-    [SPECIES_ALISIER_TORMINAL]: "Alisier Torminal",
-    [SPECIES_ALISIER_MOUGEOT]: "Alisier de Mougeot",
-    [SPECIES_SORBIER_NAIN]: "Sorbier Nain",
-    [SPECIES_SORBIER_DOMESTIQUE]: "Cormier",
-    [SPECIES_ALISIER_FONTAINEBLEAU]: "Alisier de Fontainebleau",
+    [SPECIES_SORBIER_OISELEURS]: ["Sorbier des Oiseleurs"],
+    [SPECIES_ALISIER_BLANC]: ["Alisier Blanc"],
+    [SPECIES_ALISIER_TORMINAL]: ["Alisier Torminal"],
+    [SPECIES_ALISIER_MOUGEOT]: ["Alisier de Mougeot"],
+    [SPECIES_SORBIER_NAIN]: ["Sorbier Nain"],
+    [SPECIES_SORBIER_DOMESTIQUE]: ["Cormier"],
+    [SPECIES_ALISIER_FONTAINEBLEAU]: ["Alisier de Fontainebleau"],
 
     // Noyers
-    [SPECIES_NOYER]: "Noyer",
-    [SPECIES_NOYER_AMERIQUE]: "Noyer d'Amérique",
+    [SPECIES_NOYER]: ["Noyer"],
+    [SPECIES_NOYER_AMERIQUE]: ["Noyer d'Amérique"],
 
     // Fusains
-    [SPECIES_FUSAIN]: "Fusain",
-    [SPECIES_FUSAIN_LARGE]: "Fusain à Larges Feuilles",
-    [SPECIES_FUSAIN_CHINE]: "Fusain de Chine",
+    [SPECIES_FUSAIN]: ["Fusain"],
+    [SPECIES_FUSAIN_LARGE]: ["Fusain à Larges Feuilles"],
+    [SPECIES_FUSAIN_CHINE]: ["Fusain de Chine"],
 };
 
 
@@ -243,7 +239,6 @@ const missingTaxonKeys = {
     [SPECIES_ERABLE_ARGENTE]: 3189837,
     [SPECIES_ERABLE_OBIER]: 7100278,
     [SPECIES_TILLEUL_ARGENTE]: 4259350,
-    [SPECIES_BOULEAU_NAIN]: 5332004,
     [SPECIES_BOULEAU_DORE]: 5331763,
     [SPECIES_ORME_HOLLANDE]: 7141604,
     [SPECIES_SORBIER_DOMESTIQUE]: 3013215,
@@ -381,7 +376,6 @@ const FAMILY_BOULEAUX = {
     species: [
         SPECIES_BOULEAU,
         SPECIES_BOULEAU_PUBESCENT,
-        SPECIES_BOULEAU_NAIN,
         SPECIES_BOULEAU_DORE,
     ],
     associates: []
@@ -509,26 +503,27 @@ function enrichSpecies(species, jsonData) {
 
     const enriched = species.map(speciesName => {
 
-        // If it's a rare species, use custom taxonKey and percentage
-        if (speciesName in missingTaxonKeys) {
-            return {
-                name: speciesName,
-                frenchName: latinToFrench[speciesName],
-                taxonKey: missingTaxonKeys[speciesName],
-                numberOfOccurrences: 1,
-                percentage: 0.1,
-            }
+        // Define base info
+        var enrichedCurrent = {
+            name: speciesName,
+            commonName: latinToFrench[speciesName][0],
+            otherNames: latinToFrench[speciesName].slice(1, latinToFrench[speciesName].length),
         }
 
-        // Otherwise, fetch translation, and taxonKey, numberOfOccurences and percentage from jsonData
-        const data = jsonData.find(d => d.species === speciesName.replace(" x ", " ").replace(" × ", " "));
+        // If it's a rare species, use custom taxonKey and percentage
+        if (speciesName in missingTaxonKeys) {
+            enrichedCurrent["taxonKey"] = missingTaxonKeys[speciesName];
+            enrichedCurrent["numberOfOccurrences"] = 1;
+            enrichedCurrent["percentage"] = 0.1;
+            return enrichedCurrent;
+        } else {
+            // Otherwise, fetch translation, and taxonKey, numberOfOccurences and percentage from jsonData
+            const data = jsonData.find(d => d.species === speciesName.replace(" x ", " ").replace(" × ", " "));
 
-        return {
-            name: speciesName,
-            frenchName: latinToFrench[speciesName],
-            taxonKey: data.taxonKey,
-            numberOfOccurrences: data.numberOfOccurrences,
-            percentage: data.intraSpeciesPercentage,
+            enrichedCurrent["taxonKey"] = data.taxonKey;
+            enrichedCurrent["numberOfOccurrences"] = data.numberOfOccurrences;
+            enrichedCurrent["percentage"] = data.intraSpeciesPercentage;
+            return enrichedCurrent;
         }
     });
 
