@@ -3,10 +3,9 @@ const SPECIES_CHARME = "Carpinus betulus";
 const SPECIES_HETRE = "Fagus sylvatica";
 const SPECIES_MARRONNIER = "Aesculus hippocastanum";
 const SPECIES_CHATAIGNIER = "Castanea sativa";
-const SPECIES_SAULE_PLEUREUR = "Salix babylonica";
 const SPECIES_LIQUIDAMBAR = "Liquidambar styraciflua";
 const SPECIES_AULNE_GLUTINEUX = "Alnus glutinosa";
-const SPECIES_COTONEASTER = "Cotoneaster horizontalis";
+const SPECIES_COTONEASTER = "Cotoneaster horizontalis"; // A couple species, but it's not a real tree so eh TBD
 const SPECIES_ARBRE_DE_JUDEE = "Cercis siliquastrum";
 const SPECIES_TULIPIER = "Liriodendron tulipifera";
 const SPECIES_MAGNOLIA_GRANDIFLORA = "Magnolia grandiflora";
@@ -54,6 +53,19 @@ const SPECIES_FIGUIER = "Ficus carica";
 const SPECIES_ARBOUSIER = "Arbutus unedo";
 const SPECIES_NEFLIER = "Mespilus germanica"; // TODO make a family with the two or just fruit trees?
 const SPECIES_NEFLIER_DU_JAPON = "Rhaphiolepis bibas" // Also "Eriobotrya japonica";
+
+
+// Saules
+// Note: salix have many tiny plants and shrubs, I've selected trees only
+const SPECIES_SAULE_PLEUREUR = "Salix babylonica";
+const SPECIES_SAULE_BLANC = "Salix alba";
+const SPECIES_SAULE_MARSAULT = "Salix caprea";
+const SPECIES_SAULE_FRAGILE = "Salix fragilis"; 
+const SPECIES_SAULE_TROIS_ETAMINES = "Salix triandra";
+const SPECIES_SAULE_CINQ_ETAMINES = "Salix pentandra";
+const SPECIES_SAULE_DAPHNE = "Salix daphnoides";
+const SPECIES_SAULE_VANNIER = "Salix viminalis";
+
 
 // Aubépines
 const SPECIES_AUBEPINE = "Crataegus monogyna";
@@ -153,12 +165,10 @@ const latinToFrench = {
     [SPECIES_CHARME]: ["Charme", "Charme Commun", "Charmille"],
     [SPECIES_HETRE]: ["Hêtre"],
     [SPECIES_MARRONNIER]: ["Marronnier",  "Marronnier d'Inde", "Marronnier d'Europe", "Marronnier Blanc", "Châtaignier de Mer", "Marronnier Faux-Châtaignier", "Châtaignier des Chevaux"],
-    [SPECIES_CHATAIGNIER]: ["Châtaignier", "Arbre à Pain", "Pain des Pauvres"],
-    [SPECIES_SAULE_PLEUREUR]: ["Saule Pleureur"],
-    
+    [SPECIES_CHATAIGNIER]: ["Châtaignier", "Arbre à Pain", "Pain des Pauvres"],    
     [SPECIES_LIQUIDAMBAR]: ["Liquidambar"],
     [SPECIES_AULNE_GLUTINEUX]: ["Aulne Glutineux", "Aulne Noir", "Aulne Poisseux", "Vergne", "Verne"],
-    [SPECIES_COTONEASTER]: ["Cotoneaster"], // Note: there are 5 species, but it's not really a tree, good enough for now
+    [SPECIES_COTONEASTER]: ["Cotoneaster"], // Note: there are 5 species, but it's not really a tree, good enough for now, troen TBD
     [SPECIES_ARBRE_DE_JUDEE]: ["Arbre de Judée", "Gainier Silicastre"],
     [SPECIES_TULIPIER]: ["Tulipier", "Arbre aux Lis"],
     [SPECIES_MAGNOLIA_GRANDIFLORA]: ["Magnolia", "Magnolia à Grandes Fleurs", "Magnolier à Grandes Fleurs", "Laurier-Tulipier"],
@@ -266,6 +276,16 @@ const latinToFrench = {
     [SPECIES_LAURIER_ROSE]: ["Laurier Rose", "Oléandre", "Rosage", "Nérion", "Lauraine"],
     [SPECIES_LAURIER_PORTUGAL]: ["Laurier du Portugal", "Prunier du Portugal"],
 
+    // Grands Saules
+    [SPECIES_SAULE_BLANC]: ["Saule Blanc", "Saule Commun", "Saule Argenté", "Osier Blanc", "Saule Vivier"],
+    [SPECIES_SAULE_MARSAULT]: ["Saule Marsault", "Saule des Chèvres"],
+    [SPECIES_SAULE_FRAGILE]: ["Saule Fragile"],
+    [SPECIES_SAULE_TROIS_ETAMINES]: ["Saule à Trois Étamines", "Osier Brun", "Saule-Amandier", "Noir de Villaines"],
+    [SPECIES_SAULE_CINQ_ETAMINES]: ["Saule à Cinq Étamines", "Saule Odorant", "Saule-Laurier"],
+    [SPECIES_SAULE_DAPHNE]: ["Saule Faux-Daphné", "Saule Pruineux", "Saule Noir"],
+    [SPECIES_SAULE_VANNIER]: ["Saule des Vanniers", "Vime", "Osier Vert"],
+    [SPECIES_SAULE_PLEUREUR]: ["Saule Pleureur"],
+
     // Ormes
     [SPECIES_ORME_CHAMPETRE]: ["Orme Champêtre", "Ormeau", "Petit Orme", "Ipréau", "Orme Cilié", "Yvet"],
     [SPECIES_ORME_MONTAGNE]: ["Orme de Montagne", "Orme Blanc", "Orme Glabre"],
@@ -370,6 +390,25 @@ const FAMILY_MICOCOULIERS = {
     ],
     associates: []
 };
+
+
+const FAMILY_SAULES = {
+    familyName: "Grands Saules",
+    main: SPECIES_SAULE_PLEUREUR,
+    mainName: "Saule",
+    species: [
+        SPECIES_SAULE_MARSAULT,
+        SPECIES_SAULE_BLANC,
+        SPECIES_SAULE_TROIS_ETAMINES,
+        SPECIES_SAULE_VANNIER,
+        SPECIES_SAULE_FRAGILE,
+        SPECIES_SAULE_CINQ_ETAMINES,
+        SPECIES_SAULE_PLEUREUR,
+        SPECIES_SAULE_DAPHNE,
+    ],
+    associates: []
+};
+
 
 const FAMILY_ERABLES = {
     familyName: "Érables*",
@@ -632,7 +671,6 @@ const baseSpeciesNames = [
     SPECIES_HETRE,
     SPECIES_MARRONNIER,
     SPECIES_CHATAIGNIER,
-    SPECIES_SAULE_PLEUREUR,
     SPECIES_AULNE_GLUTINEUX,
     SPECIES_COTONEASTER,
     SPECIES_TULIPIER,
@@ -647,6 +685,7 @@ const baseSpeciesNames = [
     // SPECIES_CEDRE,
     // SPECIES_PIN,
 
+    FAMILY_SAULES,
     FAMILY_AUBEPINES,
     FAMILY_ERABLES,
     FAMILY_CHENES,
@@ -724,9 +763,10 @@ function enrichSpecies(species, csvData) {
 
 
 function recomputePercentage() {
-    // Recompute percentage for Sorbiers and Lauriers 
+    // Recompute percentage for Sorbiers and Lauriers etc.
     // which are a collection of species and not a real genus
-    const fakeFamilyNames = ["Lauriers", "Sorbiers"];
+    // Also for Saules which have too much stuff inside of it (grass etc.)
+    const fakeFamilyNames = ["Lauriers", "Sorbiers", "Grands Saules"];
     const families = allSpecies.filter(species => fakeFamilyNames.includes(species.familyName));
 
     // For each family
