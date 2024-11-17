@@ -25,7 +25,7 @@ const SPECIES_FIGUIER = "Ficus carica";
 
 // Misc
 const SPECIES_NEFLIER = "Mespilus germanica"; // TODO make a family with the two or just fruit trees?
-const SPECIES_NEFLIER_DU_JAPON = "Eriobotrya japonica";
+const SPECIES_NEFLIER_DU_JAPON = "Rhaphiolepis bibas" // Also "Eriobotrya japonica";
 
 // Fruitiers
 const POMMIER = "Malus domestica";
@@ -267,17 +267,10 @@ const latinToFrench = {
 
 // Additional taxon keys for missing or rare but notable species
 const missingTaxonKeys = {
-    [SPECIES_SAULE_PLEUREUR]: 5372639,
     [SPECIES_CEDRE]: 2685742,
     [SPECIES_PIN]: 2684241,
-    [SPECIES_NEFLIER_DU_JAPON]: 3024146,
-    [SPECIES_ERABLE_ARGENTE]: 3189837,
-    [SPECIES_TILLEUL_ARGENTE]: 4259350,
-    [SPECIES_BOULEAU_DORE]: 5331763,
-    [SPECIES_ORME_HOLLANDE]: 7141604,
     [SPECIES_SORBIER_DOMESTIQUE]: 3013215,
     [SPECIES_ALISIER_FONTAINEBLEAU]: 9306058,
-    [SPECIES_FUSAIN_CHINE]: 3169137,
 }
 
 
