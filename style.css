@@ -331,8 +331,18 @@ img {
     background-color: #f2f2f2; 
     color: #65b375;
     opacity: 1.0;
-    width: 150px;
 }
+
+/* Revert to simpler display on phone */
+@media (min-width: 768px) {
+    .species-button.essence {
+        width: 150px;
+    }
+}
+
+
+
+
 
 .species-button.essence:hover {
     background-color: rgb(232,232,232); 
@@ -738,6 +748,28 @@ h1 + .intro-text {
     font-size: 0.9rem;
     font-weight: 500;
 }
+
+.inline-percentage{
+    display: none;        
+}
+
+/* Mobile responsive styles */
+@media (max-width: 768px) {
+    .percentage-badge {
+        display: none;
+    }
+
+    .card-img{
+        display: none
+    }
+
+    .inline-percentage{
+        display: inline;
+    }
+
+}
+
+
 
 .feuillus-resineux-tag{
     font-size: 1.3rem;
