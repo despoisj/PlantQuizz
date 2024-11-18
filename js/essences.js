@@ -3,11 +3,25 @@ $(document).ready(async function() {
 
     // Load species
     await loadSpecies();
-    populateSpecies();
+    populateSpecies(false);
+
+    $('#tree-type-toggle').on('change', function() {
+        // Change appearance of button
+        if (this.checked){
+            $("#feuillusLabel").removeClass("toggle-label-lightgreen")
+            $("#resineuxLabel").addClass("toggle-label-darkgreen")
+        } else {
+           $("#feuillusLabel").addClass("toggle-label-lightgreen")
+            $("#resineuxLabel").removeClass("toggle-label-darkgreen") 
+        }
+        populateSpecies(this.checked);
+    });
 })
 
 
-function populateSpecies() {
+function populateSpecies(showResineux=false) {
+    // Show cards for feuillus or resineux
+
     const $speciesFamilies = $('#species-families');
 
     // Keep track of added species to not add them twice
@@ -22,6 +36,12 @@ function populateSpecies() {
     families.sort((a, b) => a.familyName.localeCompare(b.familyName));
     
     families.forEach(family => {
+
+        // Only select resineux or not
+        if (family.resineux != showResineux){
+            return
+        }
+        
         html += `
             <div class="species-category">
                 <h2>${family.familyName}</h2>
@@ -69,6 +89,11 @@ function populateSpecies() {
     `;
     
     individualSpecies.forEach(species => {
+        // Check if resineux or not
+        if (LIST_OTHER_RESINEUX.includes(species.name) != showResineux) {
+            return;
+        }
+
         // Don't add twice if was already in family
         if (!added.includes(species.name)) {
             html += createSpeciesCard(species);

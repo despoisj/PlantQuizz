@@ -13,9 +13,6 @@ const SPECIES_NOISETIER = "Corylus avellana";
 const SPECIES_OLIVIER = "Olea europaea";
 const SPECIES_ROBINIER = "Robinia pseudoacacia";
 const SPECIES_SAVONNIER = "Koelreuteria paniculata";
-const SPECIES_CYPRES_CHAUVE = "Taxodium distichum";
-const SPECIES_CEDRE = "Cedrus";
-const SPECIES_PIN = "Pinus";
 const SPECIES_GINKOBILOBA = "Ginkgo biloba";
 const SPECIES_EUCALYPTUS = "Eucalyptus globulus"; // There are others but very few
 const SPECIES_CATALPA = "Catalpa bignonioides";
@@ -26,13 +23,10 @@ const SPECIES_LILAS_PERSE = "Melia azedarach";
 // the prunus category, they're not included.
 const SPECIES_POMMIER = "Malus domestica";
 const SPECIES_POMMIER_SAUVAGE = "Malus sylvestris";
-
 const SPECIES_POIRIER = "Pyrus communis";
 const SPECIES_POIRIER_SAUVAGE = "Pyrus pyraster";
 const SPECIES_POIRIER_EPINEUX = "Pyrus spinosa";
 const SPECIES_POIRIER_CORDE = "Pyrus cordata";
-
-// TODO BELOW
 const SPECIES_MERISIER = "Prunus avium";
 const SPECIES_CERISIER_GRAPPES = "Prunus padus";
 const SPECIES_MYROBOLAN = "Prunus cerasifera";
@@ -40,20 +34,18 @@ const SPECIES_PRUNIER = "Prunus domestica";
 const SPECIES_PECHER = "Prunus persica";
 const SPECIES_CERISIER_NOIR = "Prunus serotina";
 const SPECIES_ABRICOTIER = "Prunus armeniaca";
-const SPECIES_AMANDIER = "Prunus amygdalus"; // "Prunus amygdalus Batsch"
+const SPECIES_AMANDIER = "Prunus amygdalus";
 const SPECIES_CERISIER_ACIDE = "Prunus cerasus";
 const SPECIES_MARMOTTIER = "Prunus brigantina";
-
 const SPECIES_MURIER_BLANC = "Morus alba";
 const SPECIES_MURIER_NOIR = "Morus nigra";
 const SPECIES_MURIER_ARBRE = "Morus indica";
-
 // Note: Very few Citronnier / Orangers / Mandarinier in France... TBC
 // Note: Very few Plaqueminier lotier & Kaki... TBC
 const SPECIES_GRENADIER = "Punica granatum";
 const SPECIES_FIGUIER = "Ficus carica";
 const SPECIES_ARBOUSIER = "Arbutus unedo";
-const SPECIES_NEFLIER = "Mespilus germanica"; // TODO make a family with the two or just fruit trees?
+const SPECIES_NEFLIER = "Mespilus germanica";
 const SPECIES_NEFLIER_DU_JAPON = "Rhaphiolepis bibas" // Also "Eriobotrya japonica";
 const SPECIES_FEVIER = "Gleditsia triacanthos";
 
@@ -158,6 +150,45 @@ const SPECIES_FUSAIN = "Euonymus europaeus";
 const SPECIES_FUSAIN_LARGE = "Euonymus latifolius";
 const SPECIES_FUSAIN_CHINE = "Euonymus fortunei";
 
+// ============== Resineux ==============
+const SPECIES_CYPRES = "Cupressus sempervirens";
+const SPECIES_CYPRES_LAMBERT = "Cupressus macrocarpa";
+const SPECIES_CYPRES_ARIZONA = "Cupressus arizonica";
+const SPECIES_CYPRES_LAWSON = "Chamaecyparis lawsoniana"
+const SPECIES_CYPRES_CHAUVE = "Taxodium distichum";
+
+const SPECIES_PIN_SYLVESTRE = "Pinus sylvestris";
+const SPECIES_PIN_MARITIME = "Pinus pinaster";
+const SPECIES_PIN_NOIR = "Pinus nigra";
+const SPECIES_PIN_ALEP = "Pinus halepensis";
+const SPECIES_PIN_CROCHETS = "Pinus uncinata";
+const SPECIES_PIN_ALPES = "Pinus cembra";
+const SPECIES_PIN_MUGO = "Pinus mugo";
+const SPECIES_PIN_PARASOL = "Pinus pinea";
+const SPECIES_PIN_BLANC = "Pinus strobus";
+
+const SPECIES_EPICEA = "Picea abies";
+const SPECIES_EPICEA_COLORADO = "Picea pungens";
+const SPECIES_EPICEA_SITKA = "Picea sitchensis";
+
+const SPECIES_SAPIN = "Abies alba"
+const SPECIES_SAPIN_VANCOUVER = "Abies grandis"
+const SPECIES_SAPIN_NORDMANN = "Abies nordmanniana" // 0.6%
+const SPECIES_SAPIN_ANDALOUSIE = "Abies pinsapo" // 0.4%
+
+const SPECIES_MELEZE = "Larix decidua";
+const SPECIES_MELEZE_JAPON = "Larix kaempferi";
+
+const SPECIES_CEDRE_ATLAS = "Cedrus atlantica";
+const SPECIES_CEDRE_HIMALAYA = "Cedrus deodara"
+const SPECIES_CEDRE_LIBAN = "Cedrus libani";
+
+const SPECIES_SEQUOIA_GEANT = "Sequoiadendron giganteum";
+const SPECIES_SEQUOIA_VERT = "Sequoia sempervirens";
+
+const SPECIES_IF = "Taxus baccata";
+const SPECIES_DOUGLAS = "Pseudotsuga menziesii";
+const SPECIES_THUYA = "Thuja plicata"
 
 // =================== TRANSLATIONS ================
 // Note: this is necessary because they aren't provided 
@@ -223,11 +254,46 @@ const latinToFrench = {
     [SPECIES_NEFLIER_DU_JAPON]: ["Néflier du Japon", "Bibacier", "Bibassier"],
     [SPECIES_FEVIER]: ["Févier d'Amérique", "Févier Épineux", "Févier à Trois Épines", "Févier à Trois Pointes", "Carouge à Miel", "Acacia à Trois Épines", "Épine du Christ"],
 
+    // ============== Resineux  ==============
+    [SPECIES_CYPRES]: ["Cyprès commun", "Cyprès d'Italie", "Cyprès toujours Vert", "Cyprès de Provence", "Cyprès sempervirent"],
+    [SPECIES_CYPRES_LAMBERT]: ["Cyprès de Lambert", "Cyprès de Monterey"],
+    [SPECIES_CYPRES_ARIZONA]: ["Cyprès de l'Arizona"],
+    [SPECIES_CYPRES_LAWSON]: ["Cyprès de Lawson"],
+    [SPECIES_CYPRES_CHAUVE]: ["Cyprès Chauve", "Cyprès de Louisiane", "Taxaudier", "Taxodier", "Cipre"],
+    
+    // Pinus
+    [SPECIES_PIN_SYLVESTRE]: ["Pin sylvestre", "Pin du Nord"],
+    [SPECIES_PIN_MARITIME]: ["Pin maritime", "Pin des Landes", "Pin de Bordeaux", "Pin de Corte", "Pin Mésogéen"],
+    [SPECIES_PIN_NOIR]: ["Pin noir", "Pin noir d'Autriche"],
+    [SPECIES_PIN_ALEP]: ["Pin d'Alep", "Pin Blanc de Provence", "Pin de Jerusalem"],
+    [SPECIES_PIN_CROCHETS]: ["Pin à Crochets", "Pin de Briançon"],
+    [SPECIES_PIN_ALPES]: ["Pin cembro", "Pin des Alpes", "Arolle", "Auvier", "Tinier"],
+    [SPECIES_PIN_MUGO]: ["Pin mugo", "Pin de montagne", "Pin couché"],
+    [SPECIES_PIN_PARASOL]: ["Pin Parasol", "Pin Pignon"],
+    [SPECIES_PIN_BLANC]: ["Pin blanc", "Pin du Lord", "Pin de Weymouth"],
 
-    // Resineux
-    [SPECIES_CEDRE]: ["Cèdre"],
-    [SPECIES_PIN]: ["Pin"],
-    [SPECIES_CYPRES_CHAUVE]: ["Cyprès Chauve"],
+    [SPECIES_EPICEA]: ["Épicéa commun", "Sapinette", "Épicéa du Nord", "Épicéa élevé", "Épinette de Norvège", "Épicéa à Poix", "Faux Sapin", "Gentil Sapin", "Sapin de Noël"],
+    [SPECIES_EPICEA_COLORADO]: ["Épicéa bleu", "Épinette Bleue", "Épicea du Colorado"],
+    [SPECIES_EPICEA_SITKA]: ["Épicéa de Sitka", "Épinette de Sitka"],
+
+    [SPECIES_SAPIN]: ["Sapin blanc", "Sapin pectiné", "Sapin des Vosges"],
+    [SPECIES_SAPIN_VANCOUVER]: ["Sapin de Vancouver", "Sapin Géant"],
+    [SPECIES_SAPIN_NORDMANN]: ["Sapin de Nordmann"],
+    [SPECIES_SAPIN_ANDALOUSIE]: ["Sapin d'Andalousie", "Sapin d'Espagne"],
+
+    [SPECIES_MELEZE]: ["Mélèze d'Europe", "Mélèze commun", "Pin de Briançon"],
+    [SPECIES_MELEZE_JAPON]: ["Mélèze du Japon"],
+
+    [SPECIES_CEDRE_ATLAS]: ["Cèdre de l'Atlas"],
+    [SPECIES_CEDRE_HIMALAYA]: ["Cèdre de l'Himalaya", "Cèdre Sacré", "Cèdre Déodar"],
+    [SPECIES_CEDRE_LIBAN]: ["Cèdre du Liban", "Cèdre du Mont Liban"],
+
+    [SPECIES_SEQUOIA_GEANT]: ["Séquoia géant", "Wellingtonia"],
+    [SPECIES_SEQUOIA_VERT]: ["Séquoia à Feuilles d'If", "Séquoia Sempervirent", "Séquoia toujours Vert"],
+
+    [SPECIES_IF]: ["If", "If Commun", "If à Baies"],
+    [SPECIES_DOUGLAS]: ["Douglas", "Sapin de Douglas", "Pin d'Oregon", "Douglas de Menzies"],
+    [SPECIES_THUYA]: ["Thuya géant", "Cèdre Rouge de l’Ouest", "Thuya de Lobb"],
 
     // Aubépines
     [SPECIES_AUBEPINE]: ["Aubépine Monogyne", "Aubépine à Un Style"],
@@ -333,10 +399,9 @@ const latinToFrench = {
 // ================== ADDITIONAL METADATA ==================
 
 
-// Additional taxon keys for missing or rare but notable species
+// Additional manual taxon keys for missing or rare but notable species
 const missingTaxonKeys = {
-    [SPECIES_CEDRE]: 2685742,
-    [SPECIES_PIN]: 2684241,
+    // None so far, e.g. [SPECIES_X] : 1234567,
 }
 
 
@@ -344,6 +409,7 @@ const missingTaxonKeys = {
 
 const FAMILY_CERISIERS = {
     familyName: "Cerisiers",
+    resineux: false,
     main: SPECIES_MERISIER,
     mainName: "Cerisier",
     species: [
@@ -357,6 +423,7 @@ const FAMILY_CERISIERS = {
 
 const FAMILY_MURIERS = {
     familyName: "Mûriers",
+    resineux: false,
     main: SPECIES_MURIER_BLANC,
     mainName: "Mûrier",
     species: [
@@ -369,6 +436,7 @@ const FAMILY_MURIERS = {
 
 const FAMILY_POMMIERS = {
     familyName: "Pommiers",
+    resineux: false,
     main: SPECIES_POMMIER_SAUVAGE,
     mainName: "Pommier",
     species: [
@@ -380,6 +448,7 @@ const FAMILY_POMMIERS = {
 
 const FAMILY_POIRIERS = {
     familyName: "Poiriers",
+    resineux: false,
     main: SPECIES_POIRIER_SAUVAGE,
     mainName: "Poirier",
     species: [
@@ -393,6 +462,7 @@ const FAMILY_POIRIERS = {
 
 const FAMILY_MICOCOULIERS = {
     familyName: "Micocouliers",
+    resineux: false,
     main: SPECIES_MICOCOULIER,
     mainName: "Micocoulier",
     species: [
@@ -405,6 +475,7 @@ const FAMILY_MICOCOULIERS = {
 
 const FAMILY_SAULES = {
     familyName: "Grands Saules",
+    resineux: false,
     main: SPECIES_SAULE_PLEUREUR,
     mainName: "Saule",
     species: [
@@ -423,6 +494,7 @@ const FAMILY_SAULES = {
 
 const FAMILY_ERABLES = {
     familyName: "Érables*",
+    resineux: false,
     main: SPECIES_ERABLE_SYCOMORE,
     mainName: "Érable",
     species: [
@@ -444,6 +516,7 @@ const FAMILY_ERABLES = {
 
 const FAMILY_CHENES = {
     familyName: "Chênes",
+    resineux: false,
     main: SPECIES_CHENE_PEDONCULE,
     mainName: "Chêne",
     species: [
@@ -461,6 +534,7 @@ const FAMILY_CHENES = {
 
 const FAMILY_PLATANES = {
     familyName: "Platanes",
+    resineux: false,
     main: SPECIES_PLATANE,
     mainName: "Platane",
     species: [
@@ -474,6 +548,7 @@ const FAMILY_PLATANES = {
 
 const FAMILY_TILLEULS = {
     familyName: "Tilleuls",
+    resineux: false,
     main: SPECIES_TILLEUL_GRANDES_FEUILLES,
     mainName: "Tilleul",
     species: [
@@ -488,6 +563,7 @@ const FAMILY_TILLEULS = {
 
 const FAMILY_FRENES = {
     familyName: "Frênes",
+    resineux: false,
     main: SPECIES_FRENE_COMMUN,
     mainName: "Frêne",
     species: [
@@ -501,6 +577,7 @@ const FAMILY_FRENES = {
 
 const FAMILY_CORNOUILLERS = {
     familyName: "Cornouillers",
+    resineux: false,
     main: SPECIES_CORNOUILLER_SANGUIN,
     mainName: "Cornouiller",
     species: [
@@ -512,6 +589,7 @@ const FAMILY_CORNOUILLERS = {
 
 const FAMILY_LAURIERS = {
     familyName: "Lauriers",
+    resineux: false,
     main: SPECIES_LAURIER_SAUCE,
     mainName: "Laurier",
     species: [
@@ -527,6 +605,7 @@ const FAMILY_LAURIERS = {
 // Orme family
 const FAMILY_ORMES = {
     familyName: "Ormes",
+    resineux: false,
     main: SPECIES_ORME_CHAMPETRE,
     mainName: "Orme",
     species: [
@@ -541,6 +620,7 @@ const FAMILY_ORMES = {
 // Peuplier family
 const FAMILY_PEUPLIERS = {
     familyName: "Peupliers",
+    resineux: false,
     main: SPECIES_PEUPLIER_TREMBLE,
     mainName: "Peuplier",
     species: [
@@ -556,6 +636,7 @@ const FAMILY_PEUPLIERS = {
 // Aubépines
 const FAMILY_AUBEPINES = {
     familyName: "Aubépines",
+    resineux: false,
     main: SPECIES_AUBEPINE,
     mainName: "Aubépine",
     species: [
@@ -569,6 +650,7 @@ const FAMILY_AUBEPINES = {
 // Bouleaux
 const FAMILY_BOULEAUX = {
     familyName: "Bouleaux",
+    resineux: false,
     main: SPECIES_BOULEAU,
     mainName: "Bouleau",
     species: [
@@ -582,6 +664,7 @@ const FAMILY_BOULEAUX = {
 // Sorbier family
 const FAMILY_SORBIERS = {
     familyName: "Sorbiers",
+    resineux: false,
     main: SPECIES_SORBIER_OISELEURS,
     mainName: "Sorbier",
     species: [
@@ -599,6 +682,7 @@ const FAMILY_SORBIERS = {
 // Fusains family
 const FAMILY_FUSAINS = {
     familyName: "Fusains",
+    resineux: false,
     main: SPECIES_FUSAIN,
     mainName: "Fusain",
     species: [
@@ -612,6 +696,7 @@ const FAMILY_FUSAINS = {
 // Noyers
 const FAMILY_NOYERS = {
     familyName: "Noyers",
+    resineux: false,
     main: SPECIES_NOYER,
     mainName: "Noyer",
     species: [
@@ -623,6 +708,7 @@ const FAMILY_NOYERS = {
 
 const FAMILY_FRUITS = {
     familyName: "Arbres Fruitiers",
+    resineux: false,
     main: SPECIES_POMMIER_SAUVAGE,
     mainName: "N/A",
     species: [
@@ -655,6 +741,112 @@ const FAMILY_FRUITS = {
     ],
     associates: []
 };
+
+// ================ Resineux ================
+const FAMILY_PINS = {
+    familyName: "Pins",
+    resineux: true,
+    main: SPECIES_PIN_SYLVESTRE,
+    mainName: "Pin",
+    species: [
+        SPECIES_PIN_SYLVESTRE,
+        SPECIES_PIN_MARITIME,
+        SPECIES_PIN_NOIR,
+        SPECIES_PIN_ALEP,
+        SPECIES_PIN_CROCHETS,
+        SPECIES_PIN_ALPES,
+        SPECIES_PIN_MUGO,
+        SPECIES_PIN_PARASOL,
+        SPECIES_PIN_BLANC,
+    ],
+    associates: []
+};
+
+const FAMILY_CYPRES = {
+    familyName: "Cyprès",
+    resineux: true,
+    main: SPECIES_CYPRES_CHAUVE,
+    mainName: "Cyprès",
+    species: [
+        SPECIES_CYPRES_CHAUVE,
+        SPECIES_CYPRES,
+        SPECIES_CYPRES_LAWSON,
+        SPECIES_CYPRES_LAMBERT,
+        SPECIES_CYPRES_ARIZONA,
+    ],
+    associates: []
+};
+
+const FAMILY_EPICEAS = {
+    familyName: "Epicéas",
+    resineux: true,
+    main: SPECIES_EPICEA,
+    mainName: "Epicéa",
+    species: [
+        SPECIES_EPICEA,
+        SPECIES_EPICEA_COLORADO,
+        SPECIES_EPICEA_SITKA,
+    ],
+    associates: []
+};
+
+const FAMILY_SAPINS = {
+    familyName: "Sapins",
+    resineux: true,
+    main: SPECIES_SAPIN,
+    mainName: "Sapin",
+    species: [
+        SPECIES_SAPIN,
+        SPECIES_SAPIN_VANCOUVER,
+        SPECIES_SAPIN_NORDMANN,
+        SPECIES_SAPIN_ANDALOUSIE,
+    ],
+    associates: []
+};
+
+const FAMILY_MELEZES = {
+    familyName: "Mélèzes",
+    resineux: true,
+    main: SPECIES_MELEZE,
+    mainName: "Mélèze",
+    species: [
+        SPECIES_MELEZE,
+        SPECIES_MELEZE_JAPON,
+    ],
+    associates: []
+};
+
+const FAMILY_CEDRES = {
+    familyName: "Cèdres",
+    resineux: true,
+    main: SPECIES_CEDRE_ATLAS,
+    mainName: "Cèdre",
+    species: [
+        SPECIES_CEDRE_ATLAS,
+        SPECIES_CEDRE_HIMALAYA,
+        SPECIES_CEDRE_LIBAN,
+    ],
+    associates: []
+};
+
+const FAMILY_SEQUOIAS = {
+    familyName: "Séquoias",
+    resineux: true,
+    main: SPECIES_SEQUOIA_GEANT,
+    mainName: "Séquoia",
+    species: [
+        SPECIES_SEQUOIA_GEANT,
+        SPECIES_SEQUOIA_VERT,
+    ],
+    associates: []
+};
+
+// We need this list for essences to filter individual non-family species
+const LIST_OTHER_RESINEUX = [
+    SPECIES_IF,
+    SPECIES_DOUGLAS,
+    SPECIES_THUYA,
+]
 
 
 // ==================== MISC COLLECTIONS ====================
@@ -693,11 +885,6 @@ const baseSpeciesNames = [
     SPECIES_ROBINIER,
     SPECIES_FIGUIER,
 
-    // TODO RESINEUX
-    // SPECIES_CYPRES_CHAUVE,
-    // SPECIES_CEDRE,
-    // SPECIES_PIN,
-
     FAMILY_SAULES,
     FAMILY_AUBEPINES,
     FAMILY_ERABLES,
@@ -716,6 +903,12 @@ const baseSpeciesNames = [
     FAMILY_POIRIERS,
     FAMILY_CERISIERS,
     FAMILY_MURIERS,
+
+    // Resineux
+    FAMILY_PINS,
+    FAMILY_SAPINS,
+    FAMILY_CEDRES,
+    FAMILY_SEQUOIAS,
 ];
 
 // Species a bit less common
@@ -733,6 +926,14 @@ const harderSpeciesNames = [
     FAMILY_SORBIERS, 
     FAMILY_MICOCOULIERS,
     FAMILY_FRUITS,
+
+    // Resineux
+    SPECIES_IF,
+    SPECIES_THUYA,
+    SPECIES_DOUGLAS,
+    FAMILY_EPICEAS,
+    FAMILY_MELEZES,
+    FAMILY_CYPRES,
 ]
 
 const allSpeciesNames = baseSpeciesNames.concat(harderSpeciesNames);
@@ -780,7 +981,7 @@ function recomputePercentage() {
     // Recompute percentage for Sorbiers and Lauriers etc.
     // which are a collection of species and not a real genus
     // Also for Saules which have too much stuff inside of it (grass etc.)
-    const fakeFamilyNames = ["Lauriers", "Sorbiers", "Grands Saules"];
+    const fakeFamilyNames = ["Lauriers", "Sorbiers", "Grands Saules", "Cyprès", "Séquoias"];
     const families = allSpecies.filter(species => fakeFamilyNames.includes(species.familyName));
 
     // For each family
@@ -825,8 +1026,9 @@ let baseSpecies = [];
 let harderSpecies = [];
 let allSpecies = [];
 let collections = [
-    COLLECTION_ORME_CHARME,
-    COLLECTION_ERABLE_AUBEPINE,
+    // Not sure if good idea
+    //COLLECTION_ORME_CHARME,
+    //COLLECTION_ERABLE_AUBEPINE,
 ]
 
 async function loadSpecies(){

@@ -175,6 +175,21 @@ h1 {
     margin-bottom: 5px;
 }
 
+.metaSelectionSmall{
+    /* All buttons except main one like select all */
+    background-color: #188710;
+    opacity: 0.8;
+    padding: 5px 10px;
+    font-size: 1.1rem !important;
+
+    transition: opacity 0.3s;
+}
+
+.metaSelectionSmall:hover{
+    /* All buttons except main one like select all */
+    opacity: 1.0;
+}
+
 button {
     padding: 10px 20px;
     font-size: 1.2rem !important;
@@ -365,67 +380,6 @@ img {
     animation: flash-red 0.5s ease-in-out;
 }
 
-
-/* Toggle */
-.toggle-container {
-    display: flex;
-    align-items: center;
-    gap: 8px;  
-    margin: -14px 0 34px 0;
-    justify-content: center;
-    cursor: pointer;
-}
-
-.toggle-label {
-    font-size: 0.9rem;
-    color: #666;
-}
-
-.toggle {
-    position: relative;
-    display: inline-block;
-    width: 40px;
-    height: 22px;
-}
-
-.toggle input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-}
-
-.toggle-slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #ccc;
-    transition: .4s;
-    border-radius: 34px;
-}
-
-.toggle-slider:before {
-    position: absolute;
-    content: "";
-    height: 18px;
-    width: 18px;
-    left: 2px;
-    bottom: 2px;
-    background-color: white;
-    transition: .3s;
-    border-radius: 50%;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
-}
-
-.toggle input:checked + .toggle-slider {
-    background-color: #4CAF50;
-}
-
-.toggle input:checked + .toggle-slider:before {
-    transform: translateX(18px);
-}
 
 
 /* ESSENCES PAGE */
@@ -629,4 +583,103 @@ img {
 /* Optional: Add a subtle top margin if you want more space after the title */
 h1 + .intro-text {
     margin-top: 20px;
+}
+
+
+
+/* Toggle */
+.toggle-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;  
+    margin: -14px 0 34px 0;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.toggle-label {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.toggle-label-bigger {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #AAA;
+}
+
+.toggle {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 22px;
+}
+
+.toggle input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.toggle-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.toggle-slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 2px;
+    bottom: 2px;
+    background-color: white;
+    transition: .3s;
+    border-radius: 50%;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+.toggle input:checked + .toggle-slider {
+    background-color: #4CAF50;
+}
+
+.toggle input:checked + .toggle-slider:before {
+    transform: translateX(18px);
+}
+
+/* Special color for feuillus / resineux slider */
+.tree-type-toggle .toggle-slider {
+    background-color: #4CAF50;
+}
+
+.tree-type-toggle .toggle input:checked + .toggle-slider {
+    background-color: #4CAF50;
+    /*  005721  */
+}
+
+
+/* Text color change */
+.tree-type-toggle .toggle-label-bigger {
+   transition: all 0.3s ease;
+}
+
+.toggle-label-darkgreen{
+   color: #4CAF50;
+}
+
+.toggle-label-lightgreen{
+   color: #4CAF50;
+}
+
+.tree-type-toggle {
+    font-size: 1.5rem !important;
+    margin-top: 35px;
+    margin-bottom: -10px;
 }

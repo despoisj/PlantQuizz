@@ -92,8 +92,9 @@ function populateSelection(simple){
 
     // Clear in case of mode change
     $speciesSelection.empty();
-    $("#metaButtons").empty();
-    $("#metaButtons").html('<button class="metaSelection" id="selectAll">Tout Sélectionner</button>')
+    $("#metaButtonsMain").empty();
+    $("#metaButtonsMain").html('<button class="metaSelection" id="selectAll">Tout Sélectionner</button>')
+    $("#metaButtons").empty(); // Families
 
     species.forEach(speciesItem => {
 
@@ -139,13 +140,15 @@ function populateSelection(simple){
 
     // If complex mode, add family buttons
     if (!simple){
-        allSpecies.forEach(speciesItem => {
-            if ("taxonKey" in speciesItem){
-                return
-            }
+        // Filter families and sort by familyName
+        var families = allSpecies.filter(speciesItem => !("taxonKey" in speciesItem));
+        families.sort((a, b) => a.familyName.localeCompare(b.familyName));
+        
+        families.forEach(speciesItem => {
 
             const button = $('<button>')
             .addClass('metaSelection')
+            .addClass('metaSelectionSmall')
             .text(speciesItem.familyName)
             .addClass("unselected")
             .on('click', function() {
@@ -170,6 +173,7 @@ function populateSelection(simple){
         
             const button = $('<button>')
             .addClass('metaSelection')
+            .addClass('metaSelectionSmall')
             .text(collection.name)
             .addClass("unselected")
             .on('click', function() {
@@ -180,7 +184,7 @@ function populateSelection(simple){
                     button.toggleClass('unselected');
                 });
             });
-            $("#metaButtons").append(button);
+            $("#metaButtonsMain").append(button);
         });
     }
 
