@@ -116,14 +116,16 @@ function createSpeciesCard(species, forcePercentage=false, percentage=false) {
     var percentageString = ""
     if (percentage || forcePercentage){
         if (percentage < 1.0){
-            percentageString = " (<1%)"
+            percentageString = "<1%"
         } else {
             if (percentage == 100) {
                 percentage = 99.9
             }
-            percentageString = " (" + Math.floor(percentage) + "%)"
+            percentageString = "" + Math.floor(percentage) + "%"
         }
     }
+
+    const useImgs = true;
 
     var opacityString = ""
     if (percentage) {
@@ -132,9 +134,15 @@ function createSpeciesCard(species, forcePercentage=false, percentage=false) {
         opacityString = 'style="border: 2px solid rgba(77, 201, 105,' + 1.0 / 100.0 + ')"'
     }
 
+    // Look for image
+    const simpleName = species.name.replace(" x ", "_").replace(" × ", "_").replace(" ","_");
+    var imgPath = `img/species/${simpleName}.jpg`;
+
     return `
-        <button ${opacityString} class="species-button unselected weighted" data-taxon="${species.taxonKey}">
-            <span class="species-name">${species.commonName}${percentageString}</span>
+        <button ${opacityString} class="species-button essence weighted" data-taxon="${species.taxonKey}">
+            ${percentage ? `<span class="percentage-badge">${percentageString}</span>` : ''}
+            <img class="card-img" src="${imgPath}"/>
+            <span class="species-name">${species.commonName}</span>
             <span class="latin-name">${species.name}</span>
         </button>
     `;
