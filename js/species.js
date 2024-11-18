@@ -11,6 +11,7 @@ const SPECIES_TULIPIER = "Liriodendron tulipifera";
 const SPECIES_MAGNOLIA_GRANDIFLORA = "Magnolia grandiflora";
 const SPECIES_NOISETIER = "Corylus avellana";
 const SPECIES_OLIVIER = "Olea europaea";
+const SPECIES_ROBINIER = "Robinia pseudoacacia";
 const SPECIES_SAVONNIER = "Koelreuteria paniculata";
 const SPECIES_CYPRES_CHAUVE = "Taxodium distichum";
 const SPECIES_CEDRE = "Cedrus";
@@ -53,7 +54,7 @@ const SPECIES_FIGUIER = "Ficus carica";
 const SPECIES_ARBOUSIER = "Arbutus unedo";
 const SPECIES_NEFLIER = "Mespilus germanica"; // TODO make a family with the two or just fruit trees?
 const SPECIES_NEFLIER_DU_JAPON = "Rhaphiolepis bibas" // Also "Eriobotrya japonica";
-
+const SPECIES_FEVIER = "Gleditsia triacanthos";
 
 // Saules
 // Note: salix have many tiny plants and shrubs, I've selected trees only
@@ -174,6 +175,7 @@ const latinToFrench = {
     [SPECIES_MAGNOLIA_GRANDIFLORA]: ["Magnolia", "Magnolia à Grandes Fleurs", "Magnolier à Grandes Fleurs", "Laurier-Tulipier"],
     [SPECIES_NOISETIER]: ["Noisetier", "Coudriers", "Aveliniers"],
     [SPECIES_SAVONNIER]: ["Savonnier", "Savonnier de Chine", "Bois de Panama", "Arbre aux Lanternes", "Arbre à Pluie d'Or", "Mimosa d'Été", "Lampions de Chine"],
+    [SPECIES_ROBINIER]: ["Robinier", "Robinier Faux-Acacia", "Faux-Acacia"];
     [SPECIES_CYPRES_CHAUVE]: ["Cyprès Chauve"],
     [SPECIES_GINKOBILOBA]: ["Ginkgo", "Arbre aux Quarante Écus", "Arbre aux Abricots d'Argent"],
     [SPECIES_CATALPA]: ["Catalpa", "Catalpa Commun", "Arbre aux Haricots", "Catalpa Boule"],
@@ -213,6 +215,8 @@ const latinToFrench = {
     [SPECIES_FIGUIER]: ["Figuier", "Figuier Comestible", "Figuier Commun", "Figuier de Carie", "Arbre à Cariques", "Figuier sauvage (♂)", "Caprifiguier (♂)", "Figuier de Bouc (♂)"],
     [SPECIES_NEFLIER]: ["Néflier", "Néflier d'Allemagne", "Mêlier", "Mespoulo", "Nesplier"],
     [SPECIES_NEFLIER_DU_JAPON]: ["Néflier du Japon", "Bibacier", "Bibassier"],
+    [SPECIES_FEVIER]: ["Févier d'Amérique", "Févier Épineux", "Févier à Trois Épines", "Févier à Trois Pointes", "Carouge à Miel", "Acacia à Trois Épines", "Épine du Christ"],
+
 
     // Resineux
     [SPECIES_CEDRE]: ["Cèdre"],
@@ -640,6 +644,7 @@ const FAMILY_FRUITS = {
         SPECIES_ARBOUSIER,
         SPECIES_NEFLIER,
         SPECIES_NEFLIER_DU_JAPON,
+        SPECIES_FEVIER,
     ],
     associates: []
 };
@@ -678,6 +683,7 @@ const baseSpeciesNames = [
     SPECIES_NOISETIER,
     SPECIES_OLIVIER,
     SPECIES_SAVONNIER,
+    SPECIES_ROBINIER
     SPECIES_FIGUIER,
 
     // TODO RESINEUX
