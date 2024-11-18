@@ -175,7 +175,7 @@ const latinToFrench = {
     [SPECIES_MAGNOLIA_GRANDIFLORA]: ["Magnolia", "Magnolia à Grandes Fleurs", "Magnolier à Grandes Fleurs", "Laurier-Tulipier"],
     [SPECIES_NOISETIER]: ["Noisetier", "Coudriers", "Aveliniers"],
     [SPECIES_SAVONNIER]: ["Savonnier", "Savonnier de Chine", "Bois de Panama", "Arbre aux Lanternes", "Arbre à Pluie d'Or", "Mimosa d'Été", "Lampions de Chine"],
-    [SPECIES_ROBINIER]: ["Robinier", "Robinier Faux-Acacia", "Faux-Acacia"];
+    [SPECIES_ROBINIER]: ["Robinier", "Robinier Faux-Acacia", "Faux-Acacia"],
     [SPECIES_CYPRES_CHAUVE]: ["Cyprès Chauve"],
     [SPECIES_GINKOBILOBA]: ["Ginkgo", "Arbre aux Quarante Écus", "Arbre aux Abricots d'Argent"],
     [SPECIES_CATALPA]: ["Catalpa", "Catalpa Commun", "Arbre aux Haricots", "Catalpa Boule"],
@@ -683,7 +683,7 @@ const baseSpeciesNames = [
     SPECIES_NOISETIER,
     SPECIES_OLIVIER,
     SPECIES_SAVONNIER,
-    SPECIES_ROBINIER
+    SPECIES_ROBINIER,
     SPECIES_FIGUIER,
 
     // TODO RESINEUX
