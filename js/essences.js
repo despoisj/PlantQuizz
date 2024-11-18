@@ -135,7 +135,7 @@ function createSpeciesCard(species, forcePercentage=false, percentage=false) {
     }
 
     // Look for image
-    const simpleName = species.name.replace(" x ", "_").replace(" × ", "_").replace(" ","_");
+    const simpleName = species.name.replace(" x ", "_").replace(" × ", "_").replace(" ","_").toLowerCase();
     var imgPath = `img/species/${simpleName}.jpg`;
 
     return `
