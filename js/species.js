@@ -11,7 +11,6 @@ const SPECIES_TULIPIER = "Liriodendron tulipifera";
 const SPECIES_MAGNOLIA_GRANDIFLORA = "Magnolia grandiflora";
 const SPECIES_NOISETIER = "Corylus avellana";
 const SPECIES_OLIVIER = "Olea europaea";
-const SPECIES_ROBINIER = "Robinia pseudoacacia";
 const SPECIES_SAVONNIER = "Koelreuteria paniculata";
 const SPECIES_GINKOBILOBA = "Ginkgo biloba";
 const SPECIES_EUCALYPTUS = "Eucalyptus globulus"; // There are others but very few
@@ -59,6 +58,13 @@ const SPECIES_SAULE_TROIS_ETAMINES = "Salix triandra";
 const SPECIES_SAULE_CINQ_ETAMINES = "Salix pentandra";
 const SPECIES_SAULE_DAPHNE = "Salix daphnoides";
 const SPECIES_SAULE_VANNIER = "Salix viminalis";
+
+// Acacias
+const SPECIES_ROBINIER = "Robinia pseudoacacia";
+const SPECIES_MIMOSA_HIVER = "Acacia dealbata";
+const SPECIES_MIMOSA_ETE = "Acacia retinodes";
+const SPECIES_MIMOSA_BLEUATRE = "Acacia saligna"
+// There are other mimosas with ~100 observation but I've ignored those
 
 
 // Aubépines
@@ -205,7 +211,6 @@ const latinToFrench = {
     
     // Misc, often imported species
     [SPECIES_SAVONNIER]: ["Savonnier", "Savonnier de Chine", "Bois de Panama", "Arbre aux Lanternes", "Arbre à Pluie d'Or", "Mimosa d'Été", "Lampions de Chine"],
-    [SPECIES_ROBINIER]: ["Robinier", "Robinier Faux-Acacia", "Faux-Acacia"],
     [SPECIES_GINKOBILOBA]: ["Ginkgo", "Arbre aux Quarante Écus", "Arbre aux Abricots d'Argent"],
     [SPECIES_EUCALYPTUS]: ["Eucalyptus", "Gommier Bleu"],
     [SPECIES_CATALPA]: ["Catalpa", "Catalpa Commun", "Arbre aux Haricots", "Catalpa Boule"],
@@ -216,6 +221,13 @@ const latinToFrench = {
 
     // Shrubs, like aubépine, TBD troenes
     [SPECIES_COTONEASTER]: ["Cotoneaster"], // Note: there are 5 species, but it's not really a tree, good enough for now
+
+    // Acacias
+    [SPECIES_ROBINIER]: ["Robinier", "Robinier Faux-Acacia", "Faux-Acacia"],
+    [SPECIES_MIMOSA_HIVER]: ["Mimosa d'Hiver", "Mimosa des Fleuristes"],
+    [SPECIES_MIMOSA_ETE]: ["Mimosa d'Été", "Mimosa des Quatre Saisons", "Mimosa Résineux"],
+    [SPECIES_MIMOSA_BLEUATRE]: ["Mimosa Bleuâtre", "Mimosa à Feuilles de Saule"],
+
 
     // Fruitiers
     [SPECIES_POMMIER_SAUVAGE]: ["Pommier Sauvage", "Boquettier", "Pommier des Bois"],
@@ -530,6 +542,20 @@ const FAMILY_CHENES = {
     ],
     associates: [
     ]
+};
+
+const FAMILY_ACACIAS = {
+    familyName: "Acacias",
+    resineux: false,
+    main: SPECIES_ROBINIER,
+    mainName: "Acacia",
+    species: [
+        SPECIES_ROBINIER,
+        SPECIES_MIMOSA_HIVER,
+        SPECIES_MIMOSA_ETE,
+        SPECIES_MIMOSA_BLEUATRE,
+    ],
+    associates: []
 };
 
 const FAMILY_PLATANES = {
@@ -882,9 +908,9 @@ const baseSpeciesNames = [
     SPECIES_NOISETIER,
     SPECIES_OLIVIER,
     SPECIES_SAVONNIER,
-    SPECIES_ROBINIER,
     SPECIES_FIGUIER,
 
+    FAMILY_ACACIAS,
     FAMILY_SAULES,
     FAMILY_AUBEPINES,
     FAMILY_ERABLES,
@@ -981,7 +1007,7 @@ function recomputePercentage() {
     // Recompute percentage for Sorbiers and Lauriers etc.
     // which are a collection of species and not a real genus
     // Also for Saules which have too much stuff inside of it (grass etc.)
-    const fakeFamilyNames = ["Lauriers", "Sorbiers", "Grands Saules", "Cyprès", "Séquoias"];
+    const fakeFamilyNames = ["Lauriers", "Sorbiers", "Acacias", "Grands Saules", "Cyprès", "Séquoias"];
     const families = allSpecies.filter(species => fakeFamilyNames.includes(species.familyName));
 
     // For each family
