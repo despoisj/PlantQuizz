@@ -343,6 +343,7 @@ function displayDataPopulateQuizz(data){
         const quizButton = $('<button>')
             .text(speciesName)
             .addClass('quizz-button')
+            .addClass('selected')
             .data('speciesKey', speciesKey)  // Store speciesKey as data on the button
             .on('click', function() {
                  // Check if the selected speciesKey matches the taxonKey
