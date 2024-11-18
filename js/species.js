@@ -17,6 +17,7 @@ const SPECIES_CYPRES_CHAUVE = "Taxodium distichum";
 const SPECIES_CEDRE = "Cedrus";
 const SPECIES_PIN = "Pinus";
 const SPECIES_GINKOBILOBA = "Ginkgo biloba";
+const SPECIES_EUCALYPTUS = "Eucalyptus globulus"; // There are others but very few
 const SPECIES_CATALPA = "Catalpa bignonioides";
 const SPECIES_LILAS_PERSE = "Melia azedarach";
 
@@ -163,28 +164,33 @@ const SPECIES_FUSAIN_CHINE = "Euonymus fortunei";
 // in the gbif dataset (the one consolidated into the .json file)
 
 const latinToFrench = {
+    [SPECIES_AULNE_GLUTINEUX]: ["Aulne Glutineux", "Aulne Noir", "Aulne Poisseux", "Vergne", "Verne"],
     [SPECIES_CHARME]: ["Charme", "Charme Commun", "Charmille"],
     [SPECIES_HETRE]: ["Hêtre"],
     [SPECIES_MARRONNIER]: ["Marronnier",  "Marronnier d'Inde", "Marronnier d'Europe", "Marronnier Blanc", "Châtaignier de Mer", "Marronnier Faux-Châtaignier", "Châtaignier des Chevaux"],
     [SPECIES_CHATAIGNIER]: ["Châtaignier", "Arbre à Pain", "Pain des Pauvres"],    
-    [SPECIES_LIQUIDAMBAR]: ["Liquidambar"],
-    [SPECIES_AULNE_GLUTINEUX]: ["Aulne Glutineux", "Aulne Noir", "Aulne Poisseux", "Vergne", "Verne"],
-    [SPECIES_COTONEASTER]: ["Cotoneaster"], // Note: there are 5 species, but it's not really a tree, good enough for now, troen TBD
-    [SPECIES_ARBRE_DE_JUDEE]: ["Arbre de Judée", "Gainier Silicastre"],
-    [SPECIES_TULIPIER]: ["Tulipier", "Arbre aux Lis"],
     [SPECIES_MAGNOLIA_GRANDIFLORA]: ["Magnolia", "Magnolia à Grandes Fleurs", "Magnolier à Grandes Fleurs", "Laurier-Tulipier"],
     [SPECIES_NOISETIER]: ["Noisetier", "Coudriers", "Aveliniers"],
+    
+    // Misc, often imported species
     [SPECIES_SAVONNIER]: ["Savonnier", "Savonnier de Chine", "Bois de Panama", "Arbre aux Lanternes", "Arbre à Pluie d'Or", "Mimosa d'Été", "Lampions de Chine"],
     [SPECIES_ROBINIER]: ["Robinier", "Robinier Faux-Acacia", "Faux-Acacia"],
-    [SPECIES_CYPRES_CHAUVE]: ["Cyprès Chauve"],
     [SPECIES_GINKOBILOBA]: ["Ginkgo", "Arbre aux Quarante Écus", "Arbre aux Abricots d'Argent"],
+    [SPECIES_EUCALYPTUS]: ["Eucalyptus", "Gommier Bleu"],
     [SPECIES_CATALPA]: ["Catalpa", "Catalpa Commun", "Arbre aux Haricots", "Catalpa Boule"],
     [SPECIES_LILAS_PERSE]: ["Lilas de Perse", "Margousier à Feuilles de Frêne", "Mélia Faux-Neem"],
-    
+    [SPECIES_LIQUIDAMBAR]: ["Liquidambar", "Copalme", "Copalme d'Amérique"],
+    [SPECIES_TULIPIER]: ["Tulipier", "Arbre aux Lis"],
+    [SPECIES_ARBRE_DE_JUDEE]: ["Arbre de Judée", "Gainier Silicastre"],
+
+    // Shrubs, like aubépine, TBD troenes
+    [SPECIES_COTONEASTER]: ["Cotoneaster"], // Note: there are 5 species, but it's not really a tree, good enough for now
+
     // Fruitiers
     [SPECIES_POMMIER_SAUVAGE]: ["Pommier Sauvage", "Boquettier", "Pommier des Bois"],
     [SPECIES_POMMIER]: ["Pommier Domestique", "Pommier Commun"],
-    
+
+    // Poiriers
     [SPECIES_POIRIER_SAUVAGE]: ["Poirier Sauvage"],
     [SPECIES_POIRIER]: ["Poirier Commun"],
     [SPECIES_POIRIER_EPINEUX]: ["Poirier Épineux", "Poirier à Feuilles d'Amandier"],
@@ -221,6 +227,7 @@ const latinToFrench = {
     // Resineux
     [SPECIES_CEDRE]: ["Cèdre"],
     [SPECIES_PIN]: ["Pin"],
+    [SPECIES_CYPRES_CHAUVE]: ["Cyprès Chauve"],
 
     // Aubépines
     [SPECIES_AUBEPINE]: ["Aubépine Monogyne", "Aubépine à Un Style"],
@@ -237,13 +244,13 @@ const latinToFrench = {
     [SPECIES_MICOCOULIER_OCCIDENTAL]: ["Micocoulier Occidental", "Micocoulier de Virginie"],
 
     // Érables
-    [SPECIES_ERABLE_SYCOMORE]: ["Érable Sycomore"],
+    [SPECIES_ERABLE_SYCOMORE]: ["Érable Sycomore", "Faux Platane", "Grand Érable", "Érable de Montagne", "Érable Blanc"],
     [SPECIES_ERABLE_CHAMPETRE]: ["Érable Champêtre"],
-    [SPECIES_ERABLE_ARGENTE]: ["Érable Argenté"],
-    [SPECIES_ERABLE_NEGUNDO]: ["Érable Negundo"],
-    [SPECIES_ERABLE_PLANE]: ["Érable Plane"],
+    [SPECIES_ERABLE_ARGENTE]: ["Érable Argenté", "Érable de Virginie", "Plaine Blanche"],
+    [SPECIES_ERABLE_NEGUNDO]: ["Érable Negundo", "Érable à Giguère", "Érable à Feuilles de Frêne", "Érable Américain", "Érable à Feuilles Composées", "Érable du Manitoba"],
+    [SPECIES_ERABLE_PLANE]: ["Érable Plane", "Érable de Norvège", "Iseron", "Plane", "Main-Découpée", "Plaine", "Faux-Sycomore"],
     [SPECIES_ERABLE_OBIER]: ["Érable à Feuilles d'Obier"],
-    [SPECIES_ERABLE_MONTPELLIER]: ["Érable de Montpellier"],
+    [SPECIES_ERABLE_MONTPELLIER]: ["Érable de Montpellier", "Azerou", "Agast", "Violonier"],
 
     // Chênes
     [SPECIES_CHENE_PEDONCULE]: ["Chêne Pédonculé", "Chêne Blanc", "Chêne Femelle", "Gravelin", "Chêne à Grappe", "Châgne"],
@@ -714,6 +721,7 @@ const baseSpeciesNames = [
 // Species a bit less common
 const harderSpeciesNames = [
     SPECIES_GINKOBILOBA,
+    SPECIES_EUCALYPTUS,
     SPECIES_CATALPA,
     SPECIES_LIQUIDAMBAR,
     SPECIES_LILAS_PERSE,
