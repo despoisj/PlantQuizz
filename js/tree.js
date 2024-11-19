@@ -108,7 +108,9 @@ function populateTreeInfo(tree, second=false){
 
     // If second, add a cross to reload page without second
     if (second) {
-        treeNameHtml += `<a href="tree.html?id=${tree.taxonKey}" class="cross">✖</a>`
+        // Get first tree id
+        const leftId = $("#treeName .speciesSelectDropdown").val();
+        treeNameHtml += `<a href="tree.html?id=${leftId}" class="cross">✖</a>`
     }
 
     // Populate tree information

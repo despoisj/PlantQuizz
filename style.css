@@ -567,10 +567,30 @@ img {
     border-bottom: 2px solid #e0e0e0;
     position: relative;
 
-    /* Add top space for mobile phone in tree header for back button */
+    /* Top space for back button */
     padding-top: 40px;
 
 }
+
+/* Add mmore top space for mobile phone for back button */
+@media (max-width: 768px) {
+    .tree-header {
+        padding-top: 60px;
+    }
+}
+
+
+#graphiqueEssences{
+    width:80%;
+    max-width: 450px;
+}
+
+@media (max-width: 768px) {
+    #graphiqueEssences {
+        width:100%;
+    }
+}
+
 
 .tree-header h1 {
     margin-bottom: 5px;
