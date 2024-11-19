@@ -566,15 +566,11 @@ img {
     padding-bottom: 20px;
     border-bottom: 2px solid #e0e0e0;
     position: relative;
-}
 
-/* Add top space for mobile phone in tree header for back button */
-@media (max-width: 768px) {
-    .tree-header {
-        padding-top: 40px;
-    }
-}
+    /* Add top space for mobile phone in tree header for back button */
+    padding-top: 40px;
 
+}
 
 .tree-header h1 {
     margin-bottom: 5px;
@@ -646,6 +642,10 @@ img {
 }
 
 
+/* Separation in middle */
+#tree-images-container2 {
+    border-left: 2px solid #e0e0e0;
+}
 
 .tree-images-container {
     display: flex;
