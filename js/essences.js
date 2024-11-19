@@ -159,7 +159,7 @@ function createSpeciesCard(species, forcePercentage=false, percentage=false) {
 
     var opacityString = ""
     if (percentage) {
-        opacityString = 'style="border: 2px solid rgba(77, 201, 105,' + percentage / 100.0 + ')"'
+        opacityString = 'style="border: 2px solid rgba(77, 201, 105,' + (percentage * 0.6) / 100.0 + ')"'
     } else if (forcePercentage) {
         opacityString = 'style="border: 2px solid rgba(77, 201, 105,' + 1.0 / 100.0 + ')"'
     }
@@ -169,7 +169,7 @@ function createSpeciesCard(species, forcePercentage=false, percentage=false) {
     var imgPath = `img/species/${simpleName}.jpg`;
     var inlinePercentageString = percentage ? `<span class="inline-percentage"> (${percentageString})</span>` : '';
     return `
-        <button class="species-button essence weighted" data-taxon="${species.taxonKey}">
+        <button ${opacityString} class="species-button essence weighted" data-taxon="${species.taxonKey}">
             ${percentage ? `<span class="percentage-badge">${percentageString}</span>` : ''}
             <img class="card-img" src="${imgPath}"/>
             <span class="species-name text-fit-scale">${species.commonName}${inlinePercentageString}</span>
