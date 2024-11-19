@@ -31,20 +31,39 @@
     </header>
 
     <div class="container">
-        <div class="tree-header">
-            <div class="back-button" onclick="window.location.href='essences.html'">
-                <i class="fas fa-arrow-left"></i>
-                <span>Retour</span>
+
+        <div id="tree1">
+            <div class="tree-header">
+                <!-- Bouton retour -->
+                <div class="back-button" onclick="window.location.href='essences.html'">
+                    <i class="fas fa-arrow-left"></i>
+                    <span>Retour</span>
+                </div>
+
+                <h1 id="treeName" class="treeName"></h1>
+                <p class="latin-name" id="latinName"></p>
+                <div id="altNames" class="alt-names"></div>
+                <a id="gbifLink" href="#" target="_blank" class="gbif-link">
+                    <i class="fab fa-solid fa-link"></i> En savoir plus
+                </a>
             </div>
-            <h1 id="treeName"></h1>
-            <p class="latin-name" id="latinName"></p>
-            <div id="altNames" class="alt-names"></div>
-            <a id="gbifLink" href="#" target="_blank" class="gbif-link">
-                <i class="fab fa-solid fa-link"></i> En savoir plus
-            </a>
+            
+            <div id="tree-images-container" class="tree-images-container"></div>
         </div>
+
+        <!-- Second tree if needed -->
+        <div id="tree2">
+            <div class="tree-header">
+                <h1 id="treeName2" class="treeName"></h1>
+                <p class="latin-name" id="latinName2"></p>
+                <div id="altNames2" class="alt-names"></div>
+                <a id="gbifLink2" href="#" target="_blank" class="gbif-link">
+                    <i class="fab fa-solid fa-link"></i> En savoir plus
+                </a>
+            </div>
         
-        <div id="images-container" style="margin-bottom: 30px;"></div>
+            <div id="tree-images-container2" class="tree-images-container"></div>
+        </div>
     </div>
 
     <!-- Modal for displaying the full-size image -->

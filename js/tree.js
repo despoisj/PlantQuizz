@@ -6,27 +6,115 @@ $(document).ready(async function() {
 
     await loadSpecies();
 
+    // Sort enriched species for drop down
+    enrichedSpecies.sort((a, b) => a.commonName.localeCompare(b.commonName));
+
+    // Get the current tree
+    // TODO compare param for 2nd
     const urlParams = new URLSearchParams(window.location.search);
     const treeId = urlParams.get('id');
+
+    var tree = null
+    var tree2 = null
+
+    // Check if one or two, comma in parameter
+    if (treeId.includes(',')) {
+        const ids = treeId.split(',');
+        tree = findTreeById(ids[0]);
+        tree2 = findTreeById(ids[1]);
+
+        // Update page title
+        document.title = `${tree.commonName} vs ${tree2.commonName} - PlantQuizz`;
+
+    } else {
+        // Find the tree in our data
+        tree = findTreeById(treeId);
+
+        // Update page title
+        document.title = `${tree.commonName} - PlantQuizz`;
+    }
+
+    populateTreeInfo(tree);
+
+    if (tree2 != null){
+        populateTreeInfo(tree2, true)
+
+        // Setup display
+        $("#tree1").css("width", "50%");
+        $("#tree2").show()
+
+        // Hide plus sign we're already at 2
+        $("#plusSign").hide()
+
+        // Hide alt names (quick and easy fix to have images line up)
+        // Otherwise one side can be higher than the other
+        // Or force height of smaller container?
+        const h1 = $("#tree1 .tree-header").height();
+        const h2 = $("#tree2 .tree-header").height();
+
+        $("#tree1 .tree-header").height(Math.max(h1, h2));
+        $("#tree2 .tree-header").height(Math.max(h1, h2));
+    }
+
+
+    // COMPARISON
+    // Add to tree.js
     
-    if (!treeId) {
-        window.location.href = 'essences.html';
-        return;
+    // Call after loading first tree
+    initializeComparison();
+
+});
+
+
+function findTreeById(taxonKey) {
+    // Helper
+    return enrichedSpecies.find(species => species.taxonKey.toString() === taxonKey);
+}
+
+function initializeComparison() {
+    // Sets up the dropdowns for comparison between the two species
+    $('.speciesSelectDropdown').on('change', function() {
+        // Get both ids from dropdown, and reload page
+        const leftId = $("#treeName .speciesSelectDropdown").val();
+        const rightId = $("#treeName2 .speciesSelectDropdown").val();
+
+        if (rightId === undefined){
+            window.location.href = `tree.html?id=${leftId}`;
+        } else {
+            window.location.href = `tree.html?id=${leftId},${rightId}`;
+        }
+    });
     }
 
-    // Find the tree in our data
-    const tree = findTreeById(treeId);
-    if (!tree) {
-        window.location.href = 'essences.html';
-        return;
+
+function populateTreeInfo(tree, second=false){
+    const suffix = second ? "2" : ""
+
+    // Dynamically add dropdown with correct value
+    var treeNameHtml = `
+        <select class="speciesSelectDropdown">
+            <option value="${tree.taxonKey}">${tree.commonName}</option>
+            // List all possible options
+            ${enrichedSpecies.map(tree =>  
+                `<option value="${tree.taxonKey}">${tree.commonName}</option>`
+            ).join('')}
+        </select>
+    `
+
+    // If first and there's no second, add a plus to add a second
+    if (!second) {
+        treeNameHtml += `<a href="tree.html?id=${tree.taxonKey},${tree.taxonKey}" class="plus" id="plusSign">+</a>`
     }
 
-    // Update page title
-    document.title = `${tree.commonName} - PlantQuizz`;
+    // If second, add a cross to reload page without second
+    if (second) {
+        treeNameHtml += `<a href="tree.html?id=${tree.taxonKey}" class="cross">✖</a>`
+    }
 
     // Populate tree information
-    $('#treeName').text(tree.commonName);
-    $('#latinName').text(tree.name);
+    $(`#treeName${suffix}`).html(treeNameHtml);
+    $(`#latinName${suffix}`).text(tree.name);
+
     
     // Add alternate names if they exist
     if (tree.otherNames && tree.otherNames.length > 0) {
@@ -37,44 +125,22 @@ $(document).ready(async function() {
             })
             .join('');
 
-        $('#altNames').html(altNamesHtml);
-    }
-
-    // Add gbif link if it exists
-    if (true) {
-        console.log(tree.taxonKey)
-        $('#gbifLink').attr('href', "https://www.gbif.org/species/" + tree.taxonKey);
+        $(`#altNames${suffix}`).html(altNamesHtml);
     } else {
-        $('#gbifLink').hide();
+        $(`#altNames${suffix}`).html('<span class="alt-name">(Pas de noms alternatifs)</span>');
     }
 
+    // Add gbif link
+    $(`#gbifLink${suffix}`).attr('href', "https://www.gbif.org/species/" + tree.taxonKey);
+    
     // Fetch images
-    fetchImagesGeneric(tree.taxonKey, 50, true, displayImages);
-});
-
-function findTreeById(taxonKey) {
-    // Search in individual species
-    let tree = allSpecies.find(species => 
-        species.taxonKey && species.taxonKey.toString() === taxonKey
-    );
-
-    // If not found, search in families
-    if (!tree) {
-        allSpecies.forEach(item => {
-            if (item.species) {
-                const familyTree = item.species.find(
-                    species => species.taxonKey.toString() === taxonKey
-                );
-                if (familyTree) tree = familyTree;
-            }
-        });
-    }
-
-    return tree;
+    fetchImagesGeneric(tree.taxonKey, 50, true, data => displayImages(data, second));
 }
 
-function displayImages(data) {
-    const $imagesContainer = $('#images-container');
+function displayImages(data, second=false) {
+    const suffix = second ? "2" : ""
+
+    const $imagesContainer = $(`#tree-images-container${suffix}`);
     currentImages = [];
 
     // Get unique images
@@ -94,7 +160,7 @@ function displayImages(data) {
     imagesToShow.forEach((imageUrl, index) => {
         const img = $('<img>')
             .attr('src', imageUrl)
-            .attr('alt', 'Tree Image')
+            .attr('alt', 'Photo de l\'arbre')
             .attr('data-index', index)
             .on('click', function() {
                 currentImageIndex = $(this).data('index');
