@@ -271,6 +271,12 @@ async function displayData(data){
             }
         };
 
+        // Check it's not bugged (outside plantnet, sometimes happens)
+        if (result.media[index].identifier === undefined){
+            return;
+        }
+
+
         nb_total += 1;
 
         // Store the image URL in our array for modal
@@ -278,7 +284,7 @@ async function displayData(data){
 
         const img = $('<img>')
             .attr('src', result.media[index].identifier)
-            .attr('alt', 'Tree Image')
+            .attr('alt', 'Photo de l\'arbre')
             .attr('data-index', currentImages.length - 1)  // Store the index
             .css({
                 width: '250px',
