@@ -283,6 +283,59 @@ button:hover {
     margin-bottom: 2px;
 }
 
+
+@media (min-width: 768px) {
+    
+    /*  Make name fit with images  */
+    .species-button.essence {
+        position: relative;
+        box-sizing: border-box;
+        width: 180px;
+        padding-left: 3px; /*TODO*/
+        padding-right: 3px; /*TODO ALSO HEIGHT CHANGES*/ 
+    }
+
+    .text-fit-scale {
+        white-space: nowrap;
+        display: inline-block;
+        overflow: hidden;
+    }
+
+    /* For latin, ellipsis */
+    /* TODO see if not just lil bit bigger to fit */
+    .latin-name.short {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ".";
+        width: 85%; /* Limit for ellipsis */
+    }
+
+    /* Cards */
+    .card-img{
+        /*width: 128px;
+        height: 128px;*/
+        width: 160px;
+        height: 200px;
+        object-fit: cover;
+        margin: 5px;
+        margin-top: 1px;
+        margin-bottom: 10px;
+        border-radius: 4px;
+        opacity: 0.9;
+    }
+
+
+}
+
+
+
+
+
+
+
+
+
+
 .latin-name {
     font-size: 0.75rem;
     font-style: italic;
@@ -333,12 +386,6 @@ img {
     opacity: 1.0;
 }
 
-/* Revert to simpler display on phone */
-@media (min-width: 768px) {
-    .species-button.essence {
-        width: 150px;
-    }
-}
 
 
 
@@ -723,16 +770,7 @@ h1 + .intro-text {
     border-radius: 4px;
 }
 
-/* Cards */
-.card-img{
-    width: 128px;
-    height: 128px;
-    margin: 5px;
-    margin-top: 1px;
-    margin-bottom: 10px;
-    border-radius: 4px;
-    opacity: 0.9;
-}
+
 
 
 

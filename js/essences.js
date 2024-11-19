@@ -110,6 +110,38 @@ function populateSpecies(showResineux=false) {
         const taxonKey = $(this).data('taxon');
         window.location = `tree.html?id=${taxonKey}`;
     });
+
+    rescaleText();
+    // Call when window is resized
+    $(window).on('resize', rescaleText);
+}
+
+function rescaleText() {
+    // Add font resize
+    $('.species-name.text-fit-scale').each(function() {
+        // Only if window size > 768px
+        // For latin name it's ellipsis
+        const $text = $(this);
+        const $container = $text.parent();
+        
+        // Reset any existing transform to get true width
+        $text.css('transform', 'none');
+        
+        if ($(window).width() > 768) {            
+            // Get the available width (container width minus padding)
+            const containerWidth = $container.width() - 20; // 20px for left+right padding
+            
+            // Get the actual text width
+            const textWidth = $text.get(0).scrollWidth;
+            
+            if (textWidth > containerWidth) {
+                const scale = containerWidth / textWidth;
+                // Center the scaled text
+                const translateX = (containerWidth - (textWidth * scale)) / 2;
+                $text.css('transform', `translateX(${translateX}px) scale(${scale})`);
+            }
+        }
+    });
 }
 
 function createSpeciesCard(species, forcePercentage=false, percentage=false) {
@@ -137,11 +169,11 @@ function createSpeciesCard(species, forcePercentage=false, percentage=false) {
     var imgPath = `img/species/${simpleName}.jpg`;
     var inlinePercentageString = percentage ? `<span class="inline-percentage"> (${percentageString})</span>` : '';
     return `
-        <button ${opacityString} class="species-button essence weighted" data-taxon="${species.taxonKey}">
+        <button class="species-button essence weighted" data-taxon="${species.taxonKey}">
             ${percentage ? `<span class="percentage-badge">${percentageString}</span>` : ''}
             <img class="card-img" src="${imgPath}"/>
-            <span class="species-name">${species.commonName}${inlinePercentageString}</span>
-            <span class="latin-name">${species.name}</span>
+            <span class="species-name text-fit-scale">${species.commonName}${inlinePercentageString}</span>
+            <span class="latin-name short">${species.name}</span>
         </button>
     `;
     

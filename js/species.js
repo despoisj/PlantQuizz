@@ -59,7 +59,7 @@ const SPECIES_SAULE_CINQ_ETAMINES = "Salix pentandra";
 const SPECIES_SAULE_DAPHNE = "Salix daphnoides";
 const SPECIES_SAULE_VANNIER = "Salix viminalis";
 
-// Acacias
+// Acacias / Mimosas
 const SPECIES_ROBINIER = "Robinia pseudoacacia";
 const SPECIES_MIMOSA_HIVER = "Acacia dealbata";
 const SPECIES_MIMOSA_ETE = "Acacia retinodes";
@@ -544,18 +544,19 @@ const FAMILY_CHENES = {
     ]
 };
 
-const FAMILY_ACACIAS = {
-    familyName: "Acacias",
+const FAMILY_MIMOSAS = {
+    familyName: "Mimosas",
     resineux: false,
-    main: SPECIES_ROBINIER,
-    mainName: "Acacia",
+    main: SPECIES_MIMOSA_HIVER,
+    mainName: "Mimosa",
     species: [
-        SPECIES_ROBINIER,
         SPECIES_MIMOSA_HIVER,
         SPECIES_MIMOSA_ETE,
         SPECIES_MIMOSA_BLEUATRE,
     ],
-    associates: []
+    associates: [
+        SPECIES_ROBINIER,
+    ]
 };
 
 const FAMILY_PLATANES = {
@@ -910,7 +911,7 @@ const baseSpeciesNames = [
     SPECIES_SAVONNIER,
     SPECIES_FIGUIER,
 
-    FAMILY_ACACIAS,
+    FAMILY_MIMOSAS,
     FAMILY_SAULES,
     FAMILY_AUBEPINES,
     FAMILY_ERABLES,
@@ -1007,7 +1008,7 @@ function recomputePercentage() {
     // Recompute percentage for Sorbiers and Lauriers etc.
     // which are a collection of species and not a real genus
     // Also for Saules which have too much stuff inside of it (grass etc.)
-    const fakeFamilyNames = ["Lauriers", "Sorbiers", "Acacias", "Grands Saules", "Cyprès", "Séquoias"];
+    const fakeFamilyNames = ["Lauriers", "Sorbiers", "Grands Saules", "Cerisiers", "Cyprès", "Séquoias"];
     const families = allSpecies.filter(species => fakeFamilyNames.includes(species.familyName));
 
     // For each family
