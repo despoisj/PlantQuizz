@@ -44,7 +44,7 @@ function populateSpecies(showResineux=false) {
         
         html += `
             <div class="species-category">
-                <h2>${family.familyName}</h2>
+                <h2>${family.familyName.replace("*","")}</h2>
                 <div class="species-grid">
         `;
 
@@ -126,7 +126,7 @@ function rescaleText() {
         
         // Reset any existing transform to get true width
         $text.css('transform', 'none');
-        
+
         if ($(window).width() > 768) {            
             // Get the available width (container width minus padding)
             const containerWidth = $container.width() - 20; // 20px for left+right padding

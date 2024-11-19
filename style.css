@@ -315,7 +315,7 @@ button:hover {
         /*width: 128px;
         height: 128px;*/
         width: 160px;
-        height: 200px;
+        height: 128px;
         object-fit: cover;
         margin: 5px;
         margin-top: 1px;
@@ -806,7 +806,20 @@ h1 + .intro-text {
     }
 
     .card-img{
-        display: none
+        display: none;
+        /*   Small mode, by default display none  */
+        /*display: inline-block;
+        height: 60px;
+        position: absolute;
+        left: 0;
+        top: 0;
+        margin-left: -60px;
+        border-radius: 4px 0 0 4px;*/
+    }
+
+    .species-button.essence{
+        /*margin-left: 60px;
+        margin-right: 10px;*/
     }
 
     .inline-percentage{
