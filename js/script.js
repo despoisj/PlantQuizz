@@ -150,7 +150,6 @@ function populateSelection(simple){
             .addClass('metaSelection')
             .addClass('metaSelectionSmall')
             .text(speciesItem.familyName)
-            .addClass("unselected")
             .on('click', function() {
                 // Select all sub species
                 speciesItem.species.forEach(subSpecies => {
