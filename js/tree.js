@@ -40,7 +40,8 @@ $(document).ready(async function() {
         populateTreeInfo(tree2, true)
 
         // Setup display
-        $("#tree1").css("width", "50%");
+        $("#tree1").css("width", "49.5%");
+        $("#tree1").css("margin-right", "0.5%");
         $("#tree2").show()
 
         // Hide plus sign we're already at 2

@@ -664,7 +664,7 @@ img {
 
 /* Separation in middle */
 #tree-images-container2 {
-    border-left: 2px solid #e0e0e0;
+/*    border-left: 2px solid #e0e0e0;*/
 }
 
 .tree-images-container {
@@ -698,7 +698,8 @@ img {
 #tree2{
     display: none;
     float: left;
-    width: 50%;
+    width: 49.5%;
+    margin-left: 0.5%;
 }
 
 
