@@ -198,7 +198,7 @@ function populateSelection(simple){
 
 function reloadImages(){
     // GBIF API URL for fetching images based on the selected taxon key
-    fetchImagesGeneric(taxonKey, 500, true, displayData);
+    fetchImagesGeneric(taxonKey, 500, months="5,8", true, displayData);
 }
 
 async function displayData(data){
@@ -214,76 +214,16 @@ async function displayData(data){
     var results = data.results;
     results.sort(() => Math.random() - 0.5);
 
-    var barkFound = false;
-    var nb_total = 0;
+    // Tryto get 1 bark, 1 fruit, 1 flower, rest leaves
+    const filteredUrls = filterPlantnetData(data, 6)
 
     // Display the images
-    data.results.forEach(result => {
-
-        // Hacky but should be very fast
-        if (nb_total == 6){
-            // Stop the loop
-            return;
-        }
-
-        // Find how many images and of which parts in observation
-        // Extensions is an array
-        var extensions = result.extensions["http://rs.tdwg.org/ac/terms/Multimedia"]
-        var subjectParts = ""
-        if (extensions == undefined || extensions[0] == undefined || extensions[0]["http://rs.tdwg.org/ac/terms/tag"] == undefined){
-            // We don't have plantnet data, do something simpler
-            // Hack to be compliant with lower logic looking for bark then leafs
-            subjectParts = []
-            for (var i = 0; i < result.media.length; i++){
-                subjectParts.push(barkFound ? "leaf" : "bark")
-            }
-        } else {
-            // Grab subject part like plantnet
-            subjectParts = extensions.map(function(extension) {
-                return extension["http://rs.tdwg.org/ac/terms/tag"];
-            });
-        }
-
-        // Ideally we get 4 leaves and 1 bark, else random fruit flower ?
-        // Only keep the index of leaves (or bark if already 5 leaves?)
-
-        // To allow multiple chances
-        var partFound = false
-
-        if (!barkFound){
-            // Try bark
-            var index = subjectParts.indexOf("bark");
-            if (index != -1){
-                partFound = true;
-                barkFound = true;
-            } else {
-                // Continue next iteration of forEach
-                return;
-            }
-        } 
-
-        // If no bark, go for leaf
-        if (!partFound){
-            var index = subjectParts.indexOf("leaf");
-            if (index == -1){
-                // Continue next iteration of forEach
-                return;
-            }
-        };
-
-        // Check it's not bugged (outside plantnet, sometimes happens)
-        if (result.media[index].identifier === undefined){
-            return;
-        }
-
-
-        nb_total += 1;
-
+    filteredUrls.forEach(imageUrl => {
         // Store the image URL in our array for modal
-        currentImages.push(result.media[index].identifier);
+        currentImages.push(imageUrl);
 
         const img = $('<img>')
-            .attr('src', result.media[index].identifier)
+            .attr('src', imageUrl)
             .attr('alt', 'Photo de l\'arbre')
             .attr('data-index', currentImages.length - 1)  // Store the index
             .css({
@@ -298,7 +238,7 @@ async function displayData(data){
         // Click event to open the modal with the clicked image
         img.on('click', function() {
             currentImageIndex = $(this).data('index');
-            openModal(result.media[index].identifier);
+            openModal(imageUrl);
         });
 
         $imagesContainer.prepend(img);
@@ -329,7 +269,7 @@ function fetchImages() {
 
 
     // Get images and create quizz answers
-    fetchImagesGeneric(taxonKey, 500, true, displayDataPopulateQuizz);
+    fetchImagesGeneric(taxonKey, 500, months="5,8", true, displayDataPopulateQuizz);
 }
 
 function displayDataPopulateQuizz(data){

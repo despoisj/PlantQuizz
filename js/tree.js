@@ -10,7 +10,7 @@ $(document).ready(async function() {
     enrichedSpecies.sort((a, b) => a.commonName.localeCompare(b.commonName));
 
     // Get the current tree
-    // TODO compare param for 2nd
+    // TODO use compare param for 2nd
     const urlParams = new URLSearchParams(window.location.search);
     const treeId = urlParams.get('id');
 
@@ -137,7 +137,7 @@ function populateTreeInfo(tree, second=false){
     $(`#gbifLink${suffix}`).attr('href', "https://www.gbif.org/species/" + tree.taxonKey);
     
     // Fetch images
-    fetchImagesGeneric(tree.taxonKey, 50, true, data => displayImages(data, second));
+    fetchImagesGeneric(tree.taxonKey, 500, months="5,8", true, data => displayImages(data, second));
 }
 
 function displayImages(data, second=false) {
@@ -146,21 +146,15 @@ function displayImages(data, second=false) {
     const $imagesContainer = $(`#tree-images-container${suffix}`);
     currentImages = [];
 
-    // Get unique images
-    const uniqueImages = new Set();
-    data.results.forEach(result => {
-        if (result.media && result.media[0]) {
-            uniqueImages.add(result.media[0].identifier);
-        }
-    });
+    // Shuffle the observations
+    var results = data.results;
+    results.sort(() => Math.random() - 0.5);
 
-    // Convert Set to Array and shuffle
-    currentImages = Array.from(uniqueImages);
-    currentImages.sort(() => Math.random() - 0.5);
+    // Try to get 1 bark, 1 fruit, 1 flower, rest leaves
+    const filteredUrls = filterPlantnetData(data, 12)
 
     // Display first 12 images
-    const imagesToShow = currentImages.slice(0, 12);
-    imagesToShow.forEach((imageUrl, index) => {
+    filteredUrls.forEach((imageUrl, index) => {
         const img = $('<img>')
             .attr('src', imageUrl)
             .attr('alt', 'Photo de l\'arbre')
