@@ -35,8 +35,14 @@ function fetchImagesGeneric(taxonKey, limit, months="5,8", onlyPlantNet=true, ca
     });
 }
 
+// Helper function to check if URL is a JPG
+function isJpgUrl(url) {
+    return url.toLowerCase().endsWith('.jpg') || url.toLowerCase().endsWith('.jpeg');
+}
 
 function filterPlantnetData(data, totalNumber){
+
+
     // Filters the data to try to get 1 bark, 1 flower, 1 fruit
     // And the rest with leaves
 
@@ -52,6 +58,10 @@ function filterPlantnetData(data, totalNumber){
             withTags.push(result)
         }
     });
+
+    // Remove all non-jpg images
+    withTags = withTags.filter(result => result.media.some(m => m.identifier && isJpgUrl(m.identifier)));
+    withoutTags = withoutTags.filter(result => result.media.some(m => m.identifier && isJpgUrl(m.identifier)));
 
     // Shuffle
     withTags.sort(() => Math.random() - 0.5);
