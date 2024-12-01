@@ -117,26 +117,22 @@ function filterPlantnetData(data, totalNumber){
 
     // Try to get one of each
     var final = []
+
     if (bark.length > 0){
         final.push(bark[0])
-    } else {
-        final.push(untagged.pop())
     }
 
     if (flower.length > 0){
         final.push(flower[0])
-    } else {
-        final.push(untagged.pop())
     }
 
     if (fruit.length > 0){
         final.push(fruit[0])
-    } else {
-        final.push(untagged.pop())
     }
 
     // Get leaves to fill in the rest
-    for (var i = 0; i < totalNumber - 3; i++){
+    const missingNumber = totalNumber - final.length
+    for (var i = 0; i < missingNumber; i++){
         // First try in leaf if not empty, else untagged
         if (leaf.length > 0){
             final.push(leaf.pop())
