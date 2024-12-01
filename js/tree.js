@@ -23,12 +23,19 @@ $(document).ready(async function() {
         tree = findTreeById(ids[0]);
         tree2 = findTreeById(ids[1]);
 
+        displayTiles(ids[0], false);
+        displayTiles(ids[1], true);
+
         // Update page title
         document.title = `${tree.commonName} vs ${tree2.commonName} - PlantQuizz`;
 
     } else {
         // Find the tree in our data
         tree = findTreeById(treeId);
+
+        // TODO MAPS
+        // Initialize map
+        displayTiles(treeId);
 
         // Update page title
         document.title = `${tree.commonName} - PlantQuizz`;
