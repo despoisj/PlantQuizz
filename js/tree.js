@@ -33,7 +33,6 @@ $(document).ready(async function() {
         // Find the tree in our data
         tree = findTreeById(treeId);
 
-        // TODO MAPS
         // Initialize map
         displayTiles(treeId);
 
