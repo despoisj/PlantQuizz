@@ -137,7 +137,10 @@ function filterPlantnetData(data, totalNumber){
         if (leaf.length > 0){
             final.push(leaf.pop())
         } else {
-            final.push(untagged.pop())
+            // Don't add if empty
+            if (untagged.length > 0){
+                final.push(untagged.pop())
+            }
         }
     }
 
