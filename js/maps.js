@@ -32,6 +32,13 @@ function fetchTileLayer(minX, maxX, minY, maxY, zoom, isBackground = false, taxo
     async function fetchTile(tile) {
         try {
             const response = await fetch(tile.url);
+
+            if (response.status != 200){
+                // No plant data for this tile
+                // This happens for mimosa bleuatre for ex
+                return null;
+            }
+
             if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
             const blob = await response.blob();
             return {
