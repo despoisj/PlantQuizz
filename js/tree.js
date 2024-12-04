@@ -134,9 +134,21 @@ function populateTreeInfo(tree, second=false){
             })
             .join('');
 
-        $(`#altNames${suffix}`).html(altNamesHtml);
+        $(`#altNames${suffix}`).html("🇫🇷 " + altNamesHtml);
     } else {
         $(`#altNames${suffix}`).html('<span class="alt-name">(Pas de noms alternatifs)</span>');
+    }
+
+    // Add english names if they exist
+    if (tree.englishNames && tree.englishNames.length > 0) {
+        const engNamesHtml = tree.englishNames
+            .map((name, index) => {
+                const isLast = index === tree.englishNames.length - 1;
+                return `<span class="alt-name">${name}</span>${isLast ? '' : ', '}`;
+            })
+            .join('');
+
+        $(`#altNames${suffix}`).append("<br>🇬🇧 " + engNamesHtml);
     }
 
     // Add gbif link
