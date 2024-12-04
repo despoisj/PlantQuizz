@@ -30,7 +30,7 @@ function fetchImagesGeneric(taxonKey, limit, months="5,8", onlyPlantNet=true, ca
         },
         error: function(error) {
             console.error("Error fetching images:", error);
-            alert("Erreur de récupération des images.");
+            //alert("Erreur de récupération des images.");
         }
     });
 }
