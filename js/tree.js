@@ -136,7 +136,7 @@ function populateTreeInfo(tree, second=false){
 
         $(`#altNames${suffix}`).html("🇫🇷 " + altNamesHtml);
     } else {
-        $(`#altNames${suffix}`).html('<span class="alt-name">(Pas de noms alternatifs)</span>');
+        $(`#altNames${suffix}`).html(`🇫🇷 <span class="alt-name">${tree.commonName}</span>`);
     }
 
     // Add english names if they exist
