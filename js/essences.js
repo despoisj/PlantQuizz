@@ -173,6 +173,7 @@ function createSpeciesCard(species, forcePercentage=false, percentage=false) {
             ${percentage ? `<span class="percentage-badge">${percentageString}</span>` : ''}
             <img class="card-img" src="${imgPath}"/>
             <span class="species-name text-fit-scale">${species.commonName}${inlinePercentageString}</span>
+            <span class="latin-name short">${species.englishNames[0]}</span>
             <span class="latin-name short">${species.name}</span>
         </button>
     `;

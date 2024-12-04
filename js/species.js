@@ -518,7 +518,7 @@ const latinToEnglish = {
     [SPECIES_BOULEAU_PUBESCENT]: ["Downy Birch"],
     [SPECIES_BOULEAU_DORE]: ["*N/A*"],
     [SPECIES_CORNOUILLER_SANGUIN]: ["Common Dogwood", "Bloodtwig Dogwood"],
-    [SPECIES_CORNOUILLER_MALE]: ["Cornelian Cherry"],
+    [SPECIES_CORNOUILLER_MALE]: ["Cornel", "Cornelian Cherry"],
     [SPECIES_LAURIER_TIN]: ["Laurustinus"],
     [SPECIES_LAURIER_CERISE]: ["Cherry Laurel"],
     [SPECIES_LAURIER_SAUCE]: ["Bay Laurel"],
